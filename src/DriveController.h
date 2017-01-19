@@ -11,9 +11,10 @@ public:
   DriveController(RobotModel*, RemoteControl*);
   virtual ~DriveController();
 
+  void Stop();
   void Update(double currTimeSec, double deltaTimeSec);
   void Reset();
-  void ArcadeDrive(double myX, double myY);
+  void ArcadeDrive(double myX, double myY, bool teleOp);
   void TankDrive(double myLeft, double myRight);
 
   enum DriveState {
