@@ -1,22 +1,8 @@
-#include "WPILib.h"
-#include "RobotModel.h"
-#include "DriveController.h"
-#include "RemoteControl.h"
-#include "ControlBoard.h"
-#include "DashboardLogger.h"
 #include <string.h>
+#include "MainController.h"
 
 class MainProgram: public frc::IterativeRobot {
-  //LiveWindow helps in Test mode
-  LiveWindow *lw;
-  //Creates a robot from class RobotModel
-  RobotModel *robot;
-  //Creates a human control from RemoteControl, which includes ControlBoard
-  RemoteControl *humanControl;
-  //Creates a controller for drivetrain
-  DriveController *driveController;
-  //Creates an object of Dashboardlogger
-  DashboardLogger *dashboardLogger;
+
 
   //Creates a time-keeper
   double currTimeSec;
@@ -24,10 +10,8 @@ class MainProgram: public frc::IterativeRobot {
   double deltaTimeSec;
 public:
   MainProgram(void) {
-    robot = new RobotModel();
-    humanControl = new ControlBoard();
-    driveController = new DriveController(robot, humanControl);
-    dashboardLogger = new DashboardLogger(robot, humanControl);
+
+
 
     //Initializes timekeeper variables
     currTimeSec = 0.0;

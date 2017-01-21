@@ -1,0 +1,4 @@
+See file:///home/peter/Desktop/FRC-2017-masterplan/build/tmp/linkMy_programExecutable/output.txt for all output for linkMy_programExecutable.
+linking my_program successful.
+
+Finished linkMy_programExecutable, see full log file:///home/peter/Desktop/FRC-2017-masterplan/build/tmp/linkMy_programExecutable/output.txt.
