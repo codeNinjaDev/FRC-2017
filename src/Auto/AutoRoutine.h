@@ -8,9 +8,13 @@
 #ifndef SRC_AUTO_AUTOROUTINE_H_
 #define SRC_AUTO_AUTOROUTINE_H_
 
-class AutoRoutine {
+#include "AutoBase.h"
+#include "Action/Action.h"
+#include "Action/DriveIntervalAction.h"
+
+class AutoRoutine : AutoBase {
 public:
-  AutoRoutine();
+  void DriveInterval(double seconds, double y, double x);
   virtual ~AutoRoutine();
 };
 

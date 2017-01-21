@@ -7,12 +7,10 @@
 
 #include <Auto/AutoRoutine.h>
 
-AutoRoutine::AutoRoutine() {
-  // TODO Auto-generated constructor stub
-
-}
-
-AutoRoutine::~AutoRoutine() {
-  // TODO Auto-generated destructor stub
+/*void AutoRoutine::WaitTime(double seconds) {
+  AutoBase::runAction(new TimeoutAction(seconds));
+}*/
+void AutoRoutine::DriveInterval(double seconds, double y, double x) {
+  AutoBase::runAction(new DriveIntervalAction(seconds, y, x));
 }
 

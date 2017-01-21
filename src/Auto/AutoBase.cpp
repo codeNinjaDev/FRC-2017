@@ -33,6 +33,8 @@ void AutoBase::runAction(Action action) {
     action.update();
 
   }
+
+  action.done();
 }
 
 AutoBase::~AutoBase() {

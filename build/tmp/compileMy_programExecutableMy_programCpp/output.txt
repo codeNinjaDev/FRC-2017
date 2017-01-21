@@ -1,0 +1,84 @@
+See file:///home/peter/workspace/FRC-2017/build/tmp/compileMy_programExecutableMy_programCpp/output.txt for all output for compileMy_programExecutableMy_programCpp.
+compiling DriveController.cpp successful.
+
+compiling ControlBoard.h successful.
+
+compiling ControlBoard.cpp successful.
+
+compiling RobotModel.h successful.
+
+compiling AutoRoutine.cpp failed.
+/home/peter/workspace/FRC-2017/src/Auto/AutoRoutine.cpp:8:30: fatal error: Auto/AutoRoutine.h: No such file or directory
+ #include <Auto/AutoRoutine.h>
+                              ^
+compilation terminated.
+
+compiling AutoBase.cpp failed.
+/home/peter/workspace/FRC-2017/src/Auto/AutoBase.cpp:8:27: fatal error: Auto/AutoBase.h: No such file or directory
+ #include <Auto/AutoBase.h>
+                           ^
+compilation terminated.
+
+compiling DriveIntervalAction.cpp failed.
+/home/peter/workspace/FRC-2017/src/Auto/Action/DriveIntervalAction.cpp:8:45: fatal error: Auto/Action/DriveIntervalAction.h: No such file or directory
+ #include <Auto/Action/DriveIntervalAction.h>
+                                             ^
+compilation terminated.
+
+compiling Action.cpp failed.
+/home/peter/workspace/FRC-2017/src/Auto/Action/Action.cpp:8:32: fatal error: Auto/Action/Action.h: No such file or directory
+ #include <Auto/Action/Action.h>
+                                ^
+compilation terminated.
+
+compiling DriveIntervalAction.h failed.
+In file included from /home/peter/workspace/FRC-2017/src/Auto/Action/DriveIntervalAction.h:12:0:
+/home/peter/workspace/FRC-2017/src/Auto/Action/Action.h:10:29: fatal error: DriveController.h: No such file or directory
+ #include "DriveController.h"
+                             ^
+compilation terminated.
+
+compiling Action.h failed.
+/home/peter/workspace/FRC-2017/src/Auto/Action/Action.h:10:29: fatal error: DriveController.h: No such file or directory
+ #include "DriveController.h"
+                             ^
+compilation terminated.
+
+compiling AutoRoutine.h failed.
+In file included from /home/peter/workspace/FRC-2017/src/Auto/AutoBase.h:10:0,
+                 from /home/peter/workspace/FRC-2017/src/Auto/AutoRoutine.h:11:
+/home/peter/workspace/FRC-2017/src/Auto/Action/Action.h:10:29: fatal error: DriveController.h: No such file or directory
+ #include "DriveController.h"
+                             ^
+compilation terminated.
+
+compiling AutoBase.h failed.
+In file included from /home/peter/workspace/FRC-2017/src/Auto/AutoBase.h:10:0:
+/home/peter/workspace/FRC-2017/src/Auto/Action/Action.h:10:29: fatal error: DriveController.h: No such file or directory
+ #include "DriveController.h"
+                             ^
+compilation terminated.
+
+compiling MainProgram.cpp successful.
+
+compiling RobotModel.cpp successful.
+
+compiling DashboardLogger.cpp failed.
+/home/peter/workspace/FRC-2017/src/DashboardLogger.cpp:9:29: fatal error: DashboardLogger.h: No such file or directory
+ #include <DashboardLogger.h>
+                             ^
+compilation terminated.
+
+compiling ButtonReader.cpp successful.
+
+compiling RemoteControl.h successful.
+
+compiling DriveController.h successful.
+
+compiling Ports.h successful.
+
+compiling DashboardLogger.h successful.
+
+compiling ButtonReader.h successful.
+
+Finished compileMy_programExecutableMy_programCpp, see full log file:///home/peter/workspace/FRC-2017/build/tmp/compileMy_programExecutableMy_programCpp/output.txt.

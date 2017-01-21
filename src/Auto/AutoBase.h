@@ -19,14 +19,15 @@ public:
   void run();
   void stop();
   bool isActive();
+  static const double m_update_rate = (1.0/50.0);
+
   //bool isActiveWithThrow() throw AutoRoutineEndedException;
-  void runAction(Action action); /*throw AutoRoutineEndedException*/
+  virtual void runAction(Action action); /*throw AutoRoutineEndedException*/
 
   AutoBase();
   virtual ~AutoBase();
 protected:
   virtual void routine();
-  static const double m_update_rate = (1.0/50.0);
   //virtual void routine();
 
 };
