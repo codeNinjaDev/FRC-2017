@@ -7,21 +7,21 @@
 
 #ifndef SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_
 #define SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_
-
 #include <Timer.h>
+#include "MainController.h"
 #include "Action.h"
 
 
-class DriveIntervalAction: public Action {
+class DriveIntervalAction : Action {
 public:
 
 
 
   DriveIntervalAction(double seconds, double y, double x);
-  bool isFinished();
-  void update();
-  void done();
-  void start();
+  virtual bool isFinished();
+  virtual void update();
+  virtual void done();
+  virtual void start();
 
   virtual ~DriveIntervalAction();
 private:

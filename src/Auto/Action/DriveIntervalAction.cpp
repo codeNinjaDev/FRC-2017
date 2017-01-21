@@ -4,6 +4,7 @@
  *  Created on: Jan 14, 2017
  *      Author: peter
  */
+#include <Timer.h>
 
 #include <Auto/Action/DriveIntervalAction.h>
 double goal_time;
