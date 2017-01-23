@@ -18,8 +18,8 @@
 
 static RobotModel *robot = new RobotModel();
 static RemoteControl *humanControl = new ControlBoard();
-static DriveController *driveController = new DriveController(robot, humanControl);
-static DashboardLogger *dashboardLogger = new DashboardLogger(robot, humanControl);
+static DriveController *driveController = new DriveController();
+static DashboardLogger *dashboardLogger = new DashboardLogger();
 static LiveWindow *lw;
 
 

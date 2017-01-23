@@ -8,7 +8,7 @@ class PivotCommand;
 
 class DriveController {
 public:
-  DriveController(RobotModel*, RemoteControl*);
+  DriveController();
   virtual ~DriveController();
 
   void Stop();
@@ -22,10 +22,9 @@ public:
   };
 
 private:
-  RobotModel *robot;
-  RemoteControl *humanControl;
 
-  RobotDrive *driveTrain;
+
+  RobotDrive *kDriveTrain;
 
   uint32_t m_stateVal;
   uint32_t nextState;

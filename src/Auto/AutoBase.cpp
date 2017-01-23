@@ -26,7 +26,7 @@ bool AutoBase::isActive() {
   return m_active;
 }
 
-virtual void AutoBase::runAction(Action action) {
+void AutoBase::runAction(Action action) {
   isActive();
   action.start();
   while (isActive() && !action.isFinished()) {

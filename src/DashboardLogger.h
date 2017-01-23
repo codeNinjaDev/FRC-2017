@@ -13,7 +13,6 @@
 
 class DashboardLogger {
 public:
-  DashboardLogger(RobotModel*, RemoteControl*);
   virtual ~DashboardLogger();
 
   void UpdateData();
