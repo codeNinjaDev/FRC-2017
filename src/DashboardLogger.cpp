@@ -8,10 +8,7 @@
 #include "WPILib.h"
 #include <DashboardLogger.h>
 
-DashboardLogger::DashboardLogger(RobotModel *myRobot, RemoteControl *myHumanControl) {
-  robot = myRobot;
-  humanControl = myHumanControl;
-}
+
 
 DashboardLogger::~DashboardLogger() {
   // TODO Auto-generated destructor stub

@@ -12,7 +12,7 @@
   AutoBase::runAction(new TimeoutAction(seconds));
 }*/
 void AutoRoutine::DriveInterval(double seconds, double y, double x) {
-  Action temp = new DriveIntervalAction(seconds, y, x);
-  AutoBase::runAction(temp);
+
+  AutoBase::runAction(new DriveIntervalAction(seconds, y, x));
 }
 

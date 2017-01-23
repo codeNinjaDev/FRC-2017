@@ -1,12 +1,10 @@
 #include "WPILib.h"
 #include "DriveController.h"
 #include "RobotModel.h"
+#include "MainController.h"
 
-DriveController::DriveController(RobotModel *myRobot,
-    RemoteControl *myHumanControl) {
-  robot = myRobot;
-  humanControl = myHumanControl;
-  driveTrain = new RobotDrive(robot->leftDriveMotorA, robot->leftDriveMotorB,
+DriveController::DriveController() {
+  kDriveTrain = new RobotDrive(robot->leftDriveMotorA, robot->leftDriveMotorB,
       robot->rightDriveMotorA, robot->rightDriveMotorB);
 
   m_stateVal = kInitialize;
@@ -58,10 +56,10 @@ void DriveController::ArcadeDrive(double myX, double myY, bool teleOp) {
       myY = -myY;
     }
 
-    driveTrain->ArcadeDrive(myX, myY, SQUARE_DRIVE_AXIS_INPUT);
+    kDriveTrain->ArcadeDrive(myX, myY, SQUARE_DRIVE_AXIS_INPUT);
 
   } else {
-    driveTrain->ArcadeDrive(myX, myY, false);
+    kDriveTrain->ArcadeDrive(myX, myY, false);
   }
 }
 
@@ -71,7 +69,7 @@ void DriveController::TankDrive(double myLeft, double myRight) {
     myRight = -myRight;
   }
 
-  driveTrain->TankDrive(myLeft, myRight, SQUARE_DRIVE_AXIS_INPUT);
+  kDriveTrain->TankDrive(myLeft, myRight, SQUARE_DRIVE_AXIS_INPUT);
 }
 
 void DriveController::Reset() {
@@ -79,5 +77,5 @@ void DriveController::Reset() {
 }
 
 void DriveController::Stop() {
-  driveTrain->ArcadeDrive(0.00, 0.00, false);
+  kDriveTrain->ArcadeDrive(0.00, 0.00, false);
 }

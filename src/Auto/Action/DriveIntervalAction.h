@@ -12,7 +12,7 @@
 #include "Action.h"
 
 
-class DriveIntervalAction : Action {
+class DriveIntervalAction : public Action {
 public:
 
 
