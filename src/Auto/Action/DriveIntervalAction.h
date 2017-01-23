@@ -10,6 +10,7 @@
 
 #include <Timer.h>
 #include "Action.h"
+#include "MainController.h"
 
 
 class DriveIntervalAction: public Action {

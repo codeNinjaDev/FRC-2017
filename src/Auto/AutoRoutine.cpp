@@ -6,11 +6,14 @@
  */
 
 #include <Auto/AutoRoutine.h>
-
+#include "AutoBase.h"
 /*void AutoRoutine::WaitTime(double seconds) {
   AutoBase::runAction(new TimeoutAction(seconds));
 }*/
+
 void AutoRoutine::DriveInterval(double seconds, double y, double x) {
-  AutoBase::runAction(new DriveIntervalAction(seconds, y, x));
+  DriveIntervalAction* temp = new DriveIntervalAction(seconds, y, x);
+  Action* driveIntervalAction = temp;	  
+  AutoBase::runAction(driveIntervalAction);
 }
 
