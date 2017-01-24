@@ -12,8 +12,8 @@
 }*/
 
 void AutoRoutine::DriveInterval(double seconds, double y, double x) {
-  DriveIntervalAction* temp = new DriveIntervalAction(seconds, y, x);
-  Action* driveIntervalAction = temp;	  
-  AutoBase::runAction(driveIntervalAction);
+
+  AutoBase::runAction(new DriveIntervalAction(seconds, y, x));
+
 }
 
