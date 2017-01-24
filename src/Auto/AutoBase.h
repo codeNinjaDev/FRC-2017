@@ -27,7 +27,7 @@ public:
   AutoBase();
   virtual ~AutoBase();
 protected:
-  virtual void routine();
+  virtual void routine() = 0;
   //virtual void routine();
 
 };

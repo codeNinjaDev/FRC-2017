@@ -6,8 +6,13 @@
  */
 
 #include "WPILib.h"
+#include "MainController.h"
 #include <DashboardLogger.h>
 
+DashboardLogger::DashboardLogger() {
+
+
+};
 
 
 DashboardLogger::~DashboardLogger() {

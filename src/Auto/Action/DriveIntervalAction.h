@@ -17,7 +17,6 @@ class DriveIntervalAction: public Action {
 public:
 
 
-
   DriveIntervalAction(double seconds, double y, double x);
   bool isFinished();
   void update();
@@ -25,8 +24,6 @@ public:
   void start();
 
   virtual ~DriveIntervalAction();
-private:
-
 };
 
 #endif /* SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_ */
