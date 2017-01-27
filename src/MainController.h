@@ -10,7 +10,6 @@
 
 #include "DashboardLogger.h"
 
-#include "WPILib.h"
 #include "RobotModel.h"
 #include "DriveController.h"
 #include "RemoteControl.h"
