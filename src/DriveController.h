@@ -1,8 +1,8 @@
 #ifndef DRIVECONTROLLER_H_
 #define DRIVECONTROLLER_H_
 
-#include "RobotModel.h"
-#include "RemoteControl.h"
+#include "WPILib.h"
+#include "MainController.h"
 
 class PivotCommand;
 
