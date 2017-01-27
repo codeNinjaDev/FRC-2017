@@ -10,7 +10,7 @@
 
 #include "Auto/AutoRoutine.h"
 
-class DoNothingRoutine : AutoRoutine {
+class DoNothingRoutine : public AutoRoutine {
 public:
 	void prestart();
 protected:
