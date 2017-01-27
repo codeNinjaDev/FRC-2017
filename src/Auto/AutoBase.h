@@ -15,7 +15,7 @@ using namespace std;
 class AutoBase {
 public:
   bool m_active = false;
-  virtual void prestart() = 0;
+  virtual void prestart();
   void run();
   void stop();
   bool isActive();
@@ -27,7 +27,7 @@ public:
   AutoBase();
   virtual ~AutoBase();
 protected:
-  virtual void routine() = 0;
+  virtual void routine();
   //virtual void routine();
 
 };
