@@ -22,7 +22,7 @@ public:
   static constexpr double m_update_rate = (1.0/50.0);
 
   //bool isActiveWithThrow() throw AutoRoutineEndedException;
-  virtual void runAction(Action* action) = 0; /*throw AutoRoutineEndedException*/
+  virtual void runAction(Action* action); /*throw AutoRoutineEndedException*/
 
   AutoBase();
   virtual ~AutoBase();
