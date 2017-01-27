@@ -1,14 +1,12 @@
 /*
- * HARDWARE.h
+ * Hardware.h
  *
- *  Created on: Jan 21, 2017
+ *  Created on: Jan 27, 2017
  *      Author: peter
  */
 
 #ifndef SRC_HARDWARE_H_
 #define SRC_HARDWARE_H_
-
-
 #include "RobotModel.h"
 #include "DriveController.h"
 #include "RemoteControl.h"
@@ -16,13 +14,24 @@
 #include "DashboardLogger.h"
 
 
-static RobotModel *robot = new RobotModel();
-static RemoteControl *humanControl = new ControlBoard();
-static DriveController *driveController = new DriveController(robot, humanControl);
-static DashboardLogger *dashboardLogger = new DashboardLogger(robot, humanControl);
-static LiveWindow *lw;
+
+class Hardware {
+public:
+  Hardware();
+  static RobotModel* GetRobot();
+  static RemoteControl* GetHumanControl();
+  static DriveController* GetDriveController();
+  static DashboardLogger* GetDashboardLogger();
+  static LiveWindow* GetLiveWindow();
+  RobotModel const *robot = new RobotModel();
+  RemoteControl const *humanControl = new ControlBoard();
+  DriveController const *driveController = new DriveController(GetRobot(), GetHumanControl());
+  DashboardLogger const *dashboardLogger = new DashboardLogger(GetRobot(), GetHumanControl());
+  LiveWindow const *lw = new LiveWindow;
+  virtual ~Hardware();
+private:
 
 
-
+};
 
 #endif /* SRC_HARDWARE_H_ */

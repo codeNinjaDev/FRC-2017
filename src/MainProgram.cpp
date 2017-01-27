@@ -9,13 +9,24 @@
 class MainProgram: public frc::IterativeRobot {
 
 
+
+  RobotModel* robot;
+  RemoteControl* humanControl;
+  DriveController* driveController;
+  DashboardLogger* dashboardLogger;
+  LiveWindow* lw;
+
   //Creates a time-keeper
   double currTimeSec;
   double lastTimeSec;
   double deltaTimeSec;
 public:
   MainProgram(void) {
-
+    robot = Hardware::GetRobot();
+    humanControl = Hardware::GetHumanControl();
+    driveController = Hardware::GetDriveController();
+    dashboardLogger = Hardware::GetDashboardLogger();
+    lw = Hardware::GetLiveWindow();
 
     //Initializes timekeeper variables
     currTimeSec = 0.0;

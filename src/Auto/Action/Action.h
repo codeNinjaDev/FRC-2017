@@ -13,7 +13,6 @@ class Action {
 
 public:
 
-
   virtual bool isFinished() = 0;
   virtual void update() = 0;
   virtual void done() = 0;
@@ -21,7 +20,7 @@ public:
   virtual ~Action();
 
 protected:
-  DriveController *kDrive = driveController;
+  DriveController *kDrive = Hardware::GetDriveController();
 
 };
 
