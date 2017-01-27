@@ -27,9 +27,6 @@ DashboardLogger* Hardware::GetDashboardLogger() {
   return dashboardLogger;
 }
 
-LiveWindow* Hardware::GetLiveWindow() {
-  return lw;
-}
 
 Hardware::~Hardware() {
   // TODO Auto-generated destructor stub

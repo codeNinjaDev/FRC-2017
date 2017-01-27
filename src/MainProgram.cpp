@@ -26,7 +26,7 @@ public:
     humanControl = Hardware::GetHumanControl();
     driveController = Hardware::GetDriveController();
     dashboardLogger = Hardware::GetDashboardLogger();
-    lw = Hardware::GetLiveWindow();
+
 
     //Initializes timekeeper variables
     currTimeSec = 0.0;
