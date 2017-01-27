@@ -1,6 +1,11 @@
+#include "WPILib.h"
+#include "RobotModel.h"
+#include "DriveController.h"
+#include "RemoteControl.h"
+#include "ControlBoard.h"
+#include "DashboardLogger.h"
 #include <string.h>
-#include "MainController.h"
-
+#include "Hardware.h"
 class MainProgram: public frc::IterativeRobot {
 
 
@@ -10,7 +15,6 @@ class MainProgram: public frc::IterativeRobot {
   double deltaTimeSec;
 public:
   MainProgram(void) {
-
 
 
     //Initializes timekeeper variables

@@ -6,14 +6,12 @@
  */
 
 #include "WPILib.h"
-#include "MainController.h"
-#include <DashboardLogger.h>
+#include "DashboardLogger.h"
 
-DashboardLogger::DashboardLogger() {
-
-
-};
-
+DashboardLogger::DashboardLogger(RobotModel *myRobot, RemoteControl *myHumanControl) {
+  robot = myRobot;
+  humanControl = myHumanControl;
+}
 
 DashboardLogger::~DashboardLogger() {
   // TODO Auto-generated destructor stub

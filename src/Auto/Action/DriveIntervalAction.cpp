@@ -11,7 +11,6 @@ double start_time;
 
 double x_drive;
 double y_drive;
-DriveController* kDrive;
 
 DriveIntervalAction::DriveIntervalAction(double seconds, double y, double x) {
   goal_time = seconds;
@@ -24,11 +23,11 @@ bool DriveIntervalAction::isFinished() {
 }
 
 void DriveIntervalAction::update() {
-  driveController->ArcadeDrive(x_drive, y_drive, false);
+  kDrive->ArcadeDrive(x_drive, y_drive, false);
 }
 
 void DriveIntervalAction::done() {
-  driveController->Stop();
+  kDrive->Stop();
 }
 
 void DriveIntervalAction::start() {

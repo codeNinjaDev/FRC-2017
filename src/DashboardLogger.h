@@ -13,13 +13,14 @@
 
 class DashboardLogger {
 public:
-  DashboardLogger();
+  DashboardLogger(RobotModel*, RemoteControl*);
   virtual ~DashboardLogger();
 
   void UpdateData();
 
 private:
-
+  RobotModel *robot;
+  RemoteControl *humanControl;
 
   void PutDriveMotorCurrentData();
   void PutRobotCurrentData();

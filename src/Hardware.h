@@ -1,27 +1,28 @@
 /*
- * MainController.h
+ * HARDWARE.h
  *
  *  Created on: Jan 21, 2017
  *      Author: peter
  */
 
-#ifndef SRC_MAINCONTROLLER_H_
-#define SRC_MAINCONTROLLER_H_
+#ifndef SRC_HARDWARE_H_
+#define SRC_HARDWARE_H_
 
-#include "DashboardLogger.h"
 
 #include "RobotModel.h"
 #include "DriveController.h"
 #include "RemoteControl.h"
 #include "ControlBoard.h"
+#include "DashboardLogger.h"
+
 
 static RobotModel *robot = new RobotModel();
 static RemoteControl *humanControl = new ControlBoard();
-static DriveController *driveController = new DriveController();
-static DashboardLogger *dashboardLogger = new DashboardLogger();
+static DriveController *driveController = new DriveController(robot, humanControl);
+static DashboardLogger *dashboardLogger = new DashboardLogger(robot, humanControl);
 static LiveWindow *lw;
 
 
 
 
-#endif /* SRC_MAINCONTROLLER_H_ */
+#endif /* SRC_HARDWARE_H_ */

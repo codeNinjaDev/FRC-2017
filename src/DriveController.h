@@ -2,13 +2,17 @@
 #define DRIVECONTROLLER_H_
 
 #include "WPILib.h"
-#include "MainController.h"
+#include "RobotModel.h"
+#include "RemoteControl.h"
+#include "DashboardLogger.h"
+
 
 class PivotCommand;
 
 class DriveController {
 public:
-  DriveController();
+  DriveController(RobotModel *myRobot,
+      RemoteControl *myHumanControl);
   virtual ~DriveController();
 
   void Stop();
@@ -22,9 +26,10 @@ public:
   };
 
 private:
+  RobotModel *robot;
+  RemoteControl *humanControl;
 
-
-  RobotDrive *kDriveTrain;
+  RobotDrive *driveTrain;
 
   uint32_t m_stateVal;
   uint32_t nextState;

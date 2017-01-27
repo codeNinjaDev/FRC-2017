@@ -7,16 +7,22 @@
 
 #ifndef SRC_AUTO_ACTION_ACTION_H_
 #define SRC_AUTO_ACTION_ACTION_H_
+#include "Hardware.h"
 #include "DriveController.h"
-
 class Action {
 
 public:
+
+
   virtual bool isFinished() = 0;
   virtual void update() = 0;
   virtual void done() = 0;
   virtual void start() = 0;
   virtual ~Action();
+
+protected:
+  DriveController *kDrive = driveController;
+
 };
 
 #endif /* SRC_AUTO_ACTION_ACTION_H_ */

@@ -8,9 +8,8 @@
 #ifndef SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_
 #define SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_
 
-#include <Timer.h>
+#include "Timer.h"
 #include "Action.h"
-#include "MainController.h"
 
 
 class DriveIntervalAction: public Action {
