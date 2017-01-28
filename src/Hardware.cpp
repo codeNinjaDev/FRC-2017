@@ -9,6 +9,8 @@
 
 static RobotModel *robot = new RobotModel();
 static RemoteControl *humanControl = new ControlBoard();
+static DriveController *driveController = new DriveController(robot, humanControl);
+static DashboardLogger *dashboardLogger = new DashboardLogger(robot, humanControl);
 
 Hardware::Hardware() {
   // TODO Auto-generated destructor stub
@@ -21,8 +23,7 @@ RobotModel* Hardware::GetRobot() {
 RemoteControl* Hardware::GetHumanControl() {
   return humanControl;
 }
-static DriveController *driveController = new DriveController(Hardware::GetRobot(), Hardware::GetHumanControl());
-static DashboardLogger *dashboardLogger = new DashboardLogger(Hardware::GetRobot(), Hardware::GetHumanControl());
+
 DriveController* Hardware::GetDriveController() {
   return driveController;
 }
