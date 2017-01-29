@@ -5,7 +5,7 @@
  *      Author: peter
  */
 #include "Timer.h"
-#include <Auto/Action/DriveIntervalAction.h>
+#include "DriveIntervalAction.h"
 double goal_time;
 double start_time;
 double x_drive;

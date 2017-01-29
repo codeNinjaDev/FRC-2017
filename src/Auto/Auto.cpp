@@ -8,7 +8,7 @@
 #include "Timer.h"
 
 static Timer* autoTimer = new Timer();
-#include <Auto/Auto.h>
+#include "Auto.h"
 AutonomousRoutinePicker* selector = new AutonomousRoutinePicker();
   SetAutoRoutine* autoRoutineRunner = new SetAutoRoutine();
 void Auto::listOptions() {

@@ -8,7 +8,7 @@
 #ifndef SRC_AUTO_ACTION_ACTION_H_
 #define SRC_AUTO_ACTION_ACTION_H_
 #include "DriveController.h"
-#include "Hardware.h"
+#include "../../Hardware.h"
 class Action {
 
 public:

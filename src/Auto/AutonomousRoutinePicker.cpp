@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/AutonomousRoutinePicker.h>
+#include "AutonomousRoutinePicker.h"
 
 AutonomousRoutinePicker::AutonomousRoutinePicker() {
 

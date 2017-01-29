@@ -8,7 +8,7 @@
 #ifndef SRC_AUTO_AUTONOMOUSROUTINEPICKER_H_
 #define SRC_AUTO_AUTONOMOUSROUTINEPICKER_H_
 
-#include <Hardware.h>
+
 #include "Auto/Routines/DriveForwardRoutine.h"
 #include "Auto/Routines/DoNothingRoutine.h"
 #include "SmartDashboard/SendableChooser.h"

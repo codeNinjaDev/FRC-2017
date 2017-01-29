@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/AutoRoutine.h>
+#include "AutoRoutine.h"
 #include "AutoBase.h"
 /*void AutoRoutine::WaitTime(double seconds) {
   AutoBase::runAction(new TimeoutAction(seconds));

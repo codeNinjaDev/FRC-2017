@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/AutoBase.h>
+#include "AutoBase.h"
 
 void AutoBase::run() {
   m_active = true;

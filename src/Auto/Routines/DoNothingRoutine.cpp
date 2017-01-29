@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/Routines/DoNothingRoutine.h>
+#include "Auto/Routines/DoNothingRoutine.h"
 
 void DoNothingRoutine::routine() {
 	// TODO Auto-generated constructor stub

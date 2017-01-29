@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/SetAutoRoutine.h>
+#include "SetAutoRoutine.h"
 
 void SetAutoRoutine::setAutoRoutine(AutoRoutine* new_auto_routine) {
 
