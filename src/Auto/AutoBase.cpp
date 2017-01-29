@@ -27,7 +27,6 @@ bool AutoBase::isActive() {
 }
 
 void AutoBase::runAction(Action* action) {
-  isActive();
   action->start();
   while (isActive() && !action->isFinished()) {
     action->update();
