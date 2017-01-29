@@ -8,7 +8,6 @@
 #include <Auto/Action/DriveIntervalAction.h>
 double goal_time;
 double start_time;
-
 double x_drive;
 double y_drive;
 

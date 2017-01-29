@@ -11,7 +11,6 @@
 #include "Timer.h"
 #include "Action.h"
 
-
 class DriveIntervalAction: public Action {
 public:
 

@@ -18,6 +18,7 @@
 class Hardware {
 public:
   Hardware();
+
   static RobotModel* GetRobot();
   static RemoteControl* GetHumanControl();
   static DriveController* GetDriveController();
