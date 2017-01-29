@@ -14,7 +14,9 @@
 
 class SetAutoRoutine {
 public:
-  SetAutoRoutine(AutoRoutine* new_auto_routine);
+
+  //void function NOT constructor
+  void setAutoRoutine(AutoRoutine* new_auto_routine);
   void start();
   void stop();
   void run();

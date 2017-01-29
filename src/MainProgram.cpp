@@ -6,6 +6,7 @@
 #include "DashboardLogger.h"
 #include <string.h>
 #include "Hardware.h"
+#include "Auto/Auto.h"
 class MainProgram: public frc::IterativeRobot {
 
 
@@ -15,6 +16,7 @@ class MainProgram: public frc::IterativeRobot {
   DriveController* driveController;
   DashboardLogger* dashboardLogger;
   LiveWindow* lw;
+  Auto* auton;
 
   //Creates a time-keeper
   double currTimeSec;
@@ -26,7 +28,7 @@ public:
     humanControl = Hardware::GetHumanControl();
     driveController = Hardware::GetDriveController();
     dashboardLogger = Hardware::GetDashboardLogger();
-
+    auton = new Auto();
 
     //Initializes timekeeper variables
     currTimeSec = 0.0;
@@ -37,6 +39,8 @@ private:
   void RobotInit() {
     robot->ResetTimer();
     robot->Reset();
+
+    auton->listOptions();
   }
 
   void AutonomousInit() {
@@ -48,6 +52,7 @@ private:
     currTimeSec = 0.0;
     lastTimeSec = 0.0;
     deltaTimeSec = 0.0;
+    auton->start();
   }
 
   void AutonomousPeriodic() {

@@ -7,7 +7,7 @@
 
 #include <Auto/SetAutoRoutine.h>
 
-SetAutoRoutine::SetAutoRoutine(AutoRoutine* new_auto_routine) {
+void SetAutoRoutine::setAutoRoutine(AutoRoutine* new_auto_routine) {
 
   m_auto_routine = new_auto_routine;
 

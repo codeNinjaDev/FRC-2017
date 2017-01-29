@@ -12,7 +12,7 @@
 #include "Auto/Routines/DriveForwardRoutine.h"
 #include "Auto/Routines/DoNothingRoutine.h"
 #include "SmartDashboard/SendableChooser.h"
-#include "Auto/AutoRoutine.h"
+#include "AutoRoutine.h"
 #include <iostream>
 using namespace std;
 using namespace frc;

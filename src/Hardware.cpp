@@ -32,6 +32,7 @@ DashboardLogger* Hardware::GetDashboardLogger() {
   return dashboardLogger;
 }
 
+
 Hardware::~Hardware() {
   // TODO Auto-generated destructor stub
 }

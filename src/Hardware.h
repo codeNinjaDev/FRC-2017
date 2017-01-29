@@ -14,7 +14,6 @@
 #include "DashboardLogger.h"
 
 
-
 class Hardware {
 public:
   Hardware();
@@ -23,7 +22,6 @@ public:
   static RemoteControl* GetHumanControl();
   static DriveController* GetDriveController();
   static DashboardLogger* GetDashboardLogger();
-
   virtual ~Hardware();
 private:
 
