@@ -17,19 +17,19 @@ DriveIntervalAction::DriveIntervalAction(double seconds, double y, double x) {
   y_drive = y;
 
 }
-bool DriveIntervalAction::isFinished() {
+bool DriveIntervalAction::IsFinished() {
   return (Timer::GetFPGATimestamp() >= start_time + goal_time);
 }
 
-void DriveIntervalAction::update() {
+void DriveIntervalAction::Update() {
   kDrive->ArcadeDrive(x_drive, y_drive, false);
 }
 
-void DriveIntervalAction::done() {
+void DriveIntervalAction::Done() {
   kDrive->Stop();
 }
 
-void DriveIntervalAction::start() {
+void DriveIntervalAction::Start() {
   start_time = Timer::GetFPGATimestamp();
 }
 DriveIntervalAction::~DriveIntervalAction() {

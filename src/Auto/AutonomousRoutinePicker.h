@@ -23,17 +23,17 @@ class AutonomousRoutinePicker {
 public:
         AutonomousRoutinePicker();
 
-        void listOptions();
-        AutoRoutine* pick();
-        void registerAutonomous(AutoRoutine* autonomous);
-        AutoRoutine* getAutoRoutine();
+        void ListOptions();
+        AutoRoutine* Pick();
+        void RegisterAutonomous(AutoRoutine* autonomous);
+        AutoRoutine* GetAutoRoutine();
 
         virtual ~AutonomousRoutinePicker();
 private:
         SendableChooser<int> autoChooser;
 
         vector<AutoRoutine>* autoRoutines = new vector<AutoRoutine>();
-        void setAutoRoutineByIndex(unsigned int input);
+        void SetAutoRoutineByIndex(unsigned int input);
         int selectedIndex = 0;
 };
 

@@ -5,14 +5,14 @@
  *      Author: peter
  */
 
-#include "Auto/Routines/DriveForwardRoutine.h"
+#include "DriveForwardRoutine.h"
 
-void DriveForwardRoutine::routine() {
+void DriveForwardRoutine::Routine() {
 	// TODO Auto-generated constructor stub
 	DriveInterval(2.0, 0.5, 0.0);
 }
 
-void DriveForwardRoutine::prestart() {
+void DriveForwardRoutine::Prestart() {
 
 }
 

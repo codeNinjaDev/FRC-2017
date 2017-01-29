@@ -5,14 +5,14 @@
  *      Author: peter
  */
 
-#include "Auto/Routines/DoNothingRoutine.h"
+#include "DoNothingRoutine.h"
 
-void DoNothingRoutine::routine() {
+void DoNothingRoutine::Routine() {
 	// TODO Auto-generated constructor stub
 
 }
 
-void DoNothingRoutine::prestart() {
+void DoNothingRoutine::Prestart() {
 	// TODO Auto-generated destructor stub
 }
 

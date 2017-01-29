@@ -13,10 +13,10 @@ class Action {
 
 public:
 
-  virtual bool isFinished() = 0;
-  virtual void update() = 0;
-  virtual void done() = 0;
-  virtual void start() = 0;
+  virtual bool IsFinished();
+  virtual void Update();
+  virtual void Done();
+  virtual void Start();
   virtual ~Action();
 
 protected:

@@ -10,28 +10,28 @@
 static Timer* autoTimer = new Timer();
 #include "Auto.h"
 AutonomousRoutinePicker* selector = new AutonomousRoutinePicker();
-  SetAutoRoutine* autoRoutineRunner = new SetAutoRoutine();
-void Auto::listOptions() {
-  selector->listOptions();
+  AutoRoutineSetter* autoRoutineRunner = new AutoRoutineSetter();
+void Auto::ListOptions() {
+  selector->ListOptions();
 }
 
-void Auto::start() {
+void Auto::Start() {
   //Get the dashboard selection and set the auto routine
-  autoRoutine = selector->pick();
+  autoRoutine = selector->Pick();
   autoRoutineRunner->setAutoRoutine(autoRoutine);
 
 
 
   //run the prestart for the function
-  autoRoutine->prestart();
+  autoRoutine->Prestart();
   //Run the set autoroutine
   autoTimer->Start();
-  autoRoutineRunner->start();
+  autoRoutineRunner->Start();
   //stop(); //!! Check if this is necessary!!
 }
 
-void Auto::stop() {
-  autoRoutineRunner->stop();
+void Auto::Stop() {
+  autoRoutineRunner->Stop();
 }
 Auto::~Auto() {
   // TODO Auto-generated destructor stub

@@ -8,13 +8,13 @@
 #ifndef SRC_AUTO_ROUTINES_DONOTHINGROUTINE_H_
 #define SRC_AUTO_ROUTINES_DONOTHINGROUTINE_H_
 
-#include "Auto/AutoRoutine.h"
+#include "../AutoRoutine.h"
 
 class DoNothingRoutine : public AutoRoutine {
 public:
-	void prestart();
+	void Prestart();
 protected:
-	void routine();
+	void Routine();
 };
 
 #endif /* SRC_AUTO_ROUTINES_DONOTHINGROUTINE_H_ */

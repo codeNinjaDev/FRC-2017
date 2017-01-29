@@ -14,20 +14,21 @@ using namespace std;
 
 class AutoBase {
 public:
+
   bool m_active = false;
-  virtual void prestart();
-  void run();
-  void stop();
-  bool isActive();
+  virtual void Prestart();
+  void Run();
+  void Stop();
+  bool IsActive();
   static constexpr double m_update_rate = (1.0/50.0);
 
   //bool isActiveWithThrow() throw AutoRoutineEndedException;
-  virtual void runAction(Action* action); /*throw AutoRoutineEndedException*/
+  virtual void RunAction(Action* action); /*throw AutoRoutineEndedException*/
 
   AutoBase();
   virtual ~AutoBase();
 protected:
-  virtual void routine();
+  virtual void Routine();
   //virtual void routine();
 
 };

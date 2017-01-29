@@ -12,9 +12,9 @@
 
 class DriveForwardRoutine : public AutoRoutine {
 public:
-	void prestart();
+	void Prestart();
 protected:
-	void routine();
+	void Routine();
 };
 
 #endif /* SRC_AUTO_ROUTINES_DRIVEFORWARDROUTINE_H_ */

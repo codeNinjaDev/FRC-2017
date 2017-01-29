@@ -7,33 +7,33 @@
 
 #include "AutoBase.h"
 
-void AutoBase::run() {
+void AutoBase::Run() {
   m_active = true;
   /*try {
     routine();
   }*/
-  routine();
+  Routine();
 
   cout << "Auto mode on" << endl;
 
 }
 
-void AutoBase::stop() {
+void AutoBase::Stop() {
   m_active = false;
 }
 
-bool AutoBase::isActive() {
+bool AutoBase::IsActive() {
   return m_active;
 }
 
-void AutoBase::runAction(Action* action) {
-  action->start();
-  while (isActive() && !action->isFinished()) {
-    action->update();
+void AutoBase::RunAction(Action* action) {
+  action->Start();
+  while (IsActive() && !action->IsFinished()) {
+    action->Update();
 
   }
 
-  action->done();
+  action->Done();
 }
 
 AutoBase::~AutoBase() {

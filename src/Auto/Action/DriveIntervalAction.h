@@ -16,10 +16,10 @@ public:
 
 
   DriveIntervalAction(double seconds, double y, double x);
-  bool isFinished();
-  void update();
-  void done();
-  void start();
+  bool IsFinished();
+  void Update();
+  void Done();
+  void Start();
 
   virtual ~DriveIntervalAction();
 };

@@ -13,6 +13,6 @@
 
 void AutoRoutine::DriveInterval(double seconds, double y, double x) {
 
-  AutoBase::runAction(new DriveIntervalAction(seconds, y, x));
+  AutoBase::RunAction(new DriveIntervalAction(seconds, y, x));
 }
 
