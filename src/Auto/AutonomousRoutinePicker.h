@@ -33,7 +33,7 @@ private:
         SendableChooser<int> autoChooser;
 
         vector<AutoRoutine>* autoRoutines = new vector<AutoRoutine>();
-        void setAutoRoutineByIndex(int input);
+        void setAutoRoutineByIndex(unsigned int input);
         int selectedIndex = 0;
 };
 

@@ -12,7 +12,7 @@
 #include "Action/Action.h"
 #include "Action/DriveIntervalAction.h"
 
-class AutoRoutine : AutoBase {
+class AutoRoutine : public AutoBase {
 public:
   void DriveInterval(double seconds, double y, double x);
   virtual ~AutoRoutine();

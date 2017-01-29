@@ -26,7 +26,7 @@ void AutonomousRoutinePicker::listOptions() {
 }
 
 AutoRoutine* AutonomousRoutinePicker::pick() {
-	SmartDashboard::PutNumber("AutoChooser Value", (int)autoChooser.GetSelected());
+	SmartDashboard::PutNumber("AutoChooser Value", (unsigned int)autoChooser.GetSelected());
 
 	setAutoRoutineByIndex((int)autoChooser.GetSelected());
 
@@ -43,7 +43,7 @@ AutoRoutine* AutonomousRoutinePicker::getAutoRoutine() {
 	return &(autoRoutines->at(selectedIndex));
 }
 
-void AutonomousRoutinePicker::setAutoRoutineByIndex(int input) {
+void AutonomousRoutinePicker::setAutoRoutineByIndex(unsigned int input) {
 	if (input < 0 || input >= autoRoutines->size()) {
 		input = 0;
 	}
