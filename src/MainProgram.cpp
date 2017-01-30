@@ -1,22 +1,24 @@
 #include "WPILib.h"
 #include "RobotModel.h"
 #include "DriveController.h"
+#include "SuperstructureController.h"
 #include "RemoteControl.h"
 #include "ControlBoard.h"
 #include "DashboardLogger.h"
 #include <string.h>
-#include "Hardware.h"
-#include "Auto/Auto.h"
+
 class MainProgram: public frc::IterativeRobot {
-
-
-
-  RobotModel* robot;
-  RemoteControl* humanControl;
-  DriveController* driveController;
-  DashboardLogger* dashboardLogger;
-  LiveWindow* lw;
-  Auto* auton;
+  //LiveWindow helps in Test mode
+  LiveWindow *lw;
+  //Creates a robot from class RobotModel
+  RobotModel *robot;
+  //Creates a human control from RemoteControl, which includes ControlBoard
+  RemoteControl *humanControl;
+  //Creates a controller for drivetrain and superstructure
+  DriveController *driveController;
+  SuperstructureController *superstructureController;
+  //Creates an object of Dashboardlogger
+  DashboardLogger *dashboardLogger;
 
   //Creates a time-keeper
   double currTimeSec;
@@ -24,11 +26,11 @@ class MainProgram: public frc::IterativeRobot {
   double deltaTimeSec;
 public:
   MainProgram(void) {
-    robot = Hardware::GetRobot();
-    humanControl = Hardware::GetHumanControl();
-    driveController = Hardware::GetDriveController();
-    dashboardLogger = Hardware::GetDashboardLogger();
-    auton = new Auto();
+    robot = new RobotModel();
+    humanControl = new ControlBoard();
+    driveController = new DriveController(robot, humanControl);
+    dashboardLogger = new DashboardLogger(robot, humanControl);
+    superstructureController = new SuperstructureController(robot, humanControl);
 
     //Initializes timekeeper variables
     currTimeSec = 0.0;
@@ -39,20 +41,18 @@ private:
   void RobotInit() {
     robot->ResetTimer();
     robot->Reset();
-
-    auton->ListOptions();
   }
 
   void AutonomousInit() {
     robot->ResetTimer();
 
     driveController->Reset();
+    superstructureController->Reset();
 
     //Resets timer variables
     currTimeSec = 0.0;
     lastTimeSec = 0.0;
     deltaTimeSec = 0.0;
-    auton->Start();
   }
 
   void AutonomousPeriodic() {
@@ -71,6 +71,7 @@ private:
     robot->ResetTimer();
 
     driveController->Reset();
+    superstructureController->Reset();
 
     //Resets timer variables
     currTimeSec = 0.0;
@@ -92,11 +93,13 @@ private:
     //Reads controls and updates controllers accordingly
     humanControl->ReadControls();
     driveController->Update(currTimeSec, deltaTimeSec);
+    superstructureController->Update(currTimeSec, deltaTimeSec);
   }
 
   void DisabledInit() {
 
     driveController->Reset();
+    superstructureController->Reset();
 
   }
 
