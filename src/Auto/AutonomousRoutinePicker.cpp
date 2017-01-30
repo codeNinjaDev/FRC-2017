@@ -17,18 +17,23 @@ AutonomousRoutinePicker::AutonomousRoutinePicker() {
 
 void AutonomousRoutinePicker::ListOptions() {
 
-	autoChooser.AddDefault("Do nothing (Default)", 0);
-	autoChooser.AddObject("Drive Forward 3s", 1);
+	autoChooser->AddDefault("Do nothing (Default)", 0);
+	autoChooser->AddObject("Drive Forward 3s", 1);
 
-	SmartDashboard::PutData("Autonomous Selector", &autoChooser);
+	SmartDashboard::PutData("Autonomous Selector", autoChooser);
 
 	//autoChooser.AddObject("Do nothing (Default)", 0);
 }
 
 AutoRoutine* AutonomousRoutinePicker::Pick() {
-	SmartDashboard::PutNumber("AutoChooser Value", (unsigned int)autoChooser.GetSelected());
+	if(autoChooser->GetSelected()) {
+      SmartDashboard::PutNumber("AutoChooser Value", (int) autoChooser->GetSelected());
+	  SetAutoRoutineByIndex((int)autoChooser->GetSelected());
+	} else {
+	  SmartDashboard::PutNumber("AutoChooser Value", 0);
+	  SetAutoRoutineByIndex(0);
 
-	SetAutoRoutineByIndex((int)autoChooser.GetSelected());
+	}
 
 	return GetAutoRoutine();
 }
@@ -43,7 +48,7 @@ AutoRoutine* AutonomousRoutinePicker::GetAutoRoutine() {
 	return &(autoRoutines->at(selectedIndex));
 }
 
-void AutonomousRoutinePicker::SetAutoRoutineByIndex(unsigned int input) {
+void AutonomousRoutinePicker::SetAutoRoutineByIndex(int input) {
 	if (input < 0 || input >= autoRoutines->size()) {
 		input = 0;
 	}

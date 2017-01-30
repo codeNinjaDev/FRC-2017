@@ -9,8 +9,8 @@
 #define SRC_AUTO_AUTONOMOUSROUTINEPICKER_H_
 
 
-#include "Auto/Routines/DriveForwardRoutine.h"
-#include "Auto/Routines/DoNothingRoutine.h"
+#include "../Auto/Routines/DoNothingRoutine.h"
+#include "../Auto/Routines/DriveForwardRoutine.h"
 #include "SmartDashboard/SendableChooser.h"
 #include "AutoRoutine.h"
 #include <iostream>
@@ -30,10 +30,10 @@ public:
 
         virtual ~AutonomousRoutinePicker();
 private:
-        SendableChooser<int> autoChooser;
+        SendableChooser<int>* autoChooser;
 
         vector<AutoRoutine>* autoRoutines = new vector<AutoRoutine>();
-        void SetAutoRoutineByIndex(unsigned int input);
+        void SetAutoRoutineByIndex(int input);
         int selectedIndex = 0;
 };
 
