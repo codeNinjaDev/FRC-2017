@@ -13,15 +13,18 @@ class Action {
 
 public:
 
-  virtual bool IsFinished();
-  virtual void Update();
-  virtual void Done();
-  virtual void Start();
-  virtual ~Action();
+  virtual bool IsFinished() = 0;
+  virtual void Update() = 0;
+  virtual void Done() = 0;
+  virtual void Start() = 0;
 
 protected:
   DriveController *kDrive = Hardware::GetDriveController();
   RobotModel *kShooter = Hardware::GetRobot();
+  double goal_time;
+  double start_time;
+  double x_drive;
+  double y_drive;
 };
 
 #endif /* SRC_AUTO_ACTION_ACTION_H_ */

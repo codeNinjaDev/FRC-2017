@@ -6,27 +6,26 @@
  */
 
 #include "AutonomousRoutinePicker.h"
-#include "Commands/Command.h"
-
-
 
 AutonomousRoutinePicker::AutonomousRoutinePicker() {
+
   RegisterAutonomous(new DoNothingRoutine());
   RegisterAutonomous(new DriveForwardRoutine());
   RegisterAutonomous(new JustShoot());
+
 }
 
 void AutonomousRoutinePicker::ListOptions() {
-  autoChooser->AddDefault("Do nothing (Default)", "0");
-  autoChooser->AddObject("Drive Forward 3s", "1");
-  autoChooser->AddObject("Just Shoot (5s)", "2");
+
+  autoChooser->AddDefault("Do nothing (Default)", 0);
   SmartDashboard::PutData("Autonomous Selector", autoChooser);
+
+  autoChooser->AddObject("Drive", 1);
 }
 
 AutoRoutine* AutonomousRoutinePicker::Pick() {
-	std::string selected = autoChooser->GetSelected();
-	int input = stoi(selected);
-	SetAutoRoutineByIndex(input);
+  SmartDashboard::PutNumber("AutoChooser Value", autoChooser->GetSelected());
+  SetAutoRoutineByIndex(autoChooser->GetSelected());
 
   return GetAutoRoutine();
 }
@@ -41,7 +40,7 @@ AutoRoutine* AutonomousRoutinePicker::GetAutoRoutine() {
 }
 
 void AutonomousRoutinePicker::SetAutoRoutineByIndex(int input) {
-  if (input < 0 || input >= (int)autoRoutines->size()) {
+  if (input < 0 || input >= autoRoutines->size()) {
     input = 0;
   }
   selectedIndex = input;

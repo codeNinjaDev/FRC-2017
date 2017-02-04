@@ -10,9 +10,7 @@
 #include "../AutoRoutine.h"
 class JustShoot : public AutoRoutine{
 public:
-  JustShoot();
   void Prestart();
-  ~JustShoot();
 protected:
   void Routine();
 };

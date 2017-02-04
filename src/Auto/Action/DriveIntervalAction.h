@@ -12,18 +12,16 @@
 #include "Action.h"
 
 class DriveIntervalAction : public Action {
-	double goal_time;
-	double start_time;
-	double x_drive;
-	double y_drive;
+public:
 
-	public:
-	  DriveIntervalAction(double, double, double);
-	  bool IsFinished();
-	  void Update();
-	  void Done();
-	  void Start();
-	  virtual ~DriveIntervalAction();
+
+  DriveIntervalAction(double seconds, double y, double x);
+  bool IsFinished();
+  void Update();
+  void Done();
+  void Start();
+
+  virtual ~DriveIntervalAction();
 };
 
 #endif /* SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_ */

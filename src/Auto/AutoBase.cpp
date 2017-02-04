@@ -7,10 +7,6 @@
 
 #include "AutoBase.h"
 
-AutoBase::AutoBase(){
-	m_active = false;
-}
-
 void AutoBase::Run() {
   m_active = true;
   /*try {
@@ -19,6 +15,7 @@ void AutoBase::Run() {
   Routine();
 
   cout << "Auto mode on" << endl;
+
 }
 
 void AutoBase::Stop() {
@@ -33,12 +30,11 @@ void AutoBase::RunAction(Action* action) {
   action->Start();
   while (IsActive() && !action->IsFinished()) {
     action->Update();
+
   }
 
   action->Done();
 }
 
-AutoBase::~AutoBase() {
-  // TODO Auto-generated destructor stub
-}
+
 

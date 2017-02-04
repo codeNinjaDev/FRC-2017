@@ -15,13 +15,9 @@
 
 
 class AutoRoutine : public AutoBase {
-	double seconds;
-	double y;
-	double x;
-	public:
-		void DriveInterval(double, double, double);
-		void Shoot(double, double);
-		virtual ~AutoRoutine();
+public:
+  void DriveInterval(double seconds, double y, double x);
+  void Shoot(double seconds, double speed);
 };
 
 #endif /* SRC_AUTO_AUTOROUTINE_H_ */

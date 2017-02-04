@@ -7,9 +7,6 @@
 
 #include <Auto/Routines/JustShoot.h>
 
-JustShoot::JustShoot() {
-
-}
 
 void JustShoot::Prestart() {
   // TODO Auto-generated constructor stub
@@ -19,7 +16,5 @@ void JustShoot::Prestart() {
 void JustShoot::Routine() {
   Shoot(5.0, .8);
 }
-JustShoot::~JustShoot() {
-  // TODO Auto-generated destructor stub
-}
+
 

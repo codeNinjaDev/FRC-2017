@@ -7,6 +7,9 @@
 
 #include "AutoRoutine.h"
 #include "AutoBase.h"
+/*void AutoRoutine::WaitTime(double seconds) {
+  AutoBase::runAction(new TimeoutAction(seconds));
+}*/
 
 void AutoRoutine::DriveInterval(double seconds, double y, double x) {
 
@@ -15,9 +18,5 @@ void AutoRoutine::DriveInterval(double seconds, double y, double x) {
 
 void AutoRoutine::Shoot(double seconds, double speed) {
   AutoBase::RunAction(new ShootAction(seconds, speed));
-}
-
-AutoRoutine::~AutoRoutine(){
-
 }
 

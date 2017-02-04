@@ -12,9 +12,8 @@ DriveIntervalAction::DriveIntervalAction(double seconds, double y, double x) {
   goal_time = seconds;
   x_drive = x;
   y_drive = y;
-  start_time = 0;
-}
 
+}
 bool DriveIntervalAction::IsFinished() {
   return (Timer::GetFPGATimestamp() >= start_time + goal_time);
 }
@@ -30,7 +29,7 @@ void DriveIntervalAction::Done() {
 void DriveIntervalAction::Start() {
   start_time = Timer::GetFPGATimestamp();
 }
-
 DriveIntervalAction::~DriveIntervalAction() {
+  // TODO Auto-generated destructor stub
 }
 

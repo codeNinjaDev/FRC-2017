@@ -8,14 +8,8 @@
 #include "Timer.h"
 
 #include "Auto.h"
-
-Auto::Auto() {
-	selector = (AutonomousRoutinePicker*) (new AutonomousRoutinePicker());
-	autoRoutineRunner = (AutoRoutineSetter*) (new AutoRoutineSetter());
-	autoRoutine = (AutoRoutine *)(new  AutoRoutine());
-}
-
-
+AutonomousRoutinePicker* selector = new AutonomousRoutinePicker();
+AutoRoutineSetter* autoRoutineRunner = new AutoRoutineSetter();
 void Auto::ListOptions() {
   selector->ListOptions();
 }
@@ -25,19 +19,18 @@ void Auto::Start() {
   autoRoutine = selector->Pick();
   autoRoutineRunner->setAutoRoutine(autoRoutine);
 
+
+
   //run the prestart for the function
   autoRoutine->Prestart();
-
   //Run the set autoroutine
   autoRoutineRunner->Start();
-
   //stop(); //!! Check if this is necessary!!
 }
 
 void Auto::Stop() {
   autoRoutineRunner->Stop();
 }
-
 Auto::~Auto() {
   // TODO Auto-generated destructor stub
 }

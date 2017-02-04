@@ -7,18 +7,19 @@
 
 #include "ShootAction.h"
 
-ShootAction::ShootAction(double sec, double spd) {
-  goal_time = sec;
-  speed = spd;
-  start_time = 0;
-}
+double kSpeed;
 
+ShootAction::ShootAction(double seconds, double speed) {
+  goal_time = seconds;
+  kSpeed = speed;
+
+}
 bool ShootAction::IsFinished() {
   return (Timer::GetFPGATimestamp() >= start_time + goal_time);
 }
 
 void ShootAction::Update() {
-  kShooter->SetShooterMotorsSpeed(speed);
+  kShooter->SetShooterMotorsSpeed(kSpeed);
 }
 
 void ShootAction::Done() {
