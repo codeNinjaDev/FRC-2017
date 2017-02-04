@@ -8,7 +8,7 @@
 #ifndef SRC_AUTO_ROUTINES_JUSTSHOOT_H_
 #define SRC_AUTO_ROUTINES_JUSTSHOOT_H_
 #include "../AutoRoutine.h"
-class JustShoot : public AutoRoutine{
+class JustShoot : public AutoRoutine {
 public:
   void Prestart();
 protected:

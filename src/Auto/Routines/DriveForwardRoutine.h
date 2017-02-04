@@ -8,7 +8,7 @@
 #ifndef SRC_AUTO_ROUTINES_DRIVEFORWARDROUTINE_H_
 #define SRC_AUTO_ROUTINES_DRIVEFORWARDROUTINE_H_
 
-#include "Auto/AutoRoutine.h"
+#include "../AutoRoutine.h"
 
 class DriveForwardRoutine : public AutoRoutine {
 public:

@@ -11,10 +11,7 @@
 #include "../AutoRoutine.h"
 
 class DoNothingRoutine : public AutoRoutine {
-public:
-	void Prestart();
-protected:
-	void Routine();
+
 };
 
 #endif /* SRC_AUTO_ROUTINES_DONOTHINGROUTINE_H_ */

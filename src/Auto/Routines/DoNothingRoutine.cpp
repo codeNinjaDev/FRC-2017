@@ -7,12 +7,12 @@
 
 #include "DoNothingRoutine.h"
 
-void DoNothingRoutine::Routine() {
+void AutoRoutine::Routine() {
 	// TODO Auto-generated constructor stub
 
 }
 
-void DoNothingRoutine::Prestart() {
+void AutoRoutine::Prestart() {
 	// TODO Auto-generated destructor stub
 }
 
