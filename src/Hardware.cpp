@@ -5,11 +5,11 @@
  Author: peter
  */
 
-#include <Hardware.h>
+#include "Hardware.h"
 
 static RobotModel *robot = new RobotModel();
 static RemoteControl *humanControl = new ControlBoard();
-
+static ShooterController *shooter = new ShooterController(robot, humanControl);
 Hardware::Hardware() {
   // TODO Auto-generated destructor stub
 }
@@ -29,6 +29,10 @@ DriveController* Hardware::GetDriveController() {
 
 DashboardLogger* Hardware::GetDashboardLogger() {
   return dashboardLogger;
+}
+
+ShooterController* Hardware::GetShooterController() {
+  return shooter;
 }
 
 Hardware::~Hardware() {

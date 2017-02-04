@@ -12,7 +12,7 @@
 #include "RemoteControl.h"
 #include "ControlBoard.h"
 #include "DashboardLogger.h"
-
+#include "ShooterController.h"
 
 
 class Hardware {
@@ -22,6 +22,7 @@ public:
   static RemoteControl* GetHumanControl();
   static DriveController* GetDriveController();
   static DashboardLogger* GetDashboardLogger();
+  static ShooterController* GetShooterController();
   RobotModel const *robot = new RobotModel();
   RemoteControl const *humanControl = new ControlBoard();
   DriveController const *driveController = new DriveController(GetRobot(), GetHumanControl());
