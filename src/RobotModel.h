@@ -9,7 +9,6 @@
 #define SRC_ROBOTMODEL_H_
 
 #include "WPILib.h"
-#include "Ports.h"
 
 class RobotModel {
 public:
@@ -29,15 +28,24 @@ public:
   void ResetTimer(); //resets the timer
   double GetTime(); //returns the time
 
-  Talon *leftDriveMotorA, *leftDriveMotorB, *rightDriveMotorA,
+  //Superstructure systems
+  double GetShooterMotorASpeed(); //returns the speed of the shooter motor A
+  double GetShooterMotorBSpeed(); //returns the speed of the shooter motor B
+  void SetShooterMotorsSpeed(double speed);//sets the speed of the shooter motor
+	
+	Talon *leftDriveMotorA, *leftDriveMotorB, *rightDriveMotorA,
       *rightDriveMotorB;
+  
+  Spark *shooterMotorA, *shooterMotorB;
+
+  Encoder *shooterEncoder;
 private:
   PowerDistributionPanel* pdp;
 
   Timer *timer;
 
   double leftDriveACurrent, leftDriveBCurrent, rightDriveACurrent,
-      rightDriveBCurrent;
+      rightDriveBCurrent, shooterMotorACurrent, shooterMotorBCurrent;
 };
 
 #endif /* SRC_ROBOTMODEL_H_ */
