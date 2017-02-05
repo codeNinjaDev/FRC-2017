@@ -20,7 +20,7 @@ public:
 
 protected:
   DriveController *kDrive = Hardware::GetDriveController();
-  ShooterController *kShooter = Hardware::GetShooterController();
+  RobotModel *kShooter = Hardware::GetRobot();
   double goal_time;
   double start_time;
   double x_drive;

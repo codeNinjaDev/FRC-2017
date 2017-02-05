@@ -11,7 +11,7 @@ static RemoteControl *humanControl = new ControlBoard();
 static DriveController *driveController = new DriveController(robot, humanControl);
 static DashboardLogger *dashboardLogger = new DashboardLogger(robot, humanControl);
 static ShooterController *shooter = new ShooterController(robot, humanControl);
-
+static SuperstructureController *superstructure = new SuperstructureController(robot, humanControl);
 
 Hardware::Hardware() {
   // TODO Auto-generated destructor stub
@@ -36,6 +36,12 @@ DashboardLogger* Hardware::GetDashboardLogger() {
 ShooterController* Hardware::GetShooterController() {
   return shooter;
 }
+
+SuperstructureController* Hardware::GetSuperstructureController() {
+  return superstructure;
+}
+
+
 
 Hardware::~Hardware() {
   // TODO Auto-generated destructor stub

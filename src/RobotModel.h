@@ -40,7 +40,7 @@ public:
       *rightDriveMotorB;
   
 
-  Victor *shooterMotorA, *shooterMotorB;
+  Talon *shooterMotorA, *shooterMotorB;
 
   Encoder *shooterEncoder;
 

@@ -12,7 +12,7 @@
 #include "RemoteControl.h"
 #include "ControlBoard.h"
 #include "DashboardLogger.h"
-
+#include "SuperstructureController.h"
 #include "ShooterController.h"
 
 
@@ -26,7 +26,7 @@ public:
   static DriveController* GetDriveController();
   static DashboardLogger* GetDashboardLogger();
   static ShooterController* GetShooterController();
-
+  static SuperstructureController* GetSuperstructureController();
   virtual ~Hardware();
 private:
 

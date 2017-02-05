@@ -5,6 +5,7 @@
 #include "RemoteControl.h"
 #include "ControlBoard.h"
 #include "DashboardLogger.h"
+#include "ShooterController.h"
 #include <string.h>
 #include "Hardware.h"
 #include "Auto/Auto.h"
@@ -19,11 +20,11 @@ class MainProgram: public frc::IterativeRobot {
   //Creates a controller for drivetrain and superstructure
   DriveController *driveController;
   SuperstructureController *superstructureController;
+  ShooterController *shooterController;
   //Creates an object of Dashboardlogger
   DashboardLogger *dashboardLogger;
 
   Auto* auton;
-
 
   //Creates a time-keeper
   double currTimeSec;
@@ -36,8 +37,8 @@ public:
     driveController = Hardware::GetDriveController();
     dashboardLogger = Hardware::GetDashboardLogger();
     auton = new Auto();
-
-
+    shooterController = Hardware::GetShooterController();
+    superstructureController = Hardware::GetSuperstructureController();
     //Initializes timekeeper variables
     currTimeSec = 0.0;
     lastTimeSec = 0.0;
@@ -74,7 +75,7 @@ private:
     currTimeSec = robot->GetTime();
     deltaTimeSec = currTimeSec - lastTimeSec;
 
-    robot->UpdateCurrent();
+    //robot->UpdateCurrent();
   }
 
   void TeleopInit() {
@@ -84,6 +85,7 @@ private:
     driveController->Reset();
 
     superstructureController->Reset();
+    shooterController->Reset();
 
     //Resets timer variables
     currTimeSec = 0.0;
@@ -100,11 +102,12 @@ private:
     currTimeSec = robot->GetTime();
     deltaTimeSec = currTimeSec - lastTimeSec;
 
-    robot->UpdateCurrent();
+    //robot->UpdateCurrent();
 
     //Reads controls and updates controllers accordingly
     humanControl->ReadControls();
     driveController->Update(currTimeSec, deltaTimeSec);
+    shooterController->Update(currTimeSec, deltaTimeSec);
     superstructureController->Update(currTimeSec, deltaTimeSec);
   }
 
@@ -118,8 +121,8 @@ private:
 
   void DisabledPeriodic() {
     dashboardLogger->UpdateData();
-
-    robot->UpdateCurrent();
+    SmartDashboard::PutBoolean("HUMANSHOOTLOOPDESIRED", false);
+    //robot->UpdateCurrent();
 
     //Reads controls and updates controllers accordingly
     humanControl->ReadControls();
