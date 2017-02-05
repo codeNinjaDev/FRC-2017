@@ -30,12 +30,12 @@ class MainProgram: public frc::IterativeRobot {
   double deltaTimeSec;
 public:
   MainProgram(void) {
-    robot = Hardware::GetRobot();
-    humanControl = Hardware::GetHumanControl();
-    driveController = Hardware::GetDriveController();
-    dashboardLogger = Hardware::GetDashboardLogger();
-    shooterController = Hardware::GetShooterController();
-    superstructureController = Hardware::GetSuperstructureController();
+    robot = new RobotModel(); 
+    humanControl = new ControlBoard();
+    driveController = new DriveController(robot, humanControl);
+    dashboardLogger = new DashboardLogger(robot, humanControl);
+    shooterController = new ShooterController(robot, humanControl);
+    superstructureController = new SuperstructureController(robot, humanControl);
     //Initializes timekeeper variables
     currTimeSec = 0.0;
     lastTimeSec = 0.0;
