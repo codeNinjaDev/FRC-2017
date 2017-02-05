@@ -22,10 +22,10 @@ public:
   //Drive joystick accessors
   double GetJoystickValue(Joysticks j, Axes a);
 
-  virtual bool GetReverseDriveDesired();
-  virtual bool GetArcadeDriveDesired();
-  virtual bool GetShooterRunDesired();
 
+  bool GetReverseDriveDesired();
+  bool GetArcadeDriveDesired();
+  bool GetShooterRunDesired();
 
 private:
   
@@ -37,7 +37,7 @@ private:
 
   Joystick *driverJoy, *operatorJoy;
 
-  ButtonReader *driveDirectionButton;
+  ButtonReader *driveDirectionButton, *shooterRunButton;
 
   void ReadAllButtons();
 };

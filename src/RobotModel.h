@@ -9,9 +9,7 @@
 #define SRC_ROBOTMODEL_H_
 
 #include "WPILib.h"
-#include "Ports.h"
-#include "Params.h"
-#include "PowerDistributionPanel.h"
+
 
 class RobotModel {
 public:
@@ -33,22 +31,27 @@ public:
 
 
   //Superstructure systems
-	double GetShooterMotorASpeed();
-	double GetShooterMotorBSpeed();//returns the speed of the shooter motor
-	void SetShooterMotorsSpeed(double speed);//sets the speed of the shooter motor
+  double GetShooterMotorASpeed(); //returns the speed of the shooter motor A
+  double GetShooterMotorBSpeed(); //returns the speed of the shooter motor B
+  void SetShooterMotorsSpeed(double speed);//sets the speed of the shooter motor
+
 	
 	Talon *leftDriveMotorA, *leftDriveMotorB, *rightDriveMotorA,
       *rightDriveMotorB;
   
-  Talon *shooterMotorA, *shooterMotorB;
+
+  Victor *shooterMotorA, *shooterMotorB;
+
+  Encoder *shooterEncoder;
 
 private:
   PowerDistributionPanel* pdp;
 
   Timer *timer;
 
-  double leftDriveACurrent, leftDriveBCurrent, rightDriveACurrent, rightDriveBCurrent, shooterMotorACurrent, shooterMotorBCurrent;
 
+  double leftDriveACurrent, leftDriveBCurrent, rightDriveACurrent,
+      rightDriveBCurrent, shooterMotorACurrent, shooterMotorBCurrent;
 };
 
 #endif /* SRC_ROBOTMODEL_H_ */

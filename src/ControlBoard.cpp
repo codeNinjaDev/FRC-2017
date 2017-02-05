@@ -1,7 +1,10 @@
 #include "WPILib.h"
+#include "XInput.h"
 #include "ControlBoard.h"
 #include "Ports.h"
 #include "Params.h"
+
+
 //This file defines all the joysticks, buttons, other variables, and functions necessary
 //to control the robot during teleop by getting human input from the driver station.
 
@@ -12,10 +15,15 @@ ControlBoard::ControlBoard() {
   operatorJoy = new Joystick(OPERATOR_JOY_USB_PORT);
 
   //Drivetrain buttons
-  driveDirectionButton = new ButtonReader(driverJoy,
-      DRIVE_DIRECTION_BUTTON_PORT);
-  
   //Superstructure Buttons
+  if(USING_WIN_DRIVER_STATION){
+  	driveDirectionButton = new ButtonReader(driverJoy, XINPUT_WIN_BACK_BUTTON);
+  }	
+  else {
+  	driveDirectionButton = new ButtonReader(driverJoy, XINPUT_LINUX_BACK_BUTTON);
+  }
+  //Superstructure Buttons
+  shooterRunButton = new ButtonReader(driverJoy, SHOOTER_RUN_BUTTON_PORT);
 
   //Joystick positions that will set speed of robot movement
   driverLeftJoyX = 0;
@@ -27,6 +35,8 @@ ControlBoard::ControlBoard() {
   reverseDriveDesired = false;
   arcadeDriveDesired = USE_ARCADE_DRIVE;
 
+	//Superstructure variables
+  shooterRunDesired = false;
 }
 
 //ReadControls reads the states of all the buttons and joysticks, and sets variables
@@ -35,31 +45,32 @@ void ControlBoard::ReadControls() {
   ReadAllButtons();
 
   if (USING_WIN_DRIVER_STATION) {
-    driverLeftJoyX = driverJoy->GetRawAxis(F310_WIN_LEFT_X_AXIS);
-    driverLeftJoyY = -driverJoy->GetRawAxis(F310_WIN_LEFT_Y_AXIS);
-    driverRightJoyX = driverJoy->GetRawAxis(F310_WIN_RIGHT_X_AXIS);
-    driverRightJoyY = -driverJoy->GetRawAxis(F310_WIN_RIGHT_Y_AXIS);
+    driverLeftJoyX = driverJoy->GetRawAxis(XINPUT_WIN_LEFT_X_AXIS);
+    driverLeftJoyY = driverJoy->GetRawAxis(XINPUT_WIN_LEFT_Y_AXIS);
+    driverRightJoyX = driverJoy->GetRawAxis(XINPUT_WIN_RIGHT_X_AXIS);
+    driverRightJoyY = driverJoy->GetRawAxis(XINPUT_WIN_RIGHT_Y_AXIS);
 
-    operatorLeftJoyX = operatorJoy->GetRawAxis(F310_WIN_LEFT_X_AXIS);
-    operatorLeftJoyY = -operatorJoy->GetRawAxis(F310_WIN_LEFT_Y_AXIS);
-    operatorRightJoyX = operatorJoy->GetRawAxis(F310_WIN_RIGHT_X_AXIS);
-    operatorRightJoyY = -operatorJoy->GetRawAxis(F310_WIN_RIGHT_Y_AXIS);
+    operatorLeftJoyX = operatorJoy->GetRawAxis(XINPUT_WIN_LEFT_X_AXIS);
+    operatorLeftJoyY = -operatorJoy->GetRawAxis(XINPUT_WIN_LEFT_Y_AXIS);
+    operatorRightJoyX = operatorJoy->GetRawAxis(XINPUT_WIN_RIGHT_X_AXIS);
+    operatorRightJoyY = -operatorJoy->GetRawAxis(XINPUT_WIN_RIGHT_Y_AXIS);
   } else {
-    driverLeftJoyX = driverJoy->GetRawAxis(F310_LINUX_LEFT_X_AXIS);
-    driverLeftJoyY = driverJoy->GetRawAxis(F310_LINUX_LEFT_Y_AXIS);
-    driverRightJoyX = driverJoy->GetRawAxis(F310_LINUX_RIGHT_X_AXIS);
-    driverRightJoyY = driverJoy->GetRawAxis(F310_LINUX_RIGHT_Y_AXIS);
+    driverLeftJoyX = driverJoy->GetRawAxis(XINPUT_LINUX_LEFT_X_AXIS);
+    driverLeftJoyY = driverJoy->GetRawAxis(XINPUT_LINUX_LEFT_Y_AXIS);
+    driverRightJoyX = driverJoy->GetRawAxis(XINPUT_LINUX_RIGHT_X_AXIS);
+    driverRightJoyY = driverJoy->GetRawAxis(XINPUT_LINUX_RIGHT_Y_AXIS);
 
-    operatorLeftJoyX = operatorJoy->GetRawAxis(F310_LINUX_LEFT_X_AXIS);
-    operatorLeftJoyY = operatorJoy->GetRawAxis(F310_LINUX_LEFT_Y_AXIS);
-    operatorRightJoyX = operatorJoy->GetRawAxis(F310_LINUX_RIGHT_X_AXIS);
-    operatorRightJoyY = operatorJoy->GetRawAxis(F310_LINUX_RIGHT_Y_AXIS);
+    operatorLeftJoyX = operatorJoy->GetRawAxis(XINPUT_LINUX_LEFT_X_AXIS);
+    operatorLeftJoyY = operatorJoy->GetRawAxis(XINPUT_LINUX_LEFT_Y_AXIS);
+    operatorRightJoyX = operatorJoy->GetRawAxis(XINPUT_LINUX_RIGHT_X_AXIS);
+    operatorRightJoyY = operatorJoy->GetRawAxis(XINPUT_LINUX_RIGHT_Y_AXIS);
   }
 
   //DriveTrain Variables
   reverseDriveDesired = driveDirectionButton->IsDown();
 
   //Superstructure Variables
+  shooterRunDesired = shooterRunButton->IsDown();
 }
 
 
@@ -100,12 +111,13 @@ bool ControlBoard::GetReverseDriveDesired() {
   return reverseDriveDesired;
 }
 
+//Returns true if running shooter is desired
+bool ControlBoard::GetShooterRunDesired() {
+  return shooterRunDesired;
+}
 //Returns true if arcade drive is desired
 bool ControlBoard::GetArcadeDriveDesired() {
   return arcadeDriveDesired;
-}
-bool ControlBoard::GetShooterRunDesired() {
-  return shooterRunDesired;
 }
 
 //Reads the values of all buttons defined by this class

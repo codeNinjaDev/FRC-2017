@@ -3,8 +3,8 @@
 
 // ***************** PWM PORTS *****************
 static const int LEFT_DRIVE_MOTOR_A_PWM_PORT            = 0;
-static const int LEFT_DRIVE_MOTOR_B_PWM_PORT            = 1;
-static const int RIGHT_DRIVE_MOTOR_A_PWM_PORT           = 2;
+static const int LEFT_DRIVE_MOTOR_B_PWM_PORT            = 2;
+static const int RIGHT_DRIVE_MOTOR_A_PWM_PORT           = 1;
 static const int RIGHT_DRIVE_MOTOR_B_PWM_PORT           = 3;
 static const int SHOOTER_MOTOR_A_PWM_PORT               = 4;
 static const int SHOOTER_MOTOR_B_PWM_PORT               = 5;
@@ -18,9 +18,8 @@ static const int RIGHT_DRIVE_MOTOR_B_PDP_CHAN          = 15;
 static const int SHOOTER_MOTOR_A_PDP_CHAN              = 11;
 static const int SHOOTER_MOTOR_B_PDP_CHAN              = 10;
 
-
 // ***************** DIGITAL I/O PORTS *****************
-
+static const int SHOOTER_ENCODER_PORTS[]               = {0, 1};
 // ******************* ANALOG IN PORTS*******************
 
 // ***************** MISC *****************
@@ -30,23 +29,14 @@ static const int SHOOTER_MOTOR_B_PDP_CHAN              = 10;
 // ***************** JOYSTICK USB PORTS *****************
 //MAKE SURE JOYSTICKS ARE SET TO "D" position on back
 
-static const bool USING_WIN_DRIVER_STATION              = true;
-static const int DRIVER_JOY_USB_PORT                    = 0;
-static const int OPERATOR_JOY_USB_PORT                  = 1;
+static const bool USING_WIN_DRIVER_STATION             = true;
+static const int DRIVER_JOY_USB_PORT                   = 0;
+static const int OPERATOR_JOY_USB_PORT                 = 1;
 // ***************** BUTTONS *****************
 
-static const int F310_WIN_LEFT_X_AXIS                   = 0;
-static const int F310_WIN_LEFT_Y_AXIS                   = 1;
-static const int F310_WIN_RIGHT_X_AXIS                  = 2;
-static const int F310_WIN_RIGHT_Y_AXIS                  = 3;
+//Controller button ports
 
-static const int F310_LINUX_LEFT_X_AXIS                 = 0;
-static const int F310_LINUX_LEFT_Y_AXIS                 = 1;
-static const int F310_LINUX_RIGHT_X_AXIS                = 2;
-static const int F310_LINUX_RIGHT_Y_AXIS                = 3;
-
-
-
-static const int DRIVE_DIRECTION_BUTTON_PORT            = 9;
+static const int DRIVE_DIRECTION_BUTTON_PORT           = 9;
+static const int SHOOTER_RUN_BUTTON_PORT               = 1;
 
 #endif

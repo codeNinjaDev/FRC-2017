@@ -19,7 +19,7 @@ bool ShootAction::IsFinished() {
 }
 
 void ShootAction::Update() {
-  kShooter->SetShooterMotorsSpeed(kSpeed);
+
 }
 
 void ShootAction::Done() {

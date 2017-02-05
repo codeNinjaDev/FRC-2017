@@ -5,12 +5,13 @@
  Author: peter
  */
 
-#include <Hardware.h>
-
+#include "Hardware.h"
 static RobotModel *robot = new RobotModel();
 static RemoteControl *humanControl = new ControlBoard();
 static DriveController *driveController = new DriveController(robot, humanControl);
 static DashboardLogger *dashboardLogger = new DashboardLogger(robot, humanControl);
+static ShooterController *shooter = new ShooterController(robot, humanControl);
+
 
 Hardware::Hardware() {
   // TODO Auto-generated destructor stub
@@ -32,6 +33,9 @@ DashboardLogger* Hardware::GetDashboardLogger() {
   return dashboardLogger;
 }
 
+ShooterController* Hardware::GetShooterController() {
+  return shooter;
+}
 
 Hardware::~Hardware() {
   // TODO Auto-generated destructor stub

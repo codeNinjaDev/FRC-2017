@@ -13,6 +13,9 @@
 #include "ControlBoard.h"
 #include "DashboardLogger.h"
 
+#include "ShooterController.h"
+
+
 
 class Hardware {
 public:
@@ -22,6 +25,8 @@ public:
   static RemoteControl* GetHumanControl();
   static DriveController* GetDriveController();
   static DashboardLogger* GetDashboardLogger();
+  static ShooterController* GetShooterController();
+
   virtual ~Hardware();
 private:
 
