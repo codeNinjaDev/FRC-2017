@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/Routines/JustShoot.h>
+#include "JustShoot.h"
 
 
 void JustShoot::Prestart() {
