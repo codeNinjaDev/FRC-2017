@@ -8,7 +8,6 @@
 #include "ShooterController.h"
 #include <string.h>
 #include "Hardware.h"
-#include "Auto/Auto.h"
 
 class MainProgram: public frc::IterativeRobot {
   //LiveWindow helps in Test mode
@@ -24,7 +23,6 @@ class MainProgram: public frc::IterativeRobot {
   //Creates an object of Dashboardlogger
   DashboardLogger *dashboardLogger;
 
-  Auto* auton;
 
   //Creates a time-keeper
   double currTimeSec;
@@ -36,7 +34,6 @@ public:
     humanControl = Hardware::GetHumanControl();
     driveController = Hardware::GetDriveController();
     dashboardLogger = Hardware::GetDashboardLogger();
-    auton = new Auto();
     shooterController = Hardware::GetShooterController();
     superstructureController = Hardware::GetSuperstructureController();
     //Initializes timekeeper variables
@@ -48,7 +45,6 @@ private:
   void RobotInit() {
     robot->ResetTimer();
     robot->Reset();
-    auton->ListOptions();
 
   }
 
@@ -63,7 +59,6 @@ private:
     currTimeSec = 0.0;
     lastTimeSec = 0.0;
     deltaTimeSec = 0.0;
-    auton->Start();
 
   }
 
