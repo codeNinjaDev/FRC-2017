@@ -10,17 +10,17 @@
 #include "../../Hardware.h"
 
 class Action {
+  Hardware hardware;
 
 public:
-
   virtual bool IsFinished() = 0;
   virtual void Update() = 0;
   virtual void Done() = 0;
   virtual void Start() = 0;
 
 protected:
-  DriveController *kDrive = Hardware::GetDriveController();
-  RobotModel *kShooter = Hardware::GetRobot();
+  DriveController *kDrive = hardware.GetDriveController();
+  RobotModel *kShooter = hardware.GetRobot();
   double goal_time;
   double start_time;
   double x_drive;

@@ -11,7 +11,7 @@
 
 class MainProgram: public frc::IterativeRobot {
   //LiveWindow helps in Test mode
-  LiveWindow *lw;
+  //LiveWindow *lw;
   //Creates a robot from class RobotModel
   RobotModel *robot;
   //Creates a human control from RemoteControl, which includes ControlBoard
@@ -22,7 +22,7 @@ class MainProgram: public frc::IterativeRobot {
   ShooterController *shooterController;
   //Creates an object of Dashboardlogger
   DashboardLogger *dashboardLogger;
-
+  Hardware hardware;
 
   //Creates a time-keeper
   double currTimeSec;
@@ -30,12 +30,12 @@ class MainProgram: public frc::IterativeRobot {
   double deltaTimeSec;
 public:
   MainProgram(void) {
-    robot = Hardware::GetRobot();
-    humanControl = Hardware::GetHumanControl();
-    driveController = Hardware::GetDriveController();
-    dashboardLogger = Hardware::GetDashboardLogger();
-    shooterController = Hardware::GetShooterController();
-    superstructureController = Hardware::GetSuperstructureController();
+    robot = hardware.GetRobot();
+    humanControl = hardware.GetHumanControl();
+    driveController = hardware.GetDriveController();
+    dashboardLogger = hardware.GetDashboardLogger();
+    shooterController = hardware.GetShooterController();
+    superstructureController = hardware.GetSuperstructureController();
     //Initializes timekeeper variables
     currTimeSec = 0.0;
     lastTimeSec = 0.0;

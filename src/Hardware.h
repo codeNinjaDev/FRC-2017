@@ -21,12 +21,12 @@ class Hardware {
 public:
   Hardware();
 
-  static RobotModel* GetRobot();
-  static RemoteControl* GetHumanControl();
-  static DriveController* GetDriveController();
-  static DashboardLogger* GetDashboardLogger();
-  static ShooterController* GetShooterController();
-  static SuperstructureController* GetSuperstructureController();
+  RobotModel* GetRobot();
+  RemoteControl* GetHumanControl();
+  DriveController* GetDriveController();
+  DashboardLogger* GetDashboardLogger();
+  ShooterController* GetShooterController();
+  SuperstructureController* GetSuperstructureController();
   virtual ~Hardware();
 private:
 
