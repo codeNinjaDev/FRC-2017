@@ -21,10 +21,9 @@ RobotModel::RobotModel() {
   //Init shooter motor
   shooterMotorA = new Talon(SHOOTER_MOTOR_A_PWM_PORT);
   shooterMotorB = new Talon(SHOOTER_MOTOR_B_PWM_PORT);
-  shooterEncoder = new Encoder(SHOOTER_ENCODER_PORTS[0], SHOOTER_ENCODER_PORTS[1
+  shooterEncoder = new Encoder(SHOOTER_ENCODER_PORTS[0], SHOOTER_ENCODER_PORTS[1]);
   //Feeder Motors
-  feederMotorA = new Talon(FEEDER_MOTOR_A_PWM_PORT);
-  feederMotorB = new Talon(FEEDER_MOTOR_B_PWM_PORT);
+  feederMotor = new Talon(FEEDER_MOTOR_PWM_PORT);
 
 ]);
   
@@ -38,7 +37,10 @@ RobotModel::RobotModel() {
   rightDriveMotorA->SetSafetyEnabled(false);
   rightDriveMotorB->SetSafetyEnabled(false);
   /*shooterMotorA->SetSafetyEnabled(false);
+   *
   shooterMotorB->SetSafetyEnabled(false);*/
+
+  feederMotor->SetSafetyEnabled(false);
 
   leftDriveMotorA->SetInverted(false);
   leftDriveMotorB->SetInverted(false);
@@ -46,6 +48,8 @@ RobotModel::RobotModel() {
   rightDriveMotorB->SetInverted(false);
   shooterMotorA->SetInverted(false);
   shooterMotorB->SetInverted(false);
+  feederMotor->SetInverted(false);
+
 
   leftDriveACurrent = 0;
   leftDriveBCurrent = 0;
@@ -53,8 +57,7 @@ RobotModel::RobotModel() {
   rightDriveBCurrent = 0;
   shooterMotorACurrent = 0;
   shooterMotorBCurrent = 0;
-  feederMotorACurrent =  0;
-  feederMotorBCurrent =  0;  
+  feederMotorCurrent  =  0;
 
   timer = new Timer();
   timer->Start();
@@ -119,10 +122,8 @@ double RobotModel::GetCurrent(int channel) {
     break;
   case SHOOTER_MOTOR_B_PDP_CHAN:
     return shooterMotorBCurrent;
-  case FEEDER_MOTOR_A_PDP_CHAN:
-    return feederMotorACurrent;
-  case FEEDER_MOTOR_B_PDP_CHAN:
-    return feederMotorBCurrent;
+  case FEEDER_MOTOR_PDP_CHAN:
+    return feederMotorCurrent;
   default:
     return -1;
   }
@@ -152,4 +153,12 @@ void RobotModel::SetShooterMotorsSpeed(double speed){
   shooterMotorA->Set(speed);
   shooterMotorB->Set(speed);
   SmartDashboard::PutBoolean("RUNNING SHOOTER", true);
+}
+
+double RobotModel::GetFeederMotorSpeed() {
+  return feederMotor->Get();
+}
+
+void RobotModel::SetFeederMotorSpeed(double speed) {
+  feederMotor->Set(speed);
 }

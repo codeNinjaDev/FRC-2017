@@ -40,27 +40,25 @@ void ShooterController::Update(double currTimeSec, double deltaTimeSec) {
       //Shooter Behaviour
       if(humanControl->GetShooterRunDesired()){
         if(SHOOTER_USE_PID){
-          robot->feederMotorA->Set(0.7);
-	  robot->feederMotorB->Set(0.7);
+          robot->SetFeederMotorSpeed(0.0);
   
 	  shooterPID->Enable();
         }
         else {
-          robot->feederMotorA->Set(0.7);
-          robot->feederMotorB->Set(0.7);
+          robot->SetFeederMotorSpeed(0.0);
 	  robot->SetShooterMotorsSpeed(SHOOTER_HARDSET_MOTOR_SPEED);
         }
       }
       else { 
         if(SHOOTER_USE_PID){
-	  robot->feederMotorA->Set(0.0);
-          robot->feederMotorB->Set(0.0);
+
+          robot->SetFeederMotorSpeed(0.0);
 
           shooterPID->Disable();
         }
         else {
-          robot->feederMotorA->Set(0.7);
-          robot->feederMotorB->Set(0.7);
+          robot->SetFeederMotorSpeed(0.0);
+
 
           robot->SetShooterMotorsSpeed(0.0);
         }
