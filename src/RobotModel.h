@@ -33,11 +33,10 @@ public:
   double GetShooterMotorBSpeed(); //returns the speed of the shooter motor B
   void SetShooterMotorsSpeed(double speed);//sets the speed of the shooter motor
 	
-	Talon *leftDriveMotorA, *leftDriveMotorB, *rightDriveMotorA,
-      *rightDriveMotorB;
-  
-  Talon *shooterMotorA, *shooterMotorB;
+  Talon *leftDriveMotorA, *leftDriveMotorB, *rightDriveMotorA, *rightDriveMotor;
 
+  Talon *shooterMotorA, *shooterMotorB;
+  Talon *feederMotorA, *feederMotorB;
   Encoder *shooterEncoder;
 private:
   PowerDistributionPanel* pdp;
@@ -45,7 +44,7 @@ private:
   Timer *timer;
 
   double leftDriveACurrent, leftDriveBCurrent, rightDriveACurrent,
-      rightDriveBCurrent, shooterMotorACurrent, shooterMotorBCurrent;
+      rightDriveBCurrent, shooterMotorACurrent, shooterMotorBCurrent, feederMotorACurrent,feederMotorBCurrent;
 };
 
 #endif /* SRC_ROBOTMODEL_H_ */
