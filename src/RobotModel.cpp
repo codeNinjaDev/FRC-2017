@@ -25,7 +25,7 @@ RobotModel::RobotModel() {
   //Feeder Motors
   feederMotor = new Talon(FEEDER_MOTOR_PWM_PORT);
 
-]);
+
   
   shooterEncoder->SetPIDSourceType(PIDSourceType::kRate);
   shooterEncoder->SetDistancePerPulse((1.0)/(250.0));
