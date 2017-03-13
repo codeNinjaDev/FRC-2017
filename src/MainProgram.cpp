@@ -46,7 +46,7 @@ public:
 		shooterController = new ShooterController(robot, humanControl);
 		climberController = new ClimberController(robot, humanControl);
 		gearController    = new GearSuck(robot, humanControl);
-		auton             = new Auto(driveController, robot);
+		auton             = new Auto(driveController, robot, shooterController);
 		//Initializes timekeeper variables
 		currTimeSec = 0.0;
 		lastTimeSec = 0.0;

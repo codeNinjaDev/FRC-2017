@@ -21,12 +21,13 @@
 #include "../DriveController.h"
 #include "../RobotModel.h"
 #include "AutoWidget.h"
+#include "../ShooterController.h"
 using namespace std;
 using namespace frc;
 
 class AutoSelector {
 public:
-	AutoSelector(RobotModel* robot, DriveController* kDrive);
+	AutoSelector(RobotModel* robot, DriveController* kDrive, ShooterController* shooter);
 
 	void ListOptions();
 	AutoRoutine* Pick();

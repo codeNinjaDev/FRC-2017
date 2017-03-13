@@ -10,12 +10,13 @@
 #include "../AutoRoutine.h"
 class ShootHighGoal : public AutoRoutine {
  public:
-    ShootHighGoal(RobotModel *robot, DriveController* driveTrain);
+    ShootHighGoal(RobotModel *robot, DriveController* driveTrain, ShooterController* shooter);
     void Prestart();
 
  private:
     DriveController *driveTrain;
     RobotModel *robot;
+    ShooterController* shooter;
  protected:
     void Routine();
 };

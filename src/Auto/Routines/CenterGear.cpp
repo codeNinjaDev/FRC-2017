@@ -13,9 +13,8 @@ CenterGear::CenterGear(RobotModel *robot, DriveController* driveTrain) {
 }
 
 void CenterGear::Routine() {
-	DriveDistanceStraight(robot, driveTrain, 80.0, 0.5, 4.0, 4.0, false);
-	DriveDistanceRotate(robot, driveTrain, -180.0, 0.7, 7.0, 7.0, false);
-	DriveDistanceStraight(robot, driveTrain, 80.0, 0.5, 4.0, 4.0, false);
+	//FROM CENTER of ALLIANCE WALL
+
 }
 
 void CenterGear::Prestart() {}

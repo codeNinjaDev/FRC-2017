@@ -7,7 +7,7 @@
 
 #include "AutoSelector.h"
 
-AutoSelector::AutoSelector(RobotModel* robot, DriveController* kDrive) {
+AutoSelector::AutoSelector(RobotModel* robot, DriveController* kDrive, ShooterController* shooter) {
 
   autoRoutines = new vector<AutoRoutine*>();
   RegisterAutonomous(new DoNothingRoutine());
@@ -16,7 +16,7 @@ AutoSelector::AutoSelector(RobotModel* robot, DriveController* kDrive) {
   RegisterAutonomous(new CenterGear(robot, kDrive));
   RegisterAutonomous(new LeftGear(robot, kDrive));
   RegisterAutonomous(new RightGear(robot, kDrive));
-  RegisterAutonomous(new ShootHighGoal(robot, kDrive));
+  RegisterAutonomous(new ShootHighGoal(robot, kDrive, shooter));
   RegisterAutonomous(new PassAutoLine(robot, kDrive));
   RegisterAutonomous(new LeftHopper(robot, kDrive));
 

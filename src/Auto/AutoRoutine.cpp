@@ -5,7 +5,7 @@
  *      Author: peter
  */
 
-#include <Auto/AutoRoutineRunner.h>
+#include "AutoRoutineRunner.h"
 #include "AutoRoutine.h"
 #include "WPILib.h"
 #include <DriverStation.h>
@@ -53,4 +53,7 @@ void AutoRoutine::WaitTime(double timeout) {
 }
 void AutoRoutine::VisionSetpointX(VisionController *vision, DriveController *drive, double setpoint, double maxSpeed, double timeout){
 	RunAction(new VisionSetpointXAction(vision, drive, setpoint, maxSpeed, timeout));
+}
+void AutoRoutine::ShootPID(RobotModel *robot, ShooterController* shooter, double timeout) {
+    RunAction(new ShootPIDAction(robot, shooter, timeout));
 }
