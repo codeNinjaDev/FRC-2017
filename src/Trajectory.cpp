@@ -6,7 +6,7 @@
  */
 
 #include <Trajectory.h>
-
+#include "TrajectoryMath.h"
 Trajectory::Pair::Pair(Trajectory* left, Trajectory* right) {
     this->left = left;
     this->right = right;
@@ -64,14 +64,14 @@ int Trajectory::GetNumSegments() {
     return segments->size();
 }
 
-Segment* Trajectory::GetSegment(int index) {
+Trajectory::Segment* Trajectory::GetSegment(int index) {
     if (index < GetNumSegments()) {
     if (!inverted_y) {
     return segments->at(index);
     } else {
     Segment* segment = new Segment(segments->at(index));
     segment->y *= -1.0;
-    segment->heading = TrajectoryMath::boundAngle0to2PiRadians(
+    segment->heading = TrajectoryMath::BoundAngle0to2PiRadians(
             2 * M_PI - segment->heading);
     return segment;
     }
@@ -112,8 +112,8 @@ Trajectory* Trajectory::Copy() {
     return cloned;
 }
 
-vector<Segment*>* Trajectory::CopySegments(vector<Segment*>* tocopy) {
-    vector<Segment*>* copied = new vector<Segment*>(tocopy->size());
+vector<Trajectory::Segment*>* Trajectory::CopySegments(vector<Trajectory::Segment*>* tocopy) {
+    vector<Segment*>* copied = new vector<Trajectory::Segment*>(tocopy->size());
     for (int i = 0; i < tocopy->size(); ++i) {
     copied->at(i) = new Segment(tocopy->at(i));
     }

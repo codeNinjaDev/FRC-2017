@@ -30,8 +30,7 @@ DriveSetPointRotateAction::DriveSetPointRotateAction(RobotModel *robot, DriveCon
 }
 
 bool DriveSetPointRotateAction::IsFinished() {
-    if((Timer::GetFPGATimestamp() >= start_time + timeout) && !(reachedSetpoint)) {
-    }
+
     if(waitForTimeout)
         return (Timer::GetFPGATimestamp() >= start_time + timeout);
 	else

@@ -7,7 +7,7 @@
 
 #include <TrajectoryMath.h>
 
-double TrajectoryMath::boundAngleNegPiToPiRadians(double angle) {
+double TrajectoryMath::BoundAngleNegPiToPiRadians(double angle) {
     // Naive algorithm
     while (angle >= M_PI) {
     angle -= 2.0 * M_PI;
@@ -17,11 +17,11 @@ double TrajectoryMath::boundAngleNegPiToPiRadians(double angle) {
     }
     return angle;
 }
-double TrajectoryMath::getDifferenceInAngleDegrees(double from, double to) {
-    return boundAngleNeg180to180Degrees(to - from);
+double TrajectoryMath::GetDifferenceInAngleDegrees(double from, double to) {
+    return BoundAngleNeg180to180Degrees(to - from);
 }
 
-double TrajectoryMath::boundAngle0to360Degrees(double angle) {
+double TrajectoryMath::BoundAngle0to360Degrees(double angle) {
     // Naive algorithm
     while (angle >= 360.0) {
     angle -= 360.0;
@@ -32,7 +32,7 @@ double TrajectoryMath::boundAngle0to360Degrees(double angle) {
     return angle;
 }
 
-double TrajectoryMath::boundAngle0to2PiRadians(double angle) {
+double TrajectoryMath::BoundAngle0to2PiRadians(double angle) {
     // Naive algorithm
     while (angle >= 2.0 * M_PI) {
     angle -= 2.0 * M_PI;

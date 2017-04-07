@@ -42,6 +42,9 @@ public:
 	void SetClimberLockServoSpeed(double speed);
 	void SetGearIntakeSpeed(double speed);
 	void SetGearTilterSpeed(double speed);
+	void SetLeftMotors(double speed);
+    void SetRightMotors(double speed);
+
 	double GetGearIntakeSpeed();
 	double GetGearTilterSpeed();
 	double GetGearPotReading();

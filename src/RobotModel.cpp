@@ -205,3 +205,15 @@ void RobotModel::RefreshIni() {
 	pini = new Ini("/home/lvuser/robot.ini");
 }
 
+void RobotModel::SetLeftMotors(double speed) {
+    leftDriveMotorA->Set(speed);
+    leftDriveMotorB->Set(speed);
+
+
+}
+void RobotModel::SetRightMotors(double speed) {
+    rightDriveMotorA->Set(speed);
+    rightDriveMotorB->Set(speed);
+
+
+}
