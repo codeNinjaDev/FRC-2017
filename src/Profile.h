@@ -31,6 +31,7 @@ class Profile {
     Pose* GetPhysicalPose();
     bool ControllerOnTarget();
     void ReloadConstants();
+    DriveController* driveTrain;
 
     virtual ~Profile();
  protected:
@@ -41,7 +42,6 @@ class Profile {
     ProfileController* profileController = nullptr;
     Pose* m_cached_pose;
     Pose* GetPoseToContinueFrom(bool for_turn_controller);
-    DriveController* driveTrain;
     RobotModel* robot;
 };
 

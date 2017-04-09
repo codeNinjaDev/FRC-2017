@@ -14,7 +14,7 @@
 class CenterGear : public AutoRoutine {
  public:
     CenterGear(VisionController* vision, RobotModel* robot,
-               DriveController* driveTrain, GearController* gearController, LightsController* lights);
+               DriveController* driveTrain, Profile* profile, GearController* gearController, LightsController* lights);
 
   virtual ~CenterGear();
   void Prestart();
@@ -25,6 +25,7 @@ class CenterGear : public AutoRoutine {
   VisionController *vision;
   LightsController* lights;
   GearController* gearController;
+  Profile* profile;
  protected:
   void Routine();
 };

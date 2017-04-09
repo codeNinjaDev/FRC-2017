@@ -10,10 +10,11 @@
 
 #include "Timer.h"
 #include "Action.h"
+#include "../../Profile.h"
 #include "../../DriveController.h"
 class DriveIntervalAction: public Action {
 public:
-	DriveIntervalAction(DriveController* kDrive, double seconds, double y,double x);
+	DriveIntervalAction(Profile* profile, double timeout, double distance);
 
 	bool IsFinished();
 	void Update();
@@ -23,7 +24,9 @@ public:
 	virtual ~DriveIntervalAction();
 
 private:
-	DriveController* kDrive;
+	Profile* profile;
+	double distance;
+
 };
 
 #endif /* SRC_AUTO_ACTION_DRIVEINTERVALACTION_H_ */

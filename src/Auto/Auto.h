@@ -14,11 +14,12 @@
 #include "../RobotModel.h"
 #include "../VisionController.h"
 #include "../GearController.h"
+#include "../Profile.h"
 
 #include "../LightsController.h"
 class Auto {
 public:
-	Auto(VisionController *vision, DriveController* kDrive, RobotModel* robot, GearController* gearController, LightsController* lights);
+	Auto(VisionController *vision, DriveController* kDrive, RobotModel* robot, Profile* profile, GearController* gearController, LightsController* lights);
 
 	bool ReturnBool();
 	AutoRoutine* autoRoutine;

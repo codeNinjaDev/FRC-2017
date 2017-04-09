@@ -8,6 +8,7 @@
 #include "DriveController.h"
 #include "VisionController.h"
 #include "GearController.h"
+#include "Profile.h"
 #include <string.h>
 #include "Auto/Auto.h"
 
@@ -32,7 +33,8 @@ class MainProgram : public frc::IterativeRobot {
     GearController *gearController;
     Auto* auton;
     CameraServer *camera;
-
+    //MotionProfile
+    Profile* profile;
 
     //LightsController *lights;
 
@@ -51,7 +53,8 @@ class MainProgram : public frc::IterativeRobot {
         dashboardLogger = new DashboardLogger(robot, humanControl);
         climberController = new ClimberController(robot, humanControl);
         gearController = new GearController(robot, humanControl);
-        auton = new Auto(visionController, driveController, robot, gearController, lights);
+        profile = new Profile(robot, driveController);
+        auton = new Auto(visionController, driveController, robot, profile, gearController, lights);
         //Initializes timekeeper variables
         currTimeSec = 0.0;
         lastTimeSec = 0.0;

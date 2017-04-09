@@ -7,11 +7,12 @@
 
 #include "RightGear.h"
 
-RightGear::RightGear(VisionController *vision, RobotModel *robot, DriveController* driveTrain, GearController* gearController, LightsController* lights) {
+RightGear::RightGear(VisionController *vision, RobotModel *robot, DriveController* driveTrain, Profile* profile, GearController* gearController, LightsController* lights) {
     this->robot = robot;
     this->driveTrain = driveTrain;
     this->vision = vision;
     this->lights = lights;
+    this->profile = profile;
     this->gearController = gearController;
 
 }

@@ -33,8 +33,8 @@ void AutoRoutine::RunAction(Action* action) {
 }
 
 //ACTIONS:
-void AutoRoutine::DriveInterval(DriveController* kDrive, double seconds, double y, double x) {
-	RunAction(new DriveIntervalAction(kDrive, seconds, y, x));
+void AutoRoutine::DriveInterval(Profile* profile, double timeout, double distance) {
+	RunAction(new DriveIntervalAction(profile, timeout, distance));
 }
 
 

@@ -8,11 +8,12 @@
 #include "PassAutoLine.h"
 #include "../../Params.h"
 
-PassAutoLine::PassAutoLine(RobotModel *robot, DriveController* driveTrain, GearController *gearController, LightsController* lights) {
+PassAutoLine::PassAutoLine(RobotModel *robot, DriveController* driveTrain, Profile* profile,GearController *gearController, LightsController* lights) {
   this->robot = robot;
   this->driveTrain = driveTrain;
   this->lights = lights;
   this->gearController = gearController;
+  this->profile = profile;
 }
 
 void PassAutoLine::Routine() {

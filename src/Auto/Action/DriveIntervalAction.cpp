@@ -7,31 +7,35 @@
 #include "Timer.h"
 #include "DriveIntervalAction.h"
 
-DriveIntervalAction::DriveIntervalAction(DriveController* kDrive, double seconds, double y, double x) {
-	goal_time = seconds;
-	x_drive = x;
-	y_drive = y;
-	this->kDrive = kDrive;
+DriveIntervalAction::DriveIntervalAction(Profile* profile, double timeout,
+                                         double distance) {
+    goal_time = timeout;
+    this->distance = distance;
 
+    this->profile = profile;
 }
 bool DriveIntervalAction::IsFinished() {
-	return (Timer::GetFPGATimestamp() >= start_time + goal_time);
+    Pose* pose = profile->GetPhysicalPose();
+    double avg = (pose->GetLeftDistance() + pose->GetRightDistance()) / 2.0;
+    bool is_positive = (distance > 0);
+return ( is_positive ? avg >= distance : avg <= distance);
 }
 
 void DriveIntervalAction::Update() {
-	SmartDashboard::PutNumber("reachedUPDATE", Timer::GetFPGATimestamp());
-	kDrive->ArcadeDrive(y_drive, x_drive, false);
+    SmartDashboard::PutNumber("reachedUPDATE", Timer::GetFPGATimestamp());
+
 }
 
 void DriveIntervalAction::Done() {
-	kDrive->Stop();
+    profile->driveTrain->Stop();
 }
 
 void DriveIntervalAction::Start() {
-	SmartDashboard::PutNumber("reachedSTART", Timer::GetFPGATimestamp());
-	start_time = Timer::GetFPGATimestamp();
+    SmartDashboard::PutNumber("reachedSTART", Timer::GetFPGATimestamp());
+    start_time = Timer::GetFPGATimestamp();
+    profile->SetDistanceSetpoint(distance);
 }
 DriveIntervalAction::~DriveIntervalAction() {
-	// TODO Auto-generated destructor stub
+    // TODO Auto-generated destructor stub
 }
 

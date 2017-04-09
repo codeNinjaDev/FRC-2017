@@ -29,7 +29,7 @@ using namespace frc;
 
 class AutoSelector {
 public:
-	AutoSelector(VisionController *vision, RobotModel* robot, DriveController* kDrive, GearController* gearController, LightsController* lights);
+	AutoSelector(VisionController *vision, RobotModel* robot, DriveController* kDrive, Profile* profile, GearController* gearController, LightsController* lights);
 
 	void ListOptions();
 	AutoRoutine* Pick();
@@ -44,6 +44,7 @@ private:
 	void SetAutoRoutineByIndex(int input);
 	int selectedIndex = 0;
 	LightsController* lights;
+	Profile* profile;
 };
 
 #endif /* SRC_AUTO_AUTOSELECTOR_H_ */

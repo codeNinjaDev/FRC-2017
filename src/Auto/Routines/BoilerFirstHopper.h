@@ -12,7 +12,7 @@
 #include "LightsController.h"
 class BoilerFirstHopper : public AutoRoutine {
 public:
- BoilerFirstHopper(RobotModel *robot, DriveController* driveTrain, GearController *gearController, LightsController* lights);
+ BoilerFirstHopper(RobotModel *robot, DriveController* driveTrain, Profile* profile,GearController *gearController, LightsController* lights);
  void Prestart();
 
 private:
@@ -20,6 +20,7 @@ private:
  RobotModel *robot;
  LightsController* lights;
  GearController *gearController;
+ Profile* profile;
 protected:
  void Routine();
 };

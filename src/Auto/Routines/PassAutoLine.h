@@ -11,7 +11,7 @@
 #include "../AutoRoutine.h"
 class PassAutoLine : public AutoRoutine {
  public:
-    PassAutoLine(RobotModel *robot, DriveController* driveTrain, GearController *gearController, LightsController* lights);
+    PassAutoLine(RobotModel *robot, DriveController* driveTrain, Profile* profile,GearController *gearController, LightsController* lights);
     void Prestart();
 
    private:
@@ -19,6 +19,7 @@ class PassAutoLine : public AutoRoutine {
     RobotModel *robot;
     LightsController* lights;
     GearController* gearController;
+    Profile* profile;
    protected:
     void Routine();
 };

@@ -14,7 +14,7 @@
 
 class DriveForwardRoutine: public AutoRoutine {
 public:
-	DriveForwardRoutine(RobotModel *robot, DriveController* kDrive, GearController *gearController, LightsController* lights);
+	DriveForwardRoutine(RobotModel *robot, DriveController* kDrive, Profile* profile, GearController *gearController, LightsController* lights);
 	void Prestart();
 
 protected:
@@ -25,6 +25,7 @@ private:
 	GearController* gearController;
 	RobotModel *robot;
 	LightsController* lights;
+	Profile* profile;
 };
 
 #endif /* SRC_AUTO_ROUTINES_DRIVEFORWARDROUTINE_H_ */
