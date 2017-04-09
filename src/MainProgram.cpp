@@ -8,34 +8,26 @@
 #include "DriveController.h"
 #include "VisionController.h"
 #include "GearController.h"
+#include "MotionController.h"
 #include <string.h>
 #include "Auto/Auto.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
+#include <pathfinder.h>
 
 class MainProgram : public frc::IterativeRobot {
 
-    //Creates a robot from class RobotModel
     RobotModel *robot;
-
-    //Creates a human control from RemoteControl, which includes ControlBoard
     RemoteControl *humanControl;
+    Auto *auton;
+
     VisionController *visionController;
-
-    //Creates a controller for drivetrain and superstructure
     DriveController *driveController;
-
-    //Creates an object of Dashboardlogger
     DashboardLogger *dashboardLogger;
-
     ClimberController *climberController;
     LightsController* lights;
-
     GearController *gearController;
-    Auto* auton;
-
-
-    //LightsController *lights;
+    MotionController *motionController;
 
     //Creates a time-keeper	`
     double currTimeSec;
@@ -53,6 +45,7 @@ class MainProgram : public frc::IterativeRobot {
         climberController = new ClimberController(robot, humanControl);
         gearController = new GearController(robot, humanControl);
         auton = new Auto(visionController, driveController, robot, gearController, lights);
+
         //Initializes timekeeper variables
         currTimeSec = 0.0;
         lastTimeSec = 0.0;
@@ -66,6 +59,7 @@ class MainProgram : public frc::IterativeRobot {
         auton->ListOptions();
         visionController->Disable();
 
+        //Start camera thread
         std::thread cameraThread(CameraThread);
         cameraThread.detach();
 
@@ -86,17 +80,16 @@ class MainProgram : public frc::IterativeRobot {
 
         visionController->Enable();
         auton->Start();
-
     }
 
     void AutonomousPeriodic() {
         //Autonoumous is running in a thread called by "auton->Start();"
-        dashboardLogger->UpdateData();  //JOystick data does NOT update during autonomous
+        dashboardLogger->UpdateData();  //Joystick data does NOT update during autonomous
         visionController->Update();
-        //lights->Update(true);
     }
 
     void TeleopInit() {
+        motionController = new MotionController();
         lights->SetEnabledRoutine();
         auton->Stop();
         RefreshAllIni();
@@ -113,6 +106,7 @@ class MainProgram : public frc::IterativeRobot {
         deltaTimeSec = 0.0;
 
         visionController->Enable();
+
     }
 
     void TeleopPeriodic() {
@@ -129,7 +123,7 @@ class MainProgram : public frc::IterativeRobot {
         humanControl->ReadControls();
         driveController->Update(currTimeSec, deltaTimeSec);
         climberController->Update();
-        //visionController->Update();
+        visionController->Update();
         gearController->Update();
 
         if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
@@ -169,11 +163,7 @@ class MainProgram : public frc::IterativeRobot {
     void DisabledPeriodic() {
 
         dashboardLogger->UpdateData();
-        //robot->UpdateCurrent();
-        //auton->Stop();
-        //Reads controls and updates controllers accordingly
 
-        //lights->Update(false);
         visionController->Update();
         humanControl->ReadControls();
         gearController->Update();
@@ -183,20 +173,19 @@ class MainProgram : public frc::IterativeRobot {
         robot->RefreshIni();
     }
 
-    static void CameraThread()
-        {
-            cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-            camera.SetResolution(352, 288);
-            cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-            cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
-            cv::Mat source;
-            cv::Mat output;
-            while(true) {
-                cvSink.GrabFrame(source);
-                cvtColor(source, output, cv::COLOR_BGR2GRAY);
-                outputStreamStd.PutFrame(output);
-            }
-        }
+    static void CameraThread() {
+		cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+		camera.SetResolution(352, 288);
+		cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+		cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
+		cv::Mat source;
+		cv::Mat output;
+		while(true) {
+			cvSink.GrabFrame(source);
+			cvtColor(source, output, cv::COLOR_BGR2GRAY);
+			outputStreamStd.PutFrame(output);
+		}
+    }
 };
 
 START_ROBOT_CLASS(MainProgram);
