@@ -26,6 +26,7 @@ public:
 	void ListOptions();
 	void Start();
 	void Stop();
+	void ChangedRoutines();
 	AutoSelector* selector;
 	AutoRoutineRunner* autoRoutineRunner;
 	virtual ~Auto();

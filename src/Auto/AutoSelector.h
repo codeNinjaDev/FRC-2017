@@ -36,9 +36,11 @@ public:
 	void RegisterAutonomous(AutoRoutine* autonomous);
 	AutoRoutine* GetAutoRoutine();
 	AutoRoutine* GetDefaultRoutine();
-
+	void ChangedRoutine();
 	virtual ~AutoSelector();
 private:
+    int current_routine;
+
 	AutoWidget *autoChooser;
 	vector<AutoRoutine*>* autoRoutines;
 	void SetAutoRoutineByIndex(int input);

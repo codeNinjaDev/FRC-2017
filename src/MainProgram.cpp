@@ -161,7 +161,7 @@ class MainProgram : public frc::IterativeRobot {
     }
 
     void DisabledPeriodic() {
-
+        auton->ChangedRoutines();
         dashboardLogger->UpdateData();
 
         visionController->Update();

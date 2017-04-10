@@ -14,6 +14,8 @@
 #include "llvm/StringMap.h"
 #include "llvm/StringRef.h"
 #include "tables/ITable.h"
+#include <iostream>
+using namespace std;
 
 namespace frc {
 

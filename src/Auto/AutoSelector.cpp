@@ -8,7 +8,6 @@
 #include "AutoSelector.h"
 
 AutoSelector::AutoSelector(VisionController *vision, RobotModel* robot, DriveController* kDrive, GearController* gearController, LightsController* lights) {
-
   autoRoutines = new vector<AutoRoutine*>();
   RegisterAutonomous(new DoNothingRoutine());
   RegisterAutonomous(new DriveForwardRoutine(robot, kDrive, gearController, lights));
@@ -22,6 +21,8 @@ AutoSelector::AutoSelector(VisionController *vision, RobotModel* robot, DriveCon
   RegisterAutonomous(new Blank3(robot, kDrive, gearController, lights));
 
   autoChooser = new AutoWidget();
+  current_routine = autoChooser->GetSelected();
+
 }
 
 void AutoSelector::ListOptions() {
@@ -40,7 +41,12 @@ void AutoSelector::ListOptions() {
   SmartDashboard::PutData("Autonomous: ", autoChooser);
 
 }
-
+void AutoSelector::ChangedRoutine() {
+    if(current_routine != autoChooser->GetSelected()) {
+        current_routine = autoChooser->GetSelected();
+        //Mike's code
+    }
+}
 AutoRoutine* AutoSelector::Pick() {
 	SetAutoRoutineByIndex(autoChooser->GetSelected());
 	return GetAutoRoutine();

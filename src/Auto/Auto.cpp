@@ -42,6 +42,9 @@ void Auto::Stop() {
 	autoRoutine->m_active = false;
 
 }
+void Auto::ChangedRoutines() {
+    selector->ChangedRoutine();
+}
 Auto::~Auto() {
 	// TODO Auto-generated destructor stub
 }
