@@ -14,7 +14,7 @@
 
 class DriveForwardRoutine: public AutoRoutine {
 public:
-	DriveForwardRoutine(RobotModel *robot, DriveController* kDrive, GearController *gearController, LightsController* lights);
+	DriveForwardRoutine(MasterController* controller);
 	void Prestart();
 
 protected:

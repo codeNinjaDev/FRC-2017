@@ -14,11 +14,11 @@
 #include "../RobotModel.h"
 #include "../VisionController.h"
 #include "../GearController.h"
-
+#include "MasterController.h"
 #include "../LightsController.h"
 class Auto {
 public:
-	Auto(VisionController *vision, DriveController* kDrive, RobotModel* robot, GearController* gearController, LightsController* lights);
+	Auto(MasterController* controller);
 
 	bool ReturnBool();
 	AutoRoutine* autoRoutine;
@@ -30,10 +30,7 @@ public:
 	AutoRoutineRunner* autoRoutineRunner;
 	virtual ~Auto();
 private:
-	DriveController* kDrive;
-	RobotModel* robot;
-	LightsController* lights;
-	GearController* gearController;
+
 };
 
 #endif /* SRC_AUTO_AUTO_H_ */

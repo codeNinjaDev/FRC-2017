@@ -19,7 +19,7 @@
 #include "Action/VisionSetpointXAction.h"
 #include "Action/GearLifterUpAction.h"
 #include "Action/GearLifterDownAction.h"
-
+#include "MasterController.h"
 class AutoRoutine {
 public:
 

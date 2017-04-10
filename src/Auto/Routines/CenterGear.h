@@ -13,8 +13,7 @@
 
 class CenterGear : public AutoRoutine {
  public:
-    CenterGear(VisionController* vision, RobotModel* robot,
-               DriveController* driveTrain, GearController* gearController, LightsController* lights);
+    CenterGear(MasterController* controller);
 
   virtual ~CenterGear();
   void Prestart();

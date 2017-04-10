@@ -14,7 +14,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 #include <pathfinder.h>
-
+#include "MasterController.h"
 class MainProgram : public frc::IterativeRobot {
 
     RobotModel *robot;
@@ -28,7 +28,7 @@ class MainProgram : public frc::IterativeRobot {
     LightsController* lights;
     GearController *gearController;
     MotionController *motionController;
-
+    MasterController *controller;
     //Creates a time-keeper	`
     double currTimeSec;
     double lastTimeSec;
@@ -44,8 +44,9 @@ class MainProgram : public frc::IterativeRobot {
         dashboardLogger = new DashboardLogger(robot, humanControl);
         climberController = new ClimberController(robot, humanControl);
         gearController = new GearController(robot, humanControl);
-        auton = new Auto(visionController, driveController, robot, gearController, lights);
+        controller = new MasterController(visionController, robot, driveController, gearController, motionController, lights);
 
+        auton = new Auto(controller);
         //Initializes timekeeper variables
         currTimeSec = 0.0;
         lastTimeSec = 0.0;

@@ -12,7 +12,7 @@
 
 class LeftGear : public AutoRoutine {
  public:
-    LeftGear(VisionController *vision, RobotModel *robot, DriveController* driveTrain, GearController* gearController, LightsController* lights);
+    LeftGear(MasterController* controller);
 
     void Prestart();
 

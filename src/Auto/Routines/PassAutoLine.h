@@ -11,7 +11,7 @@
 #include "../AutoRoutine.h"
 class PassAutoLine : public AutoRoutine {
  public:
-    PassAutoLine(RobotModel *robot, DriveController* driveTrain, GearController *gearController, LightsController* lights);
+    PassAutoLine(MasterController* controller);
     void Prestart();
 
    private:

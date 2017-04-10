@@ -7,12 +7,12 @@
 
 #include "LeftGear.h"
 
-LeftGear::LeftGear(VisionController *vision, RobotModel *robot, DriveController* driveTrain, GearController* gearController, LightsController* lights) {
-    this->robot = robot;
-    this->driveTrain = driveTrain;
-    this->vision = vision;
-    this->lights = lights;
-    this->gearController = gearController;
+LeftGear::LeftGear(MasterController* controller) {
+    this->vision = controller->GetVisionController();
+    this->robot = controller->GetRobotModel();
+    this->driveTrain = controller->GetDriveController();
+    this->lights = controller->GetLightsController();
+    this->gearController = controller->GetGearController();
 
 }
 

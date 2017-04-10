@@ -7,11 +7,11 @@
 
 #include "Blank3.h"
 
-Blank3::Blank3(RobotModel* robot, DriveController* driveTrain, GearController* gearController, LightsController* lights) {
-    this->robot = robot;
-    this->driveTrain = driveTrain;
-    this->gearController = gearController;
-    this->lights = lights;
+Blank3::Blank3(MasterController* controller) {
+    this->robot = controller->GetRobotModel();
+    this->driveTrain = controller->GetDriveController();
+    this->lights = controller->GetLightsController();
+    this->gearController = controller->GetGearController();
 }
 
 void Blank3::Prestart() {

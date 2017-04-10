@@ -7,10 +7,11 @@
 
 #include "Auto/Routines/BoilerFirstHopper.h"
 
-BoilerFirstHopper::BoilerFirstHopper(RobotModel *robot, DriveController *driveTrain, GearController *gearController, LightsController* lights) {
-  this->robot = robot;
-  this->driveTrain = driveTrain;
-  this->lights = lights;
+BoilerFirstHopper::BoilerFirstHopper(MasterController* controller) {
+    this->robot = controller->GetRobotModel();
+    this->driveTrain = controller->GetDriveController();
+    this->lights = controller->GetLightsController();
+    this->gearController = controller->GetGearController();
 }
 
 void BoilerFirstHopper::Routine() {

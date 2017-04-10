@@ -12,7 +12,7 @@
 
 class Blank2 : public AutoRoutine {
  public:
-    Blank2(RobotModel* robot, DriveController* driveTrain, GearController* gearController, LightsController* lights);
+    Blank2(MasterController* controller);
     void Prestart();
     virtual ~Blank2();
  protected:

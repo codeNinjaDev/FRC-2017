@@ -24,12 +24,13 @@
 #include "../VisionController.h"
 #include "../GearController.h"
 #include "AutoWidget.h"
+#include "MasterController.h"
 using namespace std;
 using namespace frc;
 
 class AutoSelector {
 public:
-	AutoSelector(VisionController *vision, RobotModel* robot, DriveController* kDrive, GearController* gearController, LightsController* lights);
+	AutoSelector(MasterController* controller);
 
 	void ListOptions();
 	AutoRoutine* Pick();

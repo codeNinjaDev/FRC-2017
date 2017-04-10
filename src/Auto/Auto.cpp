@@ -9,13 +9,12 @@
 #include "Auto.h"
 #include <iostream>
 #include <stdio.h>
+#include "MasterController.h"
 using namespace std;
 
-Auto::Auto(VisionController *vision, DriveController* kDrive, RobotModel* robot, GearController* gearController, LightsController* lights) {
-	this->kDrive = kDrive;
-	this->robot = robot;
-	this->lights = lights;
-	selector = new AutoSelector(vision, robot, kDrive, gearController, lights);
+Auto::Auto(MasterController* controller) {
+
+	selector = new AutoSelector(controller);
 
 	autoRoutineRunner = new AutoRoutineRunner();
 	autoRoutine = selector->GetDefaultRoutine();

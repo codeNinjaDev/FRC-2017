@@ -7,11 +7,11 @@
 
 #include "DriveForwardRoutine.h"
 
-DriveForwardRoutine::DriveForwardRoutine(RobotModel *robot, DriveController* kDrive, GearController *gearController, LightsController* lights) {
-	this->robot = robot;
-	this->kDrive = kDrive;
-	this->lights = lights;
-	this->gearController = gearController;
+DriveForwardRoutine::DriveForwardRoutine(MasterController* controller) {
+	this->robot = controller->GetRobotModel();
+	this->kDrive = controller->GetDriveController();
+	this->lights = controller->GetLightsController();
+	this->gearController = controller->GetGearController();
 }
 
 void DriveForwardRoutine::Routine() {

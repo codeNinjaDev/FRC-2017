@@ -6,13 +6,12 @@
  */
 
 #include "CenterGear.h"
-CenterGear::CenterGear(VisionController* vision, RobotModel* robot,
-                       DriveController* driveTrain, GearController* gearController, LightsController* lights) {
-    this->vision = vision;
-    this->robot = robot;
-    this->driveTrain = driveTrain;
-    this->lights = lights;
-    this->gearController = gearController;
+CenterGear::CenterGear(MasterController* controller) {
+    this->vision = controller->GetVisionController();
+    this->robot = controller->GetRobotModel();
+    this->driveTrain = controller->GetDriveController();
+    this->lights = controller->GetLightsController();
+    this->gearController = controller->GetGearController();
 }
 void CenterGear::Routine() {
 	gearController->GearPIDUp();

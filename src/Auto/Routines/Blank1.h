@@ -11,7 +11,7 @@
 #include "../../LightsController.h"
 class Blank1 : public AutoRoutine {
  public:
-    Blank1(RobotModel* robot, DriveController* driveTrain, GearController* gearController, LightsController* lights);
+    Blank1(MasterController* controller);
     void Prestart();
     virtual ~Blank1();
  protected:
