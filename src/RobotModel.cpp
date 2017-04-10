@@ -23,7 +23,7 @@ RobotModel::RobotModel() {
 	gearIntakeMotor = new Talon(GEAR_INTAKE_MOTOR_PWM_PORT);
 	//Init superstructure motors
 	climberMotor = new VictorSP(CLIMBER_MOTOR_PWM_PORT);
-
+	gyro = new AnalogGyro(1);
 	//Init encoders
 	leftDriveEncoder = new Encoder(LEFT_DRIVE_ENCODER_PORTS[0],
 			LEFT_DRIVE_ENCODER_PORTS[1]);
@@ -203,5 +203,9 @@ double RobotModel::GetGearPotReading() {
 void RobotModel::RefreshIni() {
 	delete pini;
 	pini = new Ini("/home/lvuser/robot.ini");
+}
+
+double RobotModel::GetAngle() {
+    return gyro->GetAngle();
 }
 
