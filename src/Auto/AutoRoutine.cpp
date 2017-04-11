@@ -39,7 +39,7 @@ void AutoRoutine::DriveInterval(DriveController* kDrive, double seconds, double 
 
 
 void AutoRoutine::DriveDistanceStraight(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController *lights, bool ejectGear) {
-  RunAction(new DriveSetPointStraightAction(robot, kDrive, gearController, desired_distance, maxSpeed, timeout, waitForTimeout, lights, ejectGear));
+  RunAction(new DriveSetpointStraightAction(robot, kDrive, gearController, desired_distance, maxSpeed, timeout, waitForTimeout, lights, ejectGear));
 }
 
 void AutoRoutine::DriveDistanceRotate(RobotModel* robot, DriveController* kDrive, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights) {
@@ -57,4 +57,10 @@ void AutoRoutine::GearLifterUp(RobotModel *robot, DriveController* kDrive, GearC
 }
 void AutoRoutine::GearLifterDown(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout){
   RunAction(new GearLifterDownAction(robot, kDrive, gearController, desired_distance, maxSpeed, timeout, waitForTimeout));
+}
+void AutoRoutine::ArcadeDriveStraight(RobotModel *robot, DriveController *driveController,
+            GearController *gearController, double distance, double maxSpeed, double timeout, bool waitForTimeout,
+            LightsController* lights, bool ejectGear) {
+    RunAction(new ArcadeDriveStraightAction(robot, driveController, gearController, distance, maxSpeed, timeout, waitForTimeout, lights, ejectGear));
+
 }

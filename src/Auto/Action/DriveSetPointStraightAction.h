@@ -15,9 +15,9 @@
 #include "WPILib.h"
 #include "Action.h"
 
-class DriveSetPointStraightAction: public Action {
+class DriveSetpointStraightAction: public Action {
 public:
-	DriveSetPointStraightAction(RobotModel *robot, DriveController *driveController,
+	DriveSetpointStraightAction(RobotModel *robot, DriveController *driveController,
 			GearController *gearController, double distance, double maxSpeed, double timeout, bool waitForTimeout,
 			LightsController* lights, bool ejectGear);
 	bool IsFinished();

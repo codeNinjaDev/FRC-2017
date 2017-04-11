@@ -19,7 +19,7 @@
 #include "Action/VisionSetpointXAction.h"
 #include "Action/GearLifterUpAction.h"
 #include "Action/GearLifterDownAction.h"
-
+#include "Action/ArcadeDriveStraightAction.h"
 class AutoRoutine {
 public:
 
@@ -38,7 +38,9 @@ public:
   void VisionSetpointX(VisionController *vision, DriveController *drive, RobotModel *robot, double setpoint, double maxSpeed, double timeout, bool waitForTimeout, LightsController *lights);
   void GearLifterUp(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
   void GearLifterDown(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
-
+  void ArcadeDriveStraight(RobotModel *robot, DriveController *driveController,
+                           GearController *gearController, double distance, double maxSpeed, double timeout, bool waitForTimeout,
+                           LightsController* lights, bool ejectGear);
 void WaitTime(double distance);
 protected:
 	virtual void Routine(void) = 0;

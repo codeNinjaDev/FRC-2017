@@ -12,7 +12,7 @@
 //distance: distance in inches for the bot to drive
 //maxSpeed: max speed robot can drive to hit setpoint
 //timeout: amount of allowed time this action can run before ending
-DriveSetPointStraightAction::DriveSetPointStraightAction(RobotModel *robot,
+DriveSetpointStraightAction::DriveSetpointStraightAction(RobotModel *robot,
 		DriveController *driveController, GearController *gearController, double distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights, bool ejectGear) {
 	this->driveController = driveController;
 	this->distance = distance;
@@ -32,7 +32,7 @@ DriveSetPointStraightAction::DriveSetPointStraightAction(RobotModel *robot,
 	D = drive_d;
 }
 
-bool DriveSetPointStraightAction::IsFinished() {
+bool DriveSetpointStraightAction::IsFinished() {
 	if((Timer::GetFPGATimestamp() >= start_time + timeout) && !(reachedSetpoint)) {
 	}
     if(waitForTimeout)
@@ -42,7 +42,7 @@ bool DriveSetPointStraightAction::IsFinished() {
 
 }
 
-void DriveSetPointStraightAction::Update() {
+void DriveSetpointStraightAction::Update() {
 	if (driveController->leftPID->OnTarget() && driveController->rightPID->OnTarget()) {
 		reachedSetpoint = true;
 	} else {
@@ -54,13 +54,13 @@ void DriveSetPointStraightAction::Update() {
 
 }
 
-void DriveSetPointStraightAction::Done() {
+void DriveSetpointStraightAction::Done() {
 	driveController->leftPID->Disable();
 	driveController->rightPID->Disable();
 	driveController->Stop();
 }
 
-void DriveSetPointStraightAction::Start() {
+void DriveSetpointStraightAction::Start() {
 	start_time = Timer::GetFPGATimestamp();
 
 	robot->leftDriveEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);

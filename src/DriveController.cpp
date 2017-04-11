@@ -16,7 +16,6 @@ DriveController::DriveController(RobotModel *myRobot,
 
 	robot->rightDriveEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);
 	robot->rightDriveEncoder->SetSamplesToAverage(DRIVE_Y_PID_SAMPLES_AVERAGE);
-
 	leftPIDOutput = new WheelsPIDOutput(robot, robot->LeftWheels);
 	leftPID = new PIDController(0.0, 0.0, 0.0, robot->leftDriveEncoder, leftPIDOutput);
 	leftPID->SetOutputRange(-1.0, 1.0);
@@ -35,6 +34,12 @@ DriveController::DriveController(RobotModel *myRobot,
 	visionPID->SetOutputRange(-1.0, 1.0);
 	visionPID->SetAbsoluteTolerance(1);
 	visionPID->Disable();
+    driveStraightPIDOutput = new DriveStraightPIDOutput(driveTrain, robot);
+    arcadePID = new PIDController(0.0, 0.0, 0.0, driveEncodersPIDSource, driveStraightPIDOutput);
+
+    arcadePID->SetOutputRange(-1.0, 1.0);
+    arcadePID->SetAbsoluteTolerance(1.0);
+    arcadePID->Disable();
 
 	m_stateVal = kInitialize;
 	nextState = kInitialize;
@@ -49,6 +54,7 @@ void DriveController::Update(double currTimeSec, double deltaTimeSec) {
 		visionPID->Disable();
 		leftPID->Disable();
 		rightPID->Disable();
+		arcadePID->Disable();
 		nextState = kTeleopDrive;
 		break;
 	case (kTeleopDrive):
@@ -65,9 +71,11 @@ void DriveController::Update(double currTimeSec, double deltaTimeSec) {
 		driverRightY = humanControl->GetJoystickValue(RemoteControl::kDriverJoy,
 				RemoteControl::kRY);
 
-		if(leftPID->IsEnabled() || rightPID->IsEnabled()){
+		if(leftPID->IsEnabled() || rightPID->IsEnabled() || arcadePID->IsEnabled() || visionPID->IsEnabled()){
 			leftPID->Disable();
 			rightPID->Disable();
+			arcadePID->Disable();
+			visionPID->Disable();
 		}
 
 		if (humanControl->GetArcadeDriveDesired()) {

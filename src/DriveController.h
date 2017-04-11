@@ -12,6 +12,7 @@
 #include "VisionPIDSource.h"
 #include "ini.h"
 #include "WheelsPIDOutput.h"
+#include "DriveStraightPIDOutput.h"
 #include <iostream>
 
 class PivotCommand;
@@ -40,7 +41,9 @@ public:
 	PIDController *rightPID;
 
 	PIDOutput *driveXPIDOutput;
+	PIDOutput *driveStraightPIDOutput;
 	PIDController *visionPID;
+	PIDController *arcadePID;
 	VisionPIDSource *visionPIDSource;
 
 	DriveEncodersPIDSource *driveEncodersPIDSource; //average of two drive encoders
