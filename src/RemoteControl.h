@@ -29,6 +29,7 @@ public:
 	virtual bool GetGearTitlerDownDesired() = 0;
 	virtual bool GetGearTitlerOuttakeDesired() = 0;
 	virtual bool GetGearTitlerIntakeDesired() = 0;
+	virtual bool GetManualGearDesired() = 0;
 	virtual void ReadControls() = 0;
 
 	//Drive joystick accessors

@@ -24,7 +24,7 @@ ControlBoard::ControlBoard() {
 
 		gearTilterIntakeButton = new ButtonReader(operatorJoy, XINPUT_WIN_GREEN_BUTTON);
         gearTilterOuttakeButton = new ButtonReader(operatorJoy, XINPUT_WIN_RED_BUTTON);
-
+        toggleGearManual = new ButtonReader(operatorJoy, XINPUT_WIN_BACK_BUTTON);
 		gearTilterDownButton = new TriggerReader(operatorJoy, XINPUT_WIN_RIGHT_TRIGGER_AXIS);
 		climberLockButton = new ButtonReader(operatorJoy, XINPUT_WIN_YELLOW_BUTTON);
 		lightsActiveButton = new TriggerReader(operatorJoy, XINPUT_WIN_LEFT_TRIGGER_AXIS);
@@ -75,6 +75,8 @@ void ControlBoard::ReadControls() {
 	gearTilterOuttakeDesired = gearTilterOuttakeButton->IsDown();
 	gearTilterIntakeDesired  = gearTilterIntakeButton->IsDown();
     shoutRoutineDesired = shoutRoutineButton->IsDown();
+    toggleGearManualDesired = toggleGearManual->IsDown();
+
 }
 
 //Reads the values of all buttons defined by this class
@@ -90,6 +92,7 @@ void ControlBoard::ReadAllButtons() {
 	gearTilterDownButton->ReadValue();
 	gearTilterOuttakeButton->ReadValue();
 	gearTilterIntakeButton->ReadValue();
+	toggleGearManual->ReadValue();
 }
 
 //Returns the joystick and axis being used
@@ -170,4 +173,7 @@ bool ControlBoard::GetGearTitlerIntakeDesired(){
 
 bool ControlBoard::GetGearTitlerOuttakeDesired(){
 	return gearTilterOuttakeDesired;
+}
+bool ControlBoard::GetManualGearDesired() {
+    return toggleGearManualDesired;
 }

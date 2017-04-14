@@ -31,8 +31,9 @@ class GearController {
 
  private:
     RobotModel* robot;
-    bool wasDown, wasUp;
+    bool wasDown, wasUp, toggle;
     RemoteControl* humanControl;
+
     uint32_t m_stateVal;
     uint32_t nextState;
 };

@@ -50,12 +50,18 @@ void GearController::Update() {
 			else {
 				robot->SetGearIntakeSpeed(GEAR_WHEELS_RESTING_MOTOR_SPEED);
 			}
-
-        	if (humanControl->GetGearTitlerDownDesired()){ //UP
-        		GearPIDUp();
-        	} else { //DOWN
-        		GearPIDDown();
-        	}
+            if(humanControl->GetManualGearDesired()) {
+                toggle = !toggle;
+            }
+            if(toggle == false) {
+                if (humanControl->GetGearTitlerDownDesired()){ //UP
+                    GearPIDUp();
+                } else { //DOWN
+                    GearPIDDown();
+                }
+            } else {
+                robot->SetGearTilterSpeed(humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kLY));
+            }
 
             nextState = kTeleop;
             break;

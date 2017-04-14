@@ -36,9 +36,9 @@ public:
 	bool GetGearTitlerIntakeDesired();
 	bool GetLightsActiveDesired();
 	bool GetShoutRoutineDesired();
-
+	bool GetManualGearDesired();
 	ButtonReader *driveDirectionButton, *climberLockButton, *driveBackButton, *driveBackOtherButton,
-		*gearTilterOuttakeButton, *gearTilterIntakeButton, *shoutRoutineButton, *toggleDisabledGearTilter;
+		*gearTilterOuttakeButton, *gearTilterIntakeButton, *shoutRoutineButton, *toggleDisabledGearTilter, *toggleGearManual;
 
 	TriggerReader *slowDriveTier1Button, *slowDriveTier2Button, *gearTilterDownButton, *lightsActiveButton;
 
@@ -48,7 +48,7 @@ private:
 
 	bool reverseDriveDesired, arcadeDriveDesired, climberLockDesired, slowDriveTier1Desired, slowDriveTier2Desired, lightsActiveDesired,
 		driveBackDesired, driveBackOtherDesired, gearTilterDownDesired, gearTilterOuttakeDesired, gearTilterIntakeDesired, shoutRoutineDesired,
-		toggleDisabledGearTilterDesired;
+		toggleDisabledGearTilterDesired, toggleGearManualDesired;
 
 	double driverLeftJoyX, driverLeftJoyY, driverRightJoyX, driverRightJoyY;
 	double operatorLeftJoyX, operatorLeftJoyY, operatorRightJoyX, operatorRightJoyY;
