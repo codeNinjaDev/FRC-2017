@@ -9,6 +9,7 @@
 #include "DriveEncodersPIDSource.h"
 #include "DashboardLogger.h"
 #include "VisionController.h"
+#include "NewStraightPIDOutput.h"
 #include "VisionPIDSource.h"
 #include "ini.h"
 #include "WheelsPIDOutput.h"
@@ -42,6 +43,10 @@ public:
 	PIDOutput *driveXPIDOutput;
 	PIDController *visionPID;
 	VisionPIDSource *visionPIDSource;
+
+	PIDOutput *newPIDstraightOutput;
+	PIDSource *avgEncodersPIDSource;
+	PIDController *newPIDstraight;
 
 	DriveEncodersPIDSource *driveEncodersPIDSource; //average of two drive encoders
     VisionController *vision;

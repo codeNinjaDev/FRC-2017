@@ -18,7 +18,10 @@ void Blank1::Prestart() {
 
 }
 void Blank1::Routine() {
-
+	gearController->GearPIDUp();
+	NewStraight(robot, driveTrain, gearController, lights, 70.0, 0.4, 3.0, 0.4);
+	gearController->GearDown();
+	DriveDistanceStraight(robot, driveTrain, gearController, -5.0, 0.25, 1.5, true, lights, true);
 }
 
 

@@ -57,6 +57,7 @@ void DriveSetPointStraightAction::Update() {
 void DriveSetPointStraightAction::Done() {
 	driveController->leftPID->Disable();
 	driveController->rightPID->Disable();
+	robot->SetGearIntakeSpeed(0.0);
 	driveController->Stop();
 }
 

@@ -6,7 +6,8 @@
 static bool SQUARE_DRIVE_AXIS_INPUT                    = true;
 static const bool USE_ARCADE_DRIVE                     = true;
 
-static double GLOBAL_DRIVE_SPEED_MULTIPLIER            = 1.0;
+static double GLOBAL_Y_DRIVE_SPEED_MULTIPLIER          = 1.0;
+static double GLOBAL_X_DRIVE_SPEED_MULTIPLIER          = 1.0;
 static const double HARDSET_DRIVE_SPEED_MAX			   = 0.95;
 
 static const double CLIMBER_HARDSET_MOTOR_SPEED        = 1.0;
@@ -48,6 +49,12 @@ static double PINI_I;*/
 static const double drive_p = 0.4;
 static const double drive_i = 0.0;
 static const double drive_d = 0.05;
+
+//[NEW_DRIVE_PID]
+static const double new_drive_p = 0.4;
+static const double new_drive_i = 0.0;
+static const double new_drive_d = 0.05;
+
 
 //[GEAR_PID]
 static const double gear_p = 12.5;

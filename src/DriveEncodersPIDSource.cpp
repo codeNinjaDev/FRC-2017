@@ -1,13 +1,12 @@
 #include "DriveEncodersPIDSource.h"
 #include "WPILib.h"
 
-DriveEncodersPIDSource::DriveEncodersPIDSource(Encoder *leftEncoder, Encoder *rightEncoder) {
-	this->leftEncoder = leftEncoder;
-	this->rightEncoder = rightEncoder;
+DriveEncodersPIDSource::DriveEncodersPIDSource(RobotModel* robot) {
+	this->robot = robot;
 }
 double DriveEncodersPIDSource::PIDGet() {
-  if (leftEncoder->StatusIsFatal()) return 0.0;
-  if (rightEncoder->StatusIsFatal()) return 0.0;
+  if (robot->leftDriveEncoder->StatusIsFatal()) return 0.0;
+  if (robot->rightDriveEncoder->StatusIsFatal()) return 0.0;
   switch (GetPIDSourceType()) {
     case PIDSourceType::kDisplacement:
       return GetAverageDistance();
@@ -19,6 +18,6 @@ double DriveEncodersPIDSource::PIDGet() {
 }
 
 double DriveEncodersPIDSource::GetAverageDistance() {
-	return ((leftEncoder->GetDistance()) + (rightEncoder->GetDistance())) / 2.0;
+	return ((robot->leftDriveEncoder->GetDistance()) + (robot->rightDriveEncoder->GetDistance())) / 2.0;
 }
 

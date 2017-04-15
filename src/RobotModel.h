@@ -48,6 +48,8 @@ public:
 	void RefreshIni();
 	void ResetEncoders();
 
+	double GetEncoderError();
+
 	//Speed controllers
 	Spark *leftDriveMotorA, *leftDriveMotorB, *rightDriveMotorA,
 			*rightDriveMotorB;
