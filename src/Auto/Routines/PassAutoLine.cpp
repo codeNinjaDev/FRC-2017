@@ -25,8 +25,7 @@ void PassAutoLine::Prestart() {
 	gearController->gearTilterPID->SetPID(
 	        				gear_p,
 							gear_i,
-							gear_d,
-							gear_f);
+							gear_d);
 	        		gearController->gearTilterPID->SetOutputRange(-1.0, 1.0);
 	        		gearController->gearTilterPID->SetSetpoint(GEAR_POT_UP_POSITION);
 }

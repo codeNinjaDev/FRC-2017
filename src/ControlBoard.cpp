@@ -172,10 +172,10 @@ bool ControlBoard::GetGearTitlerDownDesired(){
 	return gearTilterDownDesired;
 }
 bool ControlBoard::GetGearTilterUpDesired(){
-	return gearTilterDownDesired;
+	return gearTilterUpDesired;
 }
 bool ControlBoard::GetGearTilterRampDesired(){
-	return gearTilterDownDesired;
+	return gearTilterRampDesired;
 }
 
 bool ControlBoard::GetGearTitlerIntakeDesired(){
