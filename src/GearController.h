@@ -22,8 +22,12 @@ class GearController {
 
     void Reset();
     void Update();
-    void GearPIDUp();
-    void GearPIDDown();
+    void GearPIDUp(); //peg pid position
+    void GearRest(); //threshold till past point for ramp
+    void GearPIDRamp(); //PID for ramp intake
+    void GearDown(); //threshold till past point for down position
+
+    void SoftDisablePID();
     enum GearState {
         kInitialize, kTeleop
     };
@@ -31,7 +35,7 @@ class GearController {
 
  private:
     RobotModel* robot;
-    bool wasDown, wasUp, toggle;
+    bool wasDown, wasUp, wasRest, wasRamp, toggleManual;
     RemoteControl* humanControl;
 
     uint32_t m_stateVal;

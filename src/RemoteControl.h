@@ -27,6 +27,8 @@ public:
     virtual bool GetLightsActiveDesired() = 0;
     virtual bool GetShoutRoutineDesired() = 0;
 	virtual bool GetGearTitlerDownDesired() = 0;
+	virtual bool GetGearTilterUpDesired() = 0;
+	virtual bool GetGearTilterRampDesired() = 0;
 	virtual bool GetGearTitlerOuttakeDesired() = 0;
 	virtual bool GetGearTitlerIntakeDesired() = 0;
 	virtual bool GetManualGearDesired() = 0;

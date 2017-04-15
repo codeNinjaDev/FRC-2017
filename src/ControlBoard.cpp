@@ -26,8 +26,10 @@ ControlBoard::ControlBoard() {
         gearTilterOuttakeButton = new ButtonReader(operatorJoy, XINPUT_WIN_RED_BUTTON);
         toggleGearManual = new ButtonReader(operatorJoy, XINPUT_WIN_BACK_BUTTON);
 		gearTilterDownButton = new TriggerReader(operatorJoy, XINPUT_WIN_RIGHT_TRIGGER_AXIS);
+		gearTilterUpButton = new TriggerReader(operatorJoy, XINPUT_WIN_LEFT_TRIGGER_AXIS);
+		gearTilterRampButton = new ButtonReader(operatorJoy, XINPUT_WIN_LEFT_BUMPER);
 		climberLockButton = new ButtonReader(operatorJoy, XINPUT_WIN_YELLOW_BUTTON);
-		lightsActiveButton = new TriggerReader(operatorJoy, XINPUT_WIN_LEFT_TRIGGER_AXIS);
+		lightsActiveButton = new TriggerReader(operatorJoy, XINPUT_WIN_START_BUTTON);
 	}
 
 	//Joystick positions that will set speed of robot movement
@@ -64,7 +66,6 @@ void ControlBoard::ReadControls() {
 	reverseDriveDesired = driveDirectionButton->IsDown();
 
 	//Superstructure Variables
-
 	climberLockDesired       = climberLockButton->IsDown();
 	slowDriveTier1Desired    = slowDriveTier1Button->IsDown();
 	slowDriveTier2Desired    = slowDriveTier2Button->IsDown();
@@ -72,10 +73,12 @@ void ControlBoard::ReadControls() {
 	driveBackOtherDesired    = driveBackOtherButton->IsDown();
 	lightsActiveDesired      = lightsActiveButton->IsDown();
 	gearTilterDownDesired    = gearTilterDownButton->IsDown();
+	gearTilterUpDesired      = gearTilterUpButton->IsDown();
+	gearTilterRampDesired    = gearTilterRampButton->IsDown();
 	gearTilterOuttakeDesired = gearTilterOuttakeButton->IsDown();
 	gearTilterIntakeDesired  = gearTilterIntakeButton->IsDown();
-    shoutRoutineDesired = shoutRoutineButton->IsDown();
-    toggleGearManualDesired = toggleGearManual->IsDown();
+    shoutRoutineDesired      = shoutRoutineButton->IsDown();
+    toggleGearManualDesired  = toggleGearManual->WasJustPressed();
 
 }
 
@@ -90,6 +93,8 @@ void ControlBoard::ReadAllButtons() {
 	lightsActiveButton->ReadValue();
 	shoutRoutineButton->ReadValue();
 	gearTilterDownButton->ReadValue();
+	gearTilterUpButton->ReadValue();
+	gearTilterRampButton->ReadValue();
 	gearTilterOuttakeButton->ReadValue();
 	gearTilterIntakeButton->ReadValue();
 	toggleGearManual->ReadValue();
@@ -164,6 +169,12 @@ bool ControlBoard::GetShoutRoutineDesired() {
     return shoutRoutineDesired;
 }
 bool ControlBoard::GetGearTitlerDownDesired(){
+	return gearTilterDownDesired;
+}
+bool ControlBoard::GetGearTilterUpDesired(){
+	return gearTilterDownDesired;
+}
+bool ControlBoard::GetGearTilterRampDesired(){
 	return gearTilterDownDesired;
 }
 
