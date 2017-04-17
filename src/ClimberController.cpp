@@ -82,7 +82,7 @@ void ClimberController::Update() {
 		break;
 	case (kTeleop):
 		//Climber Behaviour
-		if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
+		if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.1) {
 			robot->SetClimberMotorSpeed(humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY));
 		} else {
 			robot->climberMotor->SetSpeed(0.0);

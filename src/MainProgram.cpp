@@ -132,10 +132,8 @@ class MainProgram : public frc::IterativeRobot {
         //visionController->Update();
         gearController->Update();
 
-        if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
+        if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.1) {
         lights->Climbing();
-        } else if (humanControl->GetShoutRoutineDesired()) {
-        lights->SetShoutRoutine();
         } else if (humanControl->GetGearTitlerIntakeDesired()) {
         lights->GearIntake();
 
@@ -185,6 +183,7 @@ class MainProgram : public frc::IterativeRobot {
 
     static void CameraThread()
         {
+    		Wait(1);
             cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
             camera.SetResolution(352, 288);
             cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();

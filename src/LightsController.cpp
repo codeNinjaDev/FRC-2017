@@ -34,18 +34,6 @@ void LightsController::Update(bool enabled) {
 		nextState = kTeleop;
 		break;
 	case (kTeleop):
-        /*
-		//Climber Behaviour
-		if (enabled) {
-			if (humanControl->GetLightsActiveDesired()) {
-				SetShoutRoutine();
-			} else {
-				SetEnabledRoutine();
-			}
-		} else {
-			SetDisabledRoutine();
-		}*/
-
 		nextState = kTeleop;
 		break;
 	}
