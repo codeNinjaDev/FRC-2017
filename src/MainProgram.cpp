@@ -34,7 +34,6 @@ class MainProgram : public frc::IterativeRobot {
     GearController *gearController;
     Auto* auton;
 
-
     //LightsController *lights;
 
     //Creates a time-keeper	`
@@ -48,11 +47,13 @@ class MainProgram : public frc::IterativeRobot {
         humanControl = new ControlBoard();
         lights = new LightsController(humanControl);
         visionController = new VisionController();
-        driveController = new DriveController(robot, humanControl, visionController);
+        driveController = new DriveController(robot, humanControl,
+                                              visionController);
         dashboardLogger = new DashboardLogger(robot, humanControl);
         climberController = new ClimberController(robot, humanControl);
         gearController = new GearController(robot, humanControl);
-        auton = new Auto(visionController, driveController, robot, gearController, lights);
+        auton = new Auto(visionController, driveController, robot,
+                         gearController, lights);
         //Initializes timekeeper variables
         currTimeSec = 0.0;
         lastTimeSec = 0.0;
@@ -123,7 +124,6 @@ class MainProgram : public frc::IterativeRobot {
         currTimeSec = robot->GetTime();
         deltaTimeSec = currTimeSec - lastTimeSec;
 
-
         //Reads controls and updates controllers accordingly
         //RefreshAllIni();
         humanControl->ReadControls();
@@ -133,22 +133,15 @@ class MainProgram : public frc::IterativeRobot {
         gearController->Update();
 
         if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.1) {
-        lights->Climbing();
+            lights->Climbing();
+        } else if(humanControl->GetGearTilterRampDesired()) {
+            lights->Ramp();
         } else if (humanControl->GetGearTitlerIntakeDesired()) {
-        lights->GearIntake();
-
+            lights->GearIntake();
         } else if (humanControl->GetGearTitlerOuttakeDesired()) {
-        lights->GearOuttake();
-
-        } else if (humanControl->GetSlowDriveTier1Desired()
-                && humanControl->GetSlowDriveTier2Desired()) {
-        lights->Brake2();
-
-        } else if (humanControl->GetSlowDriveTier1Desired()) {
-        lights->Brake1();
-
+            lights->GearPeg();
         } else {
-        lights->SetEnabledRoutine();
+            lights->SetEnabledRoutine();
         }
     }
 
@@ -181,21 +174,21 @@ class MainProgram : public frc::IterativeRobot {
         robot->RefreshIni();
     }
 
-    static void CameraThread()
-        {
-    		Wait(1);
-            cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-            camera.SetResolution(352, 288);
-            cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-            cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
-            cv::Mat source;
-            cv::Mat output;
-            while(true) {
-                cvSink.GrabFrame(source);
-                cvtColor(source, output, cv::COLOR_BGR2GRAY);
-                outputStreamStd.PutFrame(output);
-            }
+    static void CameraThread() {
+        Wait(1);
+        cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+        camera.SetResolution(352, 288);
+        cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo(
+                "Gray", 640, 480);
+        cv::Mat source;
+        cv::Mat output;
+        while (true) {
+        cvSink.GrabFrame(source);
+        cvtColor(source, output, cv::COLOR_BGR2GRAY);
+        outputStreamStd.PutFrame(output);
         }
+    }
 };
 
 START_ROBOT_CLASS(MainProgram);

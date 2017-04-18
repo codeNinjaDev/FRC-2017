@@ -23,10 +23,8 @@ public:
 
 	void SetDisabledRoutine();
 	void SetEnabledRoutine();
-	void SetShoutRoutine();
-	void Brake2();
-	void Brake1();
-	void GearOuttake();
+	void Ramp();
+	void GearPeg();
 	void GearIntake();
 	void Climbing();
 
