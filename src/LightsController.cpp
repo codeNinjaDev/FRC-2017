@@ -55,33 +55,26 @@ void LightsController::SetEnabledRoutine() {
     pin4->Set(LOW);
 }
 
-void LightsController::SetShoutRoutine() {
+void LightsController::Ramp() {
 	pin1->Set(HIGH);
 	pin2->Set(HIGH);
     pin3->Set(LOW);
     pin4->Set(HIGH);
 }
 
-void LightsController::Brake2() {
+
+void LightsController::GearPeg() {
     pin1->Set(HIGH);
     pin2->Set(LOW);
+    pin3->Set(HIGH);
+    pin4->Set(HIGH);
+}
+
+void LightsController::Error() {
+    pin1->Set(HIGH);
+    pin2->Set(HIGH);
     pin3->Set(HIGH);
     pin4->Set(LOW);
-}
-
-void LightsController::Brake1() {
-    pin1->Set(HIGH);
-    pin2->Set(LOW);
-    pin3->Set(LOW);
-    pin4->Set(HIGH);
-}
-
-
-void LightsController::GearOuttake() {
-    pin1->Set(HIGH);
-    pin2->Set(LOW);
-    pin3->Set(HIGH);
-    pin4->Set(HIGH);
 }
 
 void LightsController::GearIntake() {

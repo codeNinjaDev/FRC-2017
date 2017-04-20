@@ -17,13 +17,14 @@ RightGear::RightGear(VisionController *vision, RobotModel *robot, DriveControlle
 }
 
 void RightGear::Prestart() {
-
+	gearController->GearRest();
 }
 
 void RightGear::Routine() {
-	   DriveDistanceStraight(robot, driveTrain, gearController, 98, 0.5, 3.3, true, lights, false);
-	   DriveDistanceRotate(robot, driveTrain, -73, 0.6, 1.5, true, lights);
-	   DriveDistanceStraight(robot, driveTrain, gearController, 10, 1.0, 1, false, lights, false);
-	   DriveDistanceStraight(robot, driveTrain, gearController, 15, 0.4, 5, false, lights, false);
-
+	gearController->GearPIDUp();
+	NewStraight(robot, driveTrain, gearController, lights, 89.0, 0.45, 4.0, 0.4);
+	DriveDistanceRotate(robot, driveTrain, -70, 0.6, 1.6, true, lights);
+	NewStraight(robot, driveTrain, gearController, lights, 30.0, 0.45, 2.5, 0.4);
+	gearController->GearDown();
+	DriveDistanceStraight(robot, driveTrain, gearController, -5.0, 0.25, 1.5, true, lights, true);
 }

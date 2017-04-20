@@ -22,7 +22,7 @@ public:
 	double GetPIDLoopOutput();
 
 	double loopOutput;
-	double kPencoder = 0.625;
+	double kPencoder = 0.7; //0.625
 private:
 
 	RobotDrive* drive;

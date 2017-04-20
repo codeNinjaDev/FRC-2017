@@ -74,7 +74,7 @@ void GearController::Update() {
 			} else if (humanControl->GetGearTilterRampDesired()) {
 				robot->SetGearIntakeSpeed(GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
 			} else if (humanControl->GetGearTitlerOuttakeDesired()) {
-				robot->SetGearIntakeSpeed(-GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
+				robot->SetGearIntakeSpeed(-GEAR_WHEELS_OUT_MOTOR_SPEED);
 			} else {
 				robot->SetGearIntakeSpeed(GEAR_WHEELS_RESTING_MOTOR_SPEED);
 			}
@@ -96,7 +96,7 @@ void GearController::Update() {
 			if (humanControl->GetGearTitlerIntakeDesired()) {
 				robot->SetGearIntakeSpeed(GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
 			} else if (humanControl->GetGearTitlerOuttakeDesired()) {
-				robot->SetGearIntakeSpeed(-GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
+				robot->SetGearIntakeSpeed(-GEAR_WHEELS_OUT_MOTOR_SPEED);
 			} else {
 				robot->SetGearIntakeSpeed(GEAR_WHEELS_RESTING_MOTOR_SPEED);
 			}

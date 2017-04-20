@@ -16,6 +16,8 @@ NewStraightPIDOutput::NewStraightPIDOutput(RobotDrive *drive, RobotModel *robot)
 void NewStraightPIDOutput::PIDWrite(double output){
 	loopOutput = output;
     drive->ArcadeDrive(output, robot->GetEncoderError() * kPencoder, false);
+    SmartDashboard::PutNumber("ArcadeCORRECTION", robot->GetEncoderError() * kPencoder);
+    SmartDashboard::PutNumber("auton_EncoderError", robot->GetEncoderError());
 }
 
 double NewStraightPIDOutput::GetPIDLoopOutput() {

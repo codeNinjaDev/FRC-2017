@@ -105,8 +105,8 @@ void DriveController::ArcadeDrive(double myY, double myX, bool teleOp) {
 			SQUARE_DRIVE_AXIS_INPUT = false;
 		} else if (humanControl->GetSlowDriveTier1Desired()
 				&& humanControl->GetSlowDriveTier2Desired()) {
-			GLOBAL_Y_DRIVE_SPEED_MULTIPLIER = 0.50;
-			GLOBAL_X_DRIVE_SPEED_MULTIPLIER = 0.50;
+			GLOBAL_Y_DRIVE_SPEED_MULTIPLIER = 0.40;
+			GLOBAL_X_DRIVE_SPEED_MULTIPLIER = 0.435;
 			SQUARE_DRIVE_AXIS_INPUT = false;
 		} else {
 			GLOBAL_Y_DRIVE_SPEED_MULTIPLIER = 1.0;

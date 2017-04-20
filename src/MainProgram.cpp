@@ -132,21 +132,14 @@ class MainProgram : public frc::IterativeRobot {
         //visionController->Update();
         gearController->Update();
 
-        if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.1) {
+        if ((robot->gearPot->Get > (GEAR_POT_MAX_DOWN_UP[0])) && (robot->gearPot->Get() > (GEAR_POT_MAX_DOWN_UP[1]))){
+        lights->Error();
+        }else if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
         lights->Climbing();
         } else if (humanControl->GetGearTitlerIntakeDesired()) {
         lights->GearIntake();
-
-        } else if (humanControl->GetGearTitlerOuttakeDesired()) {
-        lights->GearOuttake();
-
-        } else if (humanControl->GetSlowDriveTier1Desired()
-                && humanControl->GetSlowDriveTier2Desired()) {
-        lights->Brake2();
-
-        } else if (humanControl->GetSlowDriveTier1Desired()) {
-        lights->Brake1();
-
+        } else if (humanControl->GetGearTilterRampDesired()) {
+        lights->Ramp();
         } else {
         lights->SetEnabledRoutine();
         }
@@ -183,7 +176,7 @@ class MainProgram : public frc::IterativeRobot {
 
     static void CameraThread()
         {
-    		Wait(1);
+    		//Wait(1);
             cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
             camera.SetResolution(352, 288);
             cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();

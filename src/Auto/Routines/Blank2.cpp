@@ -16,12 +16,11 @@ Blank2::Blank2(RobotModel* robot, DriveController* driveTrain,
 }
 
 void Blank2::Prestart() {
-
 }
 void Blank2::Routine() {
 	gearController->GearPIDUp();
-	NewStraight(robot, driveTrain, gearController, lights, 90.0, 0.45, 4.0, 0.4);
-	DriveDistanceRotate(robot, driveTrain, 75, 0.6, 1.6, true, lights);
+	NewStraight(robot, driveTrain, gearController, lights, 89.0, 0.45, 4.0, 0.4);
+	DriveDistanceRotate(robot, driveTrain, 70, 0.6, 1.6, true, lights);
 	NewStraight(robot, driveTrain, gearController, lights, 30.0, 0.45, 2.5, 0.4);
 	gearController->GearDown();
 	DriveDistanceStraight(robot, driveTrain, gearController, -5.0, 0.25, 1.5, true, lights, true);
