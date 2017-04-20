@@ -10,6 +10,7 @@
 #include "GearController.h"
 #include <string.h>
 #include "Auto/Auto.h"
+#include "Params.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 
@@ -132,9 +133,9 @@ class MainProgram : public frc::IterativeRobot {
         //visionController->Update();
         gearController->Update();
 
-        if ((robot->gearPot->Get > (GEAR_POT_MAX_DOWN_UP[0])) && (robot->gearPot->Get() > (GEAR_POT_MAX_DOWN_UP[1]))){
+        /*if ((robot->gearPot->Get > (GEAR_POT_MAX_DOWN_UP[0])) && (robot->gearPot->Get() > (GEAR_POT_MAX_DOWN_UP[1])){
         lights->Error();
-        }else if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
+        }*/if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
         lights->Climbing();
         } else if (humanControl->GetGearTitlerIntakeDesired()) {
         lights->GearIntake();

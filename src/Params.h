@@ -23,7 +23,8 @@ static const double GEAR_WHEELS_ACTIVE_MOTOR_SPEED     = 0.75;
 static const double GEAR_WHEELS_OUT_MOTOR_SPEED        = 0.6;
 static const double GEAR_TILTER_MAX_MOTOR_SPEED        = 0.4;
 
-static const double GEAR_POT_MAX_DOWN_UP[]             = {0.55,0.35};
+static const double GEAR_POT_MAX_DOWN_UP[]             = {0.56,0.45};
+static const double GEAR_POT_UP_POSITION               = 0.433;
 static const double GEAR_POT_RAMP_POSITION			   = 0.399;
 static const double GEAR_POT_FORCE_DOWN_THRESHOLD      = 0.464;
 
