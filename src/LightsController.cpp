@@ -17,17 +17,20 @@ LightsController::LightsController(RemoteControl *myHumanControl) {
 	pin3 = new DigitalOutput(LIGHTS_DIO_PORTS[2]);
     pin4 = new DigitalOutput(LIGHTS_DIO_PORTS[3]);
 
-	m_stateVal = kInitialize;
+/*	m_stateVal = kInitialize;  */
 }
 
 LightsController::~LightsController() {
 
 }
 
+/*
 void LightsController::Reset() {
 	m_stateVal = kInitialize;
 }
+*/
 
+/*
 void LightsController::Update(bool enabled) {
 	switch (m_stateVal) {
 	case (kInitialize):
@@ -40,6 +43,7 @@ void LightsController::Update(bool enabled) {
 
 	m_stateVal = nextState;
 }
+*/
 
 void LightsController::SetDisabledRoutine() {
 	pin1->Set(LOW);
