@@ -131,7 +131,7 @@ void GearController::GearDown() {
 	wasUp = false;
 	SoftDisablePID();
 	if (robot->gearPot->Get() <= GEAR_POT_FORCE_DOWN_THRESHOLD) {
-		robot->SetGearTilterSpeed(0.25);
+		robot->SetGearTilterSpeed(GEAR_POT_FORCE_DOWN_SPEED);
 	} else {
 		robot->SetGearTilterSpeed(0.0);
 	}

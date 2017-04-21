@@ -22,7 +22,7 @@ void LeftGear::Prestart() {
 
 void LeftGear::Routine() {
 	gearController->GearPIDUp();
-	NewStraight(robot, driveTrain, gearController, lights, 89.0, 0.45, 4.0, 0.4);
+	NewStraight(robot, driveTrain, gearController, lights, 93.5, 0.45, 4.0, 0.4);
 	DriveDistanceRotate(robot, driveTrain, 70, 0.6, 1.6, true, lights);
 	NewStraight(robot, driveTrain, gearController, lights, 30.0, 0.45, 2.5, 0.4);
 	gearController->GearDown();
