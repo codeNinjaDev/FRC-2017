@@ -50,7 +50,7 @@ void DriveSetPointStraightAction::Update() {
 	}
 
 	if(ejectGear)
-		robot->SetGearIntakeSpeed(-GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
+		robot->SetGearIntakeSpeed(-GEAR_WHEELS_OUT_MOTOR_SPEED);
 
 }
 

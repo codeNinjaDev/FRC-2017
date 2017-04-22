@@ -22,9 +22,10 @@ void LeftGear::Prestart() {
 
 void LeftGear::Routine() {
 	gearController->GearPIDUp();
-	NewStraight(robot, driveTrain, gearController, lights, 93.5, 0.45, 4.0, 0.4);
+	NewStraight(robot, driveTrain, gearController, lights, 90.5, 0.45, 4.0, 0.4);
 	DriveDistanceRotate(robot, driveTrain, 70, 0.6, 1.6, true, lights);
-	NewStraight(robot, driveTrain, gearController, lights, 30.0, 0.45, 2.5, 0.4);
+	NewStraight(robot, driveTrain, gearController, lights, 25.0, 0.45, 2.5, 0.4);
 	gearController->GearDown();
-	DriveDistanceStraight(robot, driveTrain, gearController, -5.0, 0.25, 1.5, true, lights, true);
+	WaitTime(0.05);
+	DriveDistanceStraight(robot, driveTrain, gearController, -9.0, 0.25, 1.5, true, lights, true);
 }

@@ -61,7 +61,7 @@ static const double drive_d = 0.05;
 //[NEW_DRIVE_PID]
 static const double new_drive_p = 0.4;
 static const double new_drive_i = 0.0;
-static const double new_drive_d = 0.05;
+static const double new_drive_d = 0.1;
 
 
 //[GEAR_PID]

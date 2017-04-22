@@ -31,10 +31,10 @@ void AutoSelector::ListOptions() {
   autoChooser->AddObject("LeftField Gear", 3);
   autoChooser->AddObject("RightField Gear", 4);
   autoChooser->AddObject("Pass AutoLine", 5);
-  autoChooser->AddObject("Left Hopper", 6);
+  autoChooser->AddObject("Right Hoppers", 6);
   autoChooser->AddObject("Blank 1", 7);
-  autoChooser->AddObject("Blank 2", 8);
-  autoChooser->AddObject("Blank 3", 9);
+  autoChooser->AddObject("Straight Hopper", 8); //blank 2
+  autoChooser->AddObject("Left Hoppers", 9);  //blank 3
 
 
   SmartDashboard::PutData("Autonomous: ", autoChooser);
