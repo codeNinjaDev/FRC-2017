@@ -7,11 +7,11 @@
 
 #ifndef SRC_GEARCONTROLLER_H_
 #define SRC_GEARCONTROLLER_H_
-#include "RobotModel.h"
-#include "ControlBoard.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/ControlBoard.h"
 #include "WPILib.h"
-#include "AnalogPIDSource.h"
-#include "AnalogPIDOutput.h"
+#include "../PID/AnalogPIDSource.h"
+#include "../PID/AnalogPIDOutput.h"
 class GearController {
  public:
     GearController(RobotModel* robot, RemoteControl* humanControl);

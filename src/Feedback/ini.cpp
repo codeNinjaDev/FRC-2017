@@ -30,7 +30,7 @@
 #endif
 
 #define MININI_IMPLEMENTATION
-#include "ini.h"
+#include <Feedback/ini.h>
 #if defined NDEBUG
   #define assert(e)
 #else

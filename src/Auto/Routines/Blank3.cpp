@@ -7,11 +7,8 @@
 
 #include "Blank3.h"
 
-Blank3::Blank3(MasterController* controller) {
-    this->robot = controller->GetRobotModel();
-    this->driveTrain = controller->GetDriveController();
-    this->lights = controller->GetLightsController();
-    this->gearController = controller->GetGearController();
+Blank3::Blank3(MasterController* controllers) {
+    this->controllers = controllers;
 }
 
 void Blank3::Prestart() {

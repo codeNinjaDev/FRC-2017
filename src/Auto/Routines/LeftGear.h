@@ -8,20 +8,16 @@
 #ifndef SRC_AUTO_ROUTINES_LEFTGEAR_H_
 #define SRC_AUTO_ROUTINES_LEFTGEAR_H_
 #include "../AutoRoutine.h"
-#include "../../LightsController.h"
+#include "../../Controllers/LightsController.h"
 
 class LeftGear : public AutoRoutine {
  public:
-    LeftGear(MasterController* controller);
+    LeftGear(MasterController* controllers);
 
     void Prestart();
 
  private:
-    DriveController *driveTrain;
-    RobotModel *robot;
-    VisionController *vision;
-    LightsController* lights;
-    GearController* gearController;
+    MasterController* controllers;
  protected:
     void Routine();
 };

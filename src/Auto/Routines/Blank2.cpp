@@ -7,11 +7,8 @@
 
 #include "Blank2.h"
 
-Blank2::Blank2(MasterController* controller) {
-    this->robot = controller->GetRobotModel();
-    this->driveTrain = controller->GetDriveController();
-    this->lights = controller->GetLightsController();
-    this->gearController = controller->GetGearController();
+Blank2::Blank2(MasterController* controllers) {
+    this->controllers = controllers;
 }
 
 void Blank2::Prestart() {

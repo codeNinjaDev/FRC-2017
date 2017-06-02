@@ -2,16 +2,16 @@
 #define DRIVECONTROLLER_H_
 
 #include "WPILib.h"
-#include "RobotModel.h"
-#include "RemoteControl.h"
-#include "DriveYMotorsPIDOutput.h"
-#include "DriveRotateMotorsPIDOutput.h"
-#include "DriveEncodersPIDSource.h"
-#include "DashboardLogger.h"
-#include "VisionController.h"
-#include "VisionPIDSource.h"
-#include "ini.h"
-#include "WheelsPIDOutput.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/RemoteControl.h"
+#include "../PID/DriveYMotorsPIDOutput.h"
+#include "../PID/DriveRotateMotorsPIDOutput.h"
+#include "../PID/DriveEncodersPIDSource.h"
+#include "../PID/WheelsPIDOutput.h"
+#include "../Feedback/DashboardLogger.h"
+#include "../Controllers/VisionController.h"
+#include "../PID/VisionPIDSource.h"
+#include "../Feedback/ini.h"
 #include <iostream>
 
 class PivotCommand;

@@ -8,8 +8,8 @@
 #ifndef SRC_DASHBOARDLOGGER_H_
 #define SRC_DASHBOARDLOGGER_H_
 
-#include "RobotModel.h"
-#include "RemoteControl.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/RemoteControl.h"
 
 class DashboardLogger {
 public:

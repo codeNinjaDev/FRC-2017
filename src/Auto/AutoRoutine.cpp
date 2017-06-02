@@ -33,28 +33,28 @@ void AutoRoutine::RunAction(Action* action) {
 }
 
 //ACTIONS:
-void AutoRoutine::DriveInterval(DriveController* kDrive, double seconds, double y, double x) {
+void AutoRoutine::DriveInterval(MasterController* kDrive, double seconds, double y, double x) {
 	RunAction(new DriveIntervalAction(kDrive, seconds, y, x));
 }
 
 
-void AutoRoutine::DriveDistanceStraight(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController *lights, bool ejectGear) {
-  RunAction(new DriveSetPointStraightAction(robot, kDrive, gearController, desired_distance, maxSpeed, timeout, waitForTimeout, lights, ejectGear));
+void AutoRoutine::DriveDistanceStraight(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, bool ejectGear) {
+  RunAction(new DriveSetPointStraightAction(controllers, desired_distance, maxSpeed, timeout, waitForTimeout, ejectGear));
 }
 
-void AutoRoutine::DriveDistanceRotate(RobotModel* robot, DriveController* kDrive, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights) {
-  RunAction(new DriveSetPointRotateAction(robot, kDrive, desired_distance, maxSpeed, timeout, waitForTimeout, lights));
+void AutoRoutine::DriveDistanceRotate(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout) {
+  RunAction(new DriveSetPointRotateAction(controllers, desired_distance, maxSpeed, timeout, waitForTimeout));
 }
 void AutoRoutine::WaitTime(double timeout) {
     RunAction(new WaitTimeAction(timeout));
 }
-void AutoRoutine::VisionSetpointX(VisionController *vision, DriveController *drive, RobotModel *robot, double setpoint, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights){
-	RunAction(new VisionSetpointXAction(vision, drive, robot, setpoint, maxSpeed, timeout, waitForTimeout, lights));
+void AutoRoutine::VisionSetpointX(MasterController* controllers, double setpoint, double maxSpeed, double timeout, bool waitForTimeout){
+	RunAction(new VisionSetpointXAction(controllers, setpoint, maxSpeed, timeout, waitForTimeout));
 }
 
-void AutoRoutine::GearLifterUp(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout){
-  RunAction(new GearLifterUpAction(robot, kDrive, gearController, desired_distance, maxSpeed, timeout, waitForTimeout));
+void AutoRoutine::GearLifterUp(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout){
+  RunAction(new GearLifterUpAction(controllers, desired_distance, maxSpeed, timeout, waitForTimeout));
 }
-void AutoRoutine::GearLifterDown(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout){
-  RunAction(new GearLifterDownAction(robot, kDrive, gearController, desired_distance, maxSpeed, timeout, waitForTimeout));
+void AutoRoutine::GearLifterDown(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout){
+  RunAction(new GearLifterDownAction(controllers, desired_distance, maxSpeed, timeout, waitForTimeout));
 }

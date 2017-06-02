@@ -6,13 +6,10 @@
  */
 
 #include "Auto/Action/VisionSetpointXAction.h"
-
-VisionSetpointXAction::VisionSetpointXAction(VisionController *vision,
-                                             DriveController *driveController,
-                                             RobotModel *robot, int setpoint,
+#include <Timer.h>
+VisionSetpointXAction::VisionSetpointXAction(MasterController* controllers, int setpoint,
                                              double maxSpeed, double timeout,
-                                             bool waitForTimeout,
-                                             LightsController* lights) {
+                                             bool waitForTimeout) {
     // TODO Auto-generated constructor stub
     this->vision = vision;
     this->driveController = driveController;

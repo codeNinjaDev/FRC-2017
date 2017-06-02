@@ -5,7 +5,7 @@
  *      Author: kidco
  */
 
-#include <AnalogPIDOutput.h>
+#include "AnalogPIDOutput.h"
 
 AnalogPIDOutput::AnalogPIDOutput(RobotModel* robot) {
     this->robot = robot;

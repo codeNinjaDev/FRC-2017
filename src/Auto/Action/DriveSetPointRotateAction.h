@@ -7,14 +7,14 @@
 
 #ifndef SRC_AUTO_ACTION_DRIVESETPOINTROTATEACTION_H_
 #define SRC_AUTO_ACTION_DRIVESETPOINTROTATEACTION_H_
-#include "LightsController.h"
-#include "../../RobotModel.h"
-#include "../../DriveController.h"
+#include "../../Controllers/LightsController.h"
+#include "../../Hardware/RobotModel.h"
+#include "../../Controllers/DriveController.h"
 #include "WPILib.h"
 #include "Action.h"
 class DriveSetPointRotateAction: public Action {
 public:
-	DriveSetPointRotateAction(RobotModel *robot, DriveController *driveController, double distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights);
+	DriveSetPointRotateAction(MasterController* controllers, double distance, double maxSpeed, double timeout, bool waitForTimeout);
 	bool IsFinished();
 	void Update();
 	void Done();

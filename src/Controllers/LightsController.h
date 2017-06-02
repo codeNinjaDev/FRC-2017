@@ -10,7 +10,7 @@
 
 #include "WPILib.h"
 #include "DigitalOutput.h"
-#include "RemoteControl.h"
+#include "../Hardware/RemoteControl.h"
 #include "Ports.h"
 
 class LightsController {

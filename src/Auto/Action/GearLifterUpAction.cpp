@@ -1,17 +1,18 @@
 
 #include "GearLifterUpAction.h"
 #include "../../Params.h"
+#include <Timer.h>
 
 //distance: distance in inches for the bot to drive
 //maxSpeed: max speed robot can drive to hit setpoint
 //timeout: amount of allowed time this action can run before ending
-GearLifterUpAction::GearLifterUpAction(RobotModel *robot, DriveController *driveController, GearController *gearController,
+GearLifterUpAction::GearLifterUpAction(MasterController* controllers,
 		double distance, double maxSpeed, double timeout, bool waitForTimeout) {
-	this->driveController = driveController;
-	this->gearController = gearController;
+	this->driveController = controllers->GetDriveController();
+	this->gearController = controllers->GetGearController();
 	this->distance = distance;
 	this->timeout = timeout;
-	this->robot = robot;
+	this->robot = controllers->GetRobotModel();
 	this->maxSpeed = maxSpeed;
 	this->waitForTimeout = waitForTimeout;
 	reachedSetpoint = false;

@@ -8,12 +8,12 @@
 #ifndef SRC_MASTERCONTROLLER_H_
 #define SRC_MASTERCONTROLLER_H_
 
-#include "LightsController.h"
-#include "VisionController.h"
-#include "DriveController.h"
-#include "RobotModel.h"
-#include "GearController.h"
-#include "MotionController.h"
+#include "Controllers/LightsController.h"
+#include "Controllers/VisionController.h"
+#include "Controllers/DriveController.h"
+#include "Hardware/RobotModel.h"
+#include "Controllers/GearController.h"
+#include "Controllers/MotionController.h"
 
 class MasterController {
  public:

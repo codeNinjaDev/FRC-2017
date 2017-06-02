@@ -10,8 +10,8 @@
 
 #include "WPILib.h"
 #include "Ports.h"
-#include "RobotModel.h"
-#include "ControlBoard.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/ControlBoard.h"
 
 class ClimberController {
 public:

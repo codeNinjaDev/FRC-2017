@@ -19,7 +19,7 @@
 #ifndef INI_H
 #define INI_H
 
-#include "minGlue.h"
+#include <Feedback/minGlue.h>
 
 #if (defined _UNICODE || defined __UNICODE__ || defined UNICODE) && !defined INI_ANSIONLY
   #include <tchar.h>

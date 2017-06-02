@@ -7,7 +7,7 @@
 
 #ifndef SRC_AUTO_ACTION_ACTION_H_
 #define SRC_AUTO_ACTION_ACTION_H_
-
+#include "../../MasterController.h"
 class Action {
 //Base class for all autonomous actions to implement functions
 public:

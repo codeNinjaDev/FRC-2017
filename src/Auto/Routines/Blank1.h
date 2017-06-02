@@ -8,7 +8,7 @@
 #ifndef SRC_AUTO_ROUTINES_BLANK1_H_
 #define SRC_AUTO_ROUTINES_BLANK1_H_
 #include "../AutoRoutine.h"
-#include "../../LightsController.h"
+#include "../../Controllers/LightsController.h"
 class Blank1 : public AutoRoutine {
  public:
     Blank1(MasterController* controller);
@@ -17,10 +17,7 @@ class Blank1 : public AutoRoutine {
  protected:
     void Routine();
  private:
-    RobotModel* robot;
-    DriveController* driveTrain;
-    GearController* gearController;
-    LightsController* lights;
+    MasterController* controllers;
 };
 
 #endif /* SRC_AUTO_ROUTINES_BLANK1_H_ */

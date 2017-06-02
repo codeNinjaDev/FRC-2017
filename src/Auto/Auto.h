@@ -10,12 +10,12 @@
 #include <Auto/AutoRoutineRunner.h>
 #include <Auto/AutoSelector.h>
 #include "AutoRoutine.h"
-#include "../DriveController.h"
-#include "../RobotModel.h"
-#include "../VisionController.h"
-#include "../GearController.h"
+#include "../Controllers/DriveController.h"
+#include "../Hardware/RobotModel.h"
+#include "../Controllers/VisionController.h"
+#include "../Controllers/GearController.h"
 #include "MasterController.h"
-#include "../LightsController.h"
+#include "../Controllers/LightsController.h"
 class Auto {
 public:
 	Auto(MasterController* controller);

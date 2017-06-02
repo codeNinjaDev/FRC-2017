@@ -9,21 +9,17 @@
 #define SRC_AUTO_ROUTINES_CENTERGEAR_H_
 
 #include "../AutoRoutine.h"
-#include "../../LightsController.h"
+#include "../../Controllers/LightsController.h"
 
 class CenterGear : public AutoRoutine {
  public:
-    CenterGear(MasterController* controller);
+    CenterGear(MasterController* controllers);
 
   virtual ~CenterGear();
   void Prestart();
 
  private:
-  DriveController *driveTrain;
-  RobotModel *robot;
-  VisionController *vision;
-  LightsController* lights;
-  GearController* gearController;
+  MasterController* controllers;
  protected:
   void Routine();
 };

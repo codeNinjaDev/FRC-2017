@@ -8,20 +8,17 @@
 #ifndef SRC_AUTO_ROUTINES_BLANK2_H_
 #define SRC_AUTO_ROUTINES_BLANK2_H_
 #include "../AutoRoutine.h"
-#include "../../LightsController.h"
+#include "../../Controllers/LightsController.h"
 
 class Blank2 : public AutoRoutine {
  public:
-    Blank2(MasterController* controller);
+    Blank2(MasterController* controllers);
     void Prestart();
     virtual ~Blank2();
  protected:
     void Routine();
  private:
-    RobotModel* robot;
-    DriveController* driveTrain;
-    GearController* gearController;
-    LightsController* lights;
+    MasterController* controllers;
 };
 
 #endif /* SRC_AUTO_ROUTINES_Blank2_H_ */

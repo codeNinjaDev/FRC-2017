@@ -12,16 +12,15 @@
 //distance: distance in inches for the bot to drive
 //maxSpeed: max speed robot can drive to hit setpoint
 //timeout: amount of allowed time this action can run before ending
-DriveSetPointStraightAction::DriveSetPointStraightAction(RobotModel *robot,
-		DriveController *driveController, GearController *gearController, double distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights, bool ejectGear) {
-	this->driveController = driveController;
+DriveSetPointStraightAction::DriveSetPointStraightAction(MasterController* controllers, double distance, double maxSpeed, double timeout, bool waitForTimeout, bool ejectGear) {
+	this->driveController = controllers->GetDriveController();
 	this->distance = distance;
 	this->timeout = timeout;
-	this->robot = robot;
+	this->robot = controllers->GetRobotModel();
 	this->maxSpeed = maxSpeed;
 	this->waitForTimeout = waitForTimeout;
-	this->lights = lights;
-	this->gearController = gearController;
+	this->lights = controllers->GetLightsController();
+	this->gearController = controllers->GetGearController();
 	this->ejectGear = ejectGear;
 	reachedSetpoint = false;
 	target_pass = 0;

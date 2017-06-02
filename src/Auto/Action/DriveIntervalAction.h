@@ -10,10 +10,12 @@
 
 #include "Timer.h"
 #include "Action.h"
-#include "../../DriveController.h"
+#include "../../Controllers/DriveController.h"
+#include "../../MasterController.h"
+
 class DriveIntervalAction: public Action {
 public:
-	DriveIntervalAction(DriveController* kDrive, double seconds, double y,double x);
+	DriveIntervalAction(MasterController* kDrive, double seconds, double y,double x);
 
 	bool IsFinished();
 	void Update();

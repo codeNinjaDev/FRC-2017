@@ -8,27 +8,25 @@
 #include "PassAutoLine.h"
 #include "../../Params.h"
 
-PassAutoLine::PassAutoLine(MasterController* controller) {
-    this->robot = controller->GetRobotModel();
-    this->driveTrain = controller->GetDriveController();
-    this->lights = controller->GetLightsController();
-    this->gearController = controller->GetGearController();
+PassAutoLine::PassAutoLine(MasterController* controllers) {
+    this->controllers = controllers;
+
 }
 
 void PassAutoLine::Routine() {
-	gearController->gearTilterPID->Enable();
-	DriveDistanceStraight(robot, driveTrain, gearController, 100.0, 0.4, 4.0, false, lights, false);
-	gearController->gearTilterPID->Disable();
+	controllers->GetGearController()->gearTilterPID->Enable();
+	DriveDistanceStraight(controllers, 100.0, 0.4, 4.0, false, false);
+	controllers->GetGearController()->gearTilterPID->Disable();
 }
 
 void PassAutoLine::Prestart() {
-	gearController->gearTilterPID->SetPID(
+	controllers->GetGearController()->gearTilterPID->SetPID(
 	        				gear_p,
 							gear_i,
 							gear_d,
 							gear_f);
-	        		gearController->gearTilterPID->SetOutputRange(-1.0, 1.0);
-	        		gearController->gearTilterPID->SetSetpoint(GEAR_POT_UP_POSITION);
+	controllers->GetGearController()->gearTilterPID->SetOutputRange(-1.0, 1.0);
+	controllers->GetGearController()->gearTilterPID->SetSetpoint(GEAR_POT_UP_POSITION);
 }
 
 

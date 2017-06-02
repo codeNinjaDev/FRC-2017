@@ -7,12 +7,8 @@
 
 #include "RightGear.h"
 
-RightGear::RightGear(MasterController* controller) {
-    this->vision = controller->GetVisionController();
-    this->robot = controller->GetRobotModel();
-    this->driveTrain = controller->GetDriveController();
-    this->lights = controller->GetLightsController();
-    this->gearController = controller->GetGearController();
+RightGear::RightGear(MasterController* controllers) {
+    this->controllers = controllers;
 
 }
 
@@ -21,9 +17,9 @@ void RightGear::Prestart() {
 }
 
 void RightGear::Routine() {
-	   DriveDistanceStraight(robot, driveTrain, gearController, 98, 0.5, 3.3, true, lights, false);
-	   DriveDistanceRotate(robot, driveTrain, -73, 0.6, 1.5, true, lights);
-	   DriveDistanceStraight(robot, driveTrain, gearController, 10, 1.0, 1, false, lights, false);
-	   DriveDistanceStraight(robot, driveTrain, gearController, 15, 0.4, 5, false, lights, false);
+	   DriveDistanceStraight(controllers, 98, 0.5, 3.3, true, false);
+	   DriveDistanceRotate(controllers, -73, 0.6, 1.5, true);
+	   DriveDistanceStraight(controllers, 10, 1.0, 1, false, false);
+	   DriveDistanceStraight(controllers, 15, 0.4, 5, false, false);
 
 }

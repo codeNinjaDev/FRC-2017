@@ -9,7 +9,7 @@
 #define SRC_VISIONPIDSOURCE_H_
 
 #include "WPILib.h"
-#include "VisionController.h"
+#include "../Controllers/VisionController.h"
 
 class VisionPIDSource : public PIDSource {
 public:

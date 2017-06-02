@@ -7,15 +7,12 @@
 
 #include "DriveForwardRoutine.h"
 
-DriveForwardRoutine::DriveForwardRoutine(MasterController* controller) {
-	this->robot = controller->GetRobotModel();
-	this->kDrive = controller->GetDriveController();
-	this->lights = controller->GetLightsController();
-	this->gearController = controller->GetGearController();
+DriveForwardRoutine::DriveForwardRoutine(MasterController* controllers) {
+    this->controllers = controllers;
 }
 
 void DriveForwardRoutine::Routine() {
-	DriveDistanceStraight(robot, kDrive, gearController, 193.0, 0.8, 10.0, false, lights, false);
+	DriveDistanceStraight(controllers, 193.0, 0.8, 10.0, false, false);
 }
 
 void DriveForwardRoutine::Prestart() {

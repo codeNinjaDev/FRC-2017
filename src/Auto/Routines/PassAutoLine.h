@@ -7,18 +7,15 @@
 
 #ifndef SRC_AUTO_ROUTINES_PASSAUTOLINE_H_
 #define SRC_AUTO_ROUTINES_PASSAUTOLINE_H_
-#include "LightsController.h"
+#include "../../Controllers/LightsController.h"
 #include "../AutoRoutine.h"
 class PassAutoLine : public AutoRoutine {
  public:
-    PassAutoLine(MasterController* controller);
+    PassAutoLine(MasterController* controllers);
     void Prestart();
 
    private:
-    DriveController *driveTrain;
-    RobotModel *robot;
-    LightsController* lights;
-    GearController* gearController;
+    MasterController* controllers;
    protected:
     void Routine();
 };

@@ -9,8 +9,8 @@
 #define SRC_ANALOGPIDOUTPUT_H_
 
 #include "WPILib.h"
-#include "RobotModel.h"
-#include "RemoteControl.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/RemoteControl.h"
 
 class AnalogPIDOutput : public PIDOutput {
  public:

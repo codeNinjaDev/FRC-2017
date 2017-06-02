@@ -2,14 +2,14 @@
 #ifndef SRC_AUTO_ACTION_GEAR_LIFTER_UP_ACTION_H_
 #define SRC_AUTO_ACTION_GEAR_LIFTER_UP_ACTION_H_
 
-#include "../../RobotModel.h"
-#include "../../DriveController.h"
-#include "../../GearController.h"
+#include "../../Hardware/RobotModel.h"
+#include "../../Controllers/DriveController.h"
+#include "../../Controllers/GearController.h"
 #include "WPILib.h"
 #include "Action.h"
 class GearLifterUpAction: public Action {
 public:
-	GearLifterUpAction(RobotModel *robot, DriveController *driveController, GearController *gearController,
+	GearLifterUpAction(MasterController* controllers,
 			double distance, double maxSpeed, double timeout, bool waitForTimeout);
 	bool IsFinished();
 	void Update();

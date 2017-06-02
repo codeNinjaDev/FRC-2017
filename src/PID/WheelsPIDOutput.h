@@ -9,8 +9,8 @@
 #define SRC_WHEELSPIDOUTPUT_H_
 
 #include "WPILib.h"
-#include "RobotModel.h"
-#include "RemoteControl.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/RemoteControl.h"
 
 class WheelsPIDOutput : public PIDOutput {
 public:

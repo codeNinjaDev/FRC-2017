@@ -8,18 +8,16 @@
 #ifndef SRC_AUTO_ACTION_DRIVESETPOINTSTRAIGHTACTION_H_
 #define SRC_AUTO_ACTION_DRIVESETPOINTSTRAIGHTACTION_H_
 
-#include "../../RobotModel.h"
-#include "../../DriveController.h"
-#include "../../GearController.h"
-#include "../../LightsController.h"
+#include "../../Hardware/RobotModel.h"
+#include "../../Controllers/DriveController.h"
+#include "../../Controllers/GearController.h"
+#include "../../Controllers/LightsController.h"
 #include "WPILib.h"
 #include "Action.h"
 
 class DriveSetPointStraightAction: public Action {
 public:
-	DriveSetPointStraightAction(RobotModel *robot, DriveController *driveController,
-			GearController *gearController, double distance, double maxSpeed, double timeout, bool waitForTimeout,
-			LightsController* lights, bool ejectGear);
+	DriveSetPointStraightAction(MasterController* controllers, double distance, double maxSpeed, double timeout, bool waitForTimeout, bool ejectGear);
 	bool IsFinished();
 	void Update();
 	void Done();

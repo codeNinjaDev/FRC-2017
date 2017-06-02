@@ -5,8 +5,8 @@
  *      Author: kidco
  */
 
-#include <AnalogPIDSource.h>
-
+#include "AnalogPIDSource.h"
+#include "WPILib.h"
 AnalogPIDSource::AnalogPIDSource(Potentiometer* analogInput) {
     this->analogInput = analogInput;
 }

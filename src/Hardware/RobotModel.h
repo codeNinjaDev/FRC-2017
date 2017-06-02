@@ -8,8 +8,8 @@
 #ifndef SRC_ROBOTMODEL_H_
 #define SRC_ROBOTMODEL_H_
 
+#include <Feedback/ini.h>
 #include "WPILib.h"
-#include "ini.h"
 
 class RobotModel {
 public:

@@ -7,12 +7,8 @@
 
 #include "LeftGear.h"
 
-LeftGear::LeftGear(MasterController* controller) {
-    this->vision = controller->GetVisionController();
-    this->robot = controller->GetRobotModel();
-    this->driveTrain = controller->GetDriveController();
-    this->lights = controller->GetLightsController();
-    this->gearController = controller->GetGearController();
+LeftGear::LeftGear(MasterController* controllers) {
+    this->controllers = controllers;
 
 }
 
@@ -21,9 +17,9 @@ void LeftGear::Prestart() {
 }
 
 void LeftGear::Routine() {
-   DriveDistanceStraight(robot, driveTrain, gearController, 93.96, 0.5, 3.3, true, lights, false);
-   DriveDistanceRotate(robot, driveTrain, 73, 0.6, 1.5, true, lights);
+   DriveDistanceStraight(controllers, 93.96, 0.5, 3.3, true, false);
+   DriveDistanceRotate(controllers, 73, 0.6, 1.5, true);
   // DriveDistanceStraight(robot, driveTrain, 2, 1.0, 1, false);
-   DriveDistanceStraight(robot, driveTrain, gearController, 30, 0.4, 5, false, lights, false);
+   DriveDistanceStraight(controllers, 30, 0.4, 5, false, false);
 }
 // 15in 129v

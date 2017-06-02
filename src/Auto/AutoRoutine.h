@@ -7,8 +7,9 @@
 
 #ifndef SRC_AUTO_AUTOROUTINE_H_
 #define SRC_AUTO_AUTOROUTINE_H_
-#include "LightsController.h"
-#include "../GearController.h"
+#include "../Controllers/LightsController.h"
+#include "../Controllers/GearController.h"
+
 #include <Auto/Action/DriveSetPointStraightAction.h>
 #include "WPILib.h"
 #include <iostream>
@@ -32,12 +33,12 @@ public:
   void RunAction(Action* action);
 
   //ACTIONS:
-  void DriveInterval(DriveController* kDrive, double seconds, double y, double x);
-  void DriveDistanceStraight(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController *lights, bool ejectGear);
-  void DriveDistanceRotate(RobotModel *robot, DriveController* kDrive, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout, LightsController *lights);
-  void VisionSetpointX(VisionController *vision, DriveController *drive, RobotModel *robot, double setpoint, double maxSpeed, double timeout, bool waitForTimeout, LightsController *lights);
-  void GearLifterUp(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
-  void GearLifterDown(RobotModel *robot, DriveController* kDrive, GearController *gearController, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
+  void DriveInterval(MasterController* kDrive, double seconds, double y, double x);
+  void DriveDistanceStraight(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout,bool ejectGear);
+  void DriveDistanceRotate(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
+  void VisionSetpointX(MasterController* controllers, double setpoint, double maxSpeed, double timeout, bool waitForTimeout);
+  void GearLifterUp(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
+  void GearLifterDown(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
 
 void WaitTime(double distance);
 protected:

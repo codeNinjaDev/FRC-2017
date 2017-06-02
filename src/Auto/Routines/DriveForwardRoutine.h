@@ -9,22 +9,19 @@
 #define SRC_AUTO_ROUTINES_DRIVEFORWARDROUTINE_H_
 
 #include "../AutoRoutine.h"
-#include "../../LightsController.h"
-#include "../../GearController.h"
+#include "../../Controllers/LightsController.h"
+#include "../../Controllers/GearController.h"
 
 class DriveForwardRoutine: public AutoRoutine {
 public:
-	DriveForwardRoutine(MasterController* controller);
+	DriveForwardRoutine(MasterController* controllers);
 	void Prestart();
 
 protected:
 	void Routine();
 
 private:
-	DriveController* kDrive;
-	GearController* gearController;
-	RobotModel *robot;
-	LightsController* lights;
+    MasterController* controllers;
 };
 
 #endif /* SRC_AUTO_ROUTINES_DRIVEFORWARDROUTINE_H_ */

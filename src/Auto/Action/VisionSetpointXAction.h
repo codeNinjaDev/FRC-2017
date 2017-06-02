@@ -7,15 +7,15 @@
 
 #ifndef SRC_AUTO_ACTION_VISIONSETPOINTXACTION_H_
 #define SRC_AUTO_ACTION_VISIONSETPOINTXACTION_H_
-#include "LightsController.h"
+#include "../../Controllers/LightsController.h"
 #include "Timer.h"
 #include "Action.h"
-#include "../../DriveController.h"
-#include "../../VisionController.h"
+#include "../../Controllers/DriveController.h"
+#include "../../Controllers/VisionController.h"
 
 class VisionSetpointXAction: public Action {
 public:
-	VisionSetpointXAction(VisionController *vision, DriveController *drive, RobotModel *robot, int setpoint, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights);
+	VisionSetpointXAction(MasterController* controllers, int setpoint, double maxSpeed, double timeout, bool waitForTimeout);
 
 	bool IsFinished();
 	void Update();

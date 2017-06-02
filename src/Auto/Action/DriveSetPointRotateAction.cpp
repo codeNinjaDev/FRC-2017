@@ -10,14 +10,14 @@
 //distance: distance in inches for the bot to rotate
 //maxSpeed: max speed robot can drive to hit setpoint
 //timeout: amount of allowed time this action can run before ending
-DriveSetPointRotateAction::DriveSetPointRotateAction(RobotModel *robot, DriveController *driveController, double angle, double maxSpeed, double timeout, bool waitForTimeout, LightsController* lights) {
-	this->driveController = driveController;
+DriveSetPointRotateAction::DriveSetPointRotateAction(MasterController* controllers, double angle, double maxSpeed, double timeout, bool waitForTimeout) {
+	this->driveController = controllers->GetDriveController();
 	this->distance = (angle * 40.0) / (180.0);
 	this->timeout = timeout;
-	this->robot = robot;
+	this->robot = controllers->GetRobotModel();
 	this->maxSpeed = maxSpeed;
     this->waitForTimeout = waitForTimeout;
-    this->lights = lights;
+    this->lights = controllers->GetLightsController();
 	reachedSetpoint = false;
 	leftEncoderStartDistance, rightEncoderStartDistance = 0.0;
 

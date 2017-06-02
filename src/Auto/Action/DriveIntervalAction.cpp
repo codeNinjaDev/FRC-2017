@@ -7,11 +7,11 @@
 #include "Timer.h"
 #include "DriveIntervalAction.h"
 
-DriveIntervalAction::DriveIntervalAction(DriveController* kDrive, double seconds, double y, double x) {
+DriveIntervalAction::DriveIntervalAction(MasterController* kDrive, double seconds, double y, double x) {
 	goal_time = seconds;
 	x_drive = x;
 	y_drive = y;
-	this->kDrive = kDrive;
+	this->kDrive = kDrive->GetDriveController();
 
 }
 bool DriveIntervalAction::IsFinished() {

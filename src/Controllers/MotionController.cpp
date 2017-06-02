@@ -5,7 +5,7 @@
  *      Author: mikec
  */
 
-#include <MotionController.h>
+#include "MotionController.h"
 #include <pathfinder.h>
 #include "WPILib.h"
 

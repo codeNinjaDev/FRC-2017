@@ -2,8 +2,8 @@
 #define DRIVEROTATEMOTORSPIDOUTPUT_H_
 
 #include "WPILib.h"
-#include "RobotModel.h"
-#include "RemoteControl.h"
+#include "../Hardware/RobotModel.h"
+#include "../Hardware/RemoteControl.h"
 
 class DriveRotateMotorsPIDOutput: public PIDOutput {
 public:
