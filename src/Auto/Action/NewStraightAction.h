@@ -8,10 +8,10 @@
 #ifndef SRC_AUTO_ACTION_NEWSTRAIGHTACTION_H_
 #define SRC_AUTO_ACTION_NEWSTRAIGHTACTION_H_
 
-#include "../../RobotModel.h"
-#include "../../DriveController.h"
-#include "../../GearController.h"
-#include "../../LightsController.h"
+#include "../../Hardware/RobotModel.h"
+#include "../../Controllers/DriveController.h"
+#include "../../Controllers/GearController.h"
+#include "../../Controllers/LightsController.h"
 #include "WPILib.h"
 #include "Action.h"
 

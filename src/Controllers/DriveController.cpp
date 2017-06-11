@@ -1,6 +1,7 @@
 #include "Params.h"
 #include "DriveController.h"
 #include "WPILib.h"
+#include "../PID/NewStraightPIDOutput.h"
 
 DriveController::DriveController(RobotModel *myRobot,
 		RemoteControl *myHumanControl, VisionController *myVision) {

@@ -13,18 +13,15 @@
 #include "Controllers/DriveController.h"
 #include "Hardware/RobotModel.h"
 #include "Controllers/GearController.h"
-#include "Controllers/MotionController.h"
 
 class MasterController {
  public:
     MasterController(VisionController* vision, RobotModel* robot,
-                     DriveController* driveTrain, GearController* gearController,
-                     MotionController* motion, LightsController* lights);
+                     DriveController* driveTrain, GearController* gearController, LightsController* lights);
     VisionController* GetVisionController();
     RobotModel* GetRobotModel();
     DriveController* GetDriveController();
     GearController* GetGearController();
-    MotionController* GetMotionController();
     LightsController* GetLightsController();
 
  private:
@@ -32,7 +29,6 @@ class MasterController {
      RobotModel* robot;
      DriveController* driveTrain;
      GearController* gearController;
-     MotionController* motion;
      LightsController* lights;
 };
 

@@ -8,13 +8,11 @@
 #include <MasterController.h>
 
 MasterController::MasterController(VisionController* vision, RobotModel* robot,
-                                   DriveController* driveTrain, GearController* gearController,
-                                   MotionController* motion, LightsController* lights) {
+                                   DriveController* driveTrain, GearController* gearController, LightsController* lights) {
     this->vision = vision;
     this->robot = robot;
     this->driveTrain = driveTrain;
     this->gearController = gearController;
-    this->motion = motion;
     this->lights = lights;
 }
 
@@ -32,9 +30,7 @@ DriveController* MasterController::GetDriveController() {
 GearController* MasterController::GetGearController() {
     return gearController;
 }
-MotionController* MasterController::GetMotionController() {
-    return motion;
-}
+
 LightsController* MasterController::GetLightsController() {
     return lights;
 }

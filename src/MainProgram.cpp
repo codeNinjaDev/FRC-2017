@@ -8,7 +8,6 @@
 #include "Controllers/DriveController.h"
 #include "Controllers/VisionController.h"
 #include "Controllers/GearController.h"
-#include "Controllers/MotionController.h"
 #include <string.h>
 #include "Auto/Auto.h"
 #include "Params.h"
@@ -28,7 +27,6 @@ class MainProgram : public frc::IterativeRobot {
     ClimberController *climberController;
     LightsController* lights;
     GearController *gearController;
-    MotionController *motionController;
     MasterController *controller;
     //Creates a time-keeper	`
     double currTimeSec;
@@ -45,7 +43,7 @@ class MainProgram : public frc::IterativeRobot {
         dashboardLogger = new DashboardLogger(robot, humanControl);
         climberController = new ClimberController(robot, humanControl);
         gearController = new GearController(robot, humanControl);
-        controller = new MasterController(visionController, robot, driveController, gearController, motionController, lights);
+        controller = new MasterController(visionController, robot, driveController, gearController, lights);
 
         auton = new Auto(controller);
         //Initializes timekeeper variables
@@ -91,7 +89,6 @@ class MainProgram : public frc::IterativeRobot {
     }
 
     void TeleopInit() {
-        motionController = new MotionController();
         lights->SetEnabledRoutine();
         auton->Stop();
         RefreshAllIni();
