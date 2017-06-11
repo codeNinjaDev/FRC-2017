@@ -7,12 +7,13 @@
 
 class DriveEncodersPIDSource: public PIDSource {
 public:
-	DriveEncodersPIDSource(Encoder *leftEncoder, Encoder *rightEncoder);
+	DriveEncodersPIDSource(RobotModel* robot);
 	double GetAverageDistance();
 	double PIDGet() override;
 
 private:
-	Encoder *leftEncoder, *rightEncoder;
+
+	RobotModel* robot;
 
 };
 

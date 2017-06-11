@@ -6,17 +6,30 @@
 static bool SQUARE_DRIVE_AXIS_INPUT                    = true;
 static const bool USE_ARCADE_DRIVE                     = true;
 
-static double GLOBAL_DRIVE_SPEED_MULTIPLIER            = 1.0;
-static const double HARDSET_DRIVE_SPEED_MAX			   = 0.9;
+static double GLOBAL_Y_DRIVE_SPEED_MULTIPLIER          = 1.0;
+static double GLOBAL_X_DRIVE_SPEED_MULTIPLIER          = 1.0;
+
+static double X_ARCADE_DRIVE_OUT                       = 0.0;
+static double X_ARCADE_DRIVE_LEFT_RIGHT				   = 6.25;
+static double X_ARCADE_DRIVE_STRAIGHT				   = 6.25;
+
+static const double HARDSET_DRIVE_SPEED_MAX			   = 0.95;
 
 static const double CLIMBER_HARDSET_MOTOR_SPEED        = 1.0;
 
 //GEAR HOLDER PARAMS
 static const double GEAR_WHEELS_RESTING_MOTOR_SPEED    = 0.0;
 static const double GEAR_WHEELS_ACTIVE_MOTOR_SPEED     = 0.75;
+static const double GEAR_WHEELS_OUT_MOTOR_SPEED        = 0.35; //0.575
 static const double GEAR_TILTER_MAX_MOTOR_SPEED        = 0.4;
-static const double GEAR_POT_UP_POSITION               = 0.284;
-static const double GEAR_POT_DOWN_POSITION             = 0.320;
+
+static const double GEAR_POT_MAX_DOWN_UP[]             = {0.56,0.45};
+static const double GEAR_POT_UP_POSITION               = 0.425;
+static const double GEAR_POT_RAMP_POSITION			   = 0.399;
+static const double GEAR_POT_FORCE_DOWN_THRESHOLD      = 0.464;
+static const double GEAR_POT_FORCE_DOWN_SPEED          = 0.15;
+
+static const double GEAR_POT_FORCE_REST_THRESHOLD	   = 0.396;
 
 //DRIVE PID PARAMS
 
@@ -45,11 +58,20 @@ static const double drive_p = 0.4;
 static const double drive_i = 0.0;
 static const double drive_d = 0.05;
 
+//[NEW_DRIVE_PID]
+static const double new_drive_p = 0.4;
+static const double new_drive_i = 0.0;
+static const double new_drive_d = 0.1;
+
+
 //[GEAR_PID]
-static const double gear_p = 6.5;
+static const double gear_p = 12.5;
 static const double gear_i = 0.000;
-static const double gear_d = 0.0;
-static const double gear_f = 0.1;
+static const double gear_d = 9.0;
+
+static const double gear_ramp_p = 12.5;
+static const double gear_ramp_i = 0.000;
+static const double gear_ramp_d = 2.5;
 
 //[GEAR_DOWN_PID]
 static const double gear_down_p = 0.0;

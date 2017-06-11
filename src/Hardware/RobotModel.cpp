@@ -205,3 +205,7 @@ void RobotModel::RefreshIni() {
 	pini = new Ini("/home/lvuser/robot.ini");
 }
 
+double RobotModel::GetEncoderError(){
+	return leftDriveEncoder->GetDistance() - rightDriveEncoder->GetDistance();
+}
+

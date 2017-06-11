@@ -12,7 +12,7 @@ GearLifterDownAction::GearLifterDownAction(MasterController* controllers,
 	this->gearController = controllers->GetGearController();
 	this->distance = distance;
 	this->timeout = timeout;
-	this->robot = robot;
+	this->robot = controllers->GetRobotModel();
 	this->maxSpeed = maxSpeed;
 	this->waitForTimeout = waitForTimeout;
 	reachedSetpoint = false;

@@ -11,14 +11,14 @@ VisionSetpointXAction::VisionSetpointXAction(MasterController* controllers, int 
                                              double maxSpeed, double timeout,
                                              bool waitForTimeout) {
     // TODO Auto-generated constructor stub
-    this->vision = vision;
-    this->driveController = driveController;
+    this->vision = controllers->GetVisionController();
+    this->driveController = controllers->GetDriveController();
     this->setpoint = setpoint;
     this->maxSpeed = maxSpeed;
-    this->robot = robot;
+    this->robot = controllers->GetRobotModel();
     this->timeout = timeout;
     this->waitForTimeout = waitForTimeout;
-    this->lights = lights;
+    this->lights = controllers->GetLightsController();
     leftEncoderStartDistance, rightEncoderStartDistance = 0.0;
 
     //P = 1.0 / 250.0;

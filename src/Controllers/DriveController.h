@@ -12,6 +12,7 @@
 #include "../Controllers/VisionController.h"
 #include "../PID/VisionPIDSource.h"
 #include "../Feedback/ini.h"
+
 #include <iostream>
 
 class PivotCommand;
@@ -42,6 +43,10 @@ public:
 	PIDOutput *driveXPIDOutput;
 	PIDController *visionPID;
 	VisionPIDSource *visionPIDSource;
+
+	PIDOutput *newPIDstraightOutput;
+	PIDSource *avgEncodersPIDSource;
+	PIDController *newPIDstraight;
 
 	DriveEncodersPIDSource *driveEncodersPIDSource; //average of two drive encoders
     VisionController *vision;

@@ -12,11 +12,9 @@ CenterGear::CenterGear(MasterController* controllers) {
 }
 void CenterGear::Routine() {
 	controllers->GetGearController()->GearPIDUp();
-	DriveDistanceStraight(controllers, 61.0, 0.4, 4.0, true, false);
-	DriveDistanceStraight(controllers, 25.0, 0.25, 2.0, false, false);
-    controllers->GetGearController()->GearPIDDown();
+    NewStraight(controllers, 75.0, 0.3, 4.0, 0.4);
+    controllers->GetGearController()->GearDown();
 	DriveDistanceStraight(controllers, -5.0, 0.25, 1.5, true, true);
-	controllers->GetRobotModel()->SetGearIntakeSpeed(0.0);
 }
 
 void CenterGear::Prestart() {

@@ -58,3 +58,7 @@ void AutoRoutine::GearLifterUp(MasterController* controllers, double desired_dis
 void AutoRoutine::GearLifterDown(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout){
   RunAction(new GearLifterDownAction(controllers, desired_distance, maxSpeed, timeout, waitForTimeout));
 }
+
+void AutoRoutine::NewStraight(MasterController* controllers, double distance, double maxSpeed, double timeout, double timeAfterHit){
+	RunAction(new NewStraightAction(controllers, distance, maxSpeed, timeout, timeAfterHit));
+}

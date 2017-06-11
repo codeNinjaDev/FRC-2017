@@ -17,41 +17,33 @@ LightsController::LightsController(RemoteControl *myHumanControl) {
 	pin3 = new DigitalOutput(LIGHTS_DIO_PORTS[2]);
     pin4 = new DigitalOutput(LIGHTS_DIO_PORTS[3]);
 
-	m_stateVal = kInitialize;
+/*	m_stateVal = kInitialize;  */
 }
 
 LightsController::~LightsController() {
 
 }
 
+/*
 void LightsController::Reset() {
 	m_stateVal = kInitialize;
 }
+*/
 
+/*
 void LightsController::Update(bool enabled) {
 	switch (m_stateVal) {
 	case (kInitialize):
 		nextState = kTeleop;
 		break;
 	case (kTeleop):
-        /*
-		//Climber Behaviour
-		if (enabled) {
-			if (humanControl->GetLightsActiveDesired()) {
-				SetShoutRoutine();
-			} else {
-				SetEnabledRoutine();
-			}
-		} else {
-			SetDisabledRoutine();
-		}*/
-
 		nextState = kTeleop;
 		break;
 	}
 
 	m_stateVal = nextState;
 }
+*/
 
 void LightsController::SetDisabledRoutine() {
 	pin1->Set(LOW);
@@ -67,33 +59,26 @@ void LightsController::SetEnabledRoutine() {
     pin4->Set(LOW);
 }
 
-void LightsController::SetShoutRoutine() {
+void LightsController::Ramp() {
 	pin1->Set(HIGH);
 	pin2->Set(HIGH);
     pin3->Set(LOW);
     pin4->Set(HIGH);
 }
 
-void LightsController::Brake2() {
+
+void LightsController::GearPeg() {
     pin1->Set(HIGH);
     pin2->Set(LOW);
+    pin3->Set(HIGH);
+    pin4->Set(HIGH);
+}
+
+void LightsController::Error() {
+    pin1->Set(HIGH);
+    pin2->Set(HIGH);
     pin3->Set(HIGH);
     pin4->Set(LOW);
-}
-
-void LightsController::Brake1() {
-    pin1->Set(HIGH);
-    pin2->Set(LOW);
-    pin3->Set(LOW);
-    pin4->Set(HIGH);
-}
-
-
-void LightsController::GearOuttake() {
-    pin1->Set(HIGH);
-    pin2->Set(LOW);
-    pin3->Set(HIGH);
-    pin4->Set(HIGH);
 }
 
 void LightsController::GearIntake() {

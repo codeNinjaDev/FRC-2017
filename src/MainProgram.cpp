@@ -11,9 +11,10 @@
 #include "Controllers/MotionController.h"
 #include <string.h>
 #include "Auto/Auto.h"
+#include "Params.h"
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
-#include <pathfinder.h>
+//#include <pathfinder.h>
 #include "MasterController.h"
 class MainProgram : public frc::IterativeRobot {
 
@@ -127,23 +128,14 @@ class MainProgram : public frc::IterativeRobot {
         visionController->Update();
         gearController->Update();
 
-        if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
+        /*if ((robot->gearPot->Get > (GEAR_POT_MAX_DOWN_UP[0])) && (robot->gearPot->Get() > (GEAR_POT_MAX_DOWN_UP[1])){
+        lights->Error();
+        }*/if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
         lights->Climbing();
-        } else if (humanControl->GetShoutRoutineDesired()) {
-        lights->SetShoutRoutine();
         } else if (humanControl->GetGearTitlerIntakeDesired()) {
         lights->GearIntake();
-
-        } else if (humanControl->GetGearTitlerOuttakeDesired()) {
-        lights->GearOuttake();
-
-        } else if (humanControl->GetSlowDriveTier1Desired()
-                && humanControl->GetSlowDriveTier2Desired()) {
-        lights->Brake2();
-
-        } else if (humanControl->GetSlowDriveTier1Desired()) {
-        lights->Brake1();
-
+        } else if (humanControl->GetGearTilterRampDesired()) {
+        lights->Ramp();
         } else {
         lights->SetEnabledRoutine();
         }
@@ -174,19 +166,21 @@ class MainProgram : public frc::IterativeRobot {
         robot->RefreshIni();
     }
 
-    static void CameraThread() {
-		cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-		camera.SetResolution(352, 288);
-		cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-		cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
-		cv::Mat source;
-		cv::Mat output;
-		while(true) {
-			cvSink.GrabFrame(source);
-			cvtColor(source, output, cv::COLOR_BGR2GRAY);
-			outputStreamStd.PutFrame(output);
-		}
-    }
+    static void CameraThread()
+        {
+    		//Wait(1);
+            cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+            camera.SetResolution(352, 288);
+            cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+            cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
+            cv::Mat source;
+            cv::Mat output;
+            while(true) {
+                cvSink.GrabFrame(source);
+                cvtColor(source, output, cv::COLOR_BGR2GRAY);
+                outputStreamStd.PutFrame(output);
+            }
+        }
 };
 
 START_ROBOT_CLASS(MainProgram);

@@ -21,6 +21,8 @@
 #include "Action/GearLifterUpAction.h"
 #include "Action/GearLifterDownAction.h"
 #include "MasterController.h"
+#include "Action/NewStraightAction.h"
+
 class AutoRoutine {
 public:
 
@@ -39,6 +41,9 @@ public:
   void VisionSetpointX(MasterController* controllers, double setpoint, double maxSpeed, double timeout, bool waitForTimeout);
   void GearLifterUp(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
   void GearLifterDown(MasterController* controllers, double desired_distance, double maxSpeed, double timeout, bool waitForTimeout);
+
+  void NewStraight(MasterController* controllers,
+			double distance, double maxSpeed, double timeout, double timeAfterHit);
 
 void WaitTime(double distance);
 protected:

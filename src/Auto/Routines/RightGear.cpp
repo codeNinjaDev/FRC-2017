@@ -13,13 +13,19 @@ RightGear::RightGear(MasterController* controllers) {
 }
 
 void RightGear::Prestart() {
-
+    controllers->GetGearController()->GearRest();
 }
 
 void RightGear::Routine() {
-	   DriveDistanceStraight(controllers, 98, 0.5, 3.3, true, false);
-	   DriveDistanceRotate(controllers, -73, 0.6, 1.5, true);
-	   DriveDistanceStraight(controllers, 10, 1.0, 1, false, false);
-	   DriveDistanceStraight(controllers, 15, 0.4, 5, false, false);
+
+    controllers->GetGearController()->GearPIDUp();
+    NewStraight(controllers, 93.2, 0.45, 4.0,
+                0.4);
+    DriveDistanceRotate(controllers, -70, 0.6, 1.6, true);
+    NewStraight(controllers, 30.0, 0.45, 2.5,
+                0.4);
+    controllers->GetGearController()->GearDown();
+    DriveDistanceStraight(controllers, -5.0, 0.25, 1.5,
+                          true, true);
 
 }

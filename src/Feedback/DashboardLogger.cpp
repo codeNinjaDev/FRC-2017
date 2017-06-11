@@ -35,6 +35,7 @@ void DashboardLogger::UpdateEssentialData() {
 	SmartDashboard::PutNumber("LEFTDRIVE_ENC_GetDistance()", robot->leftDriveEncoder->GetDistance());
 	SmartDashboard::PutNumber("RIGHTDRIVE_ENC_GetDistance()", robot->rightDriveEncoder->GetDistance());
 	SmartDashboard::PutNumber("POT_GearTilterPot", robot->gearPot->Get());
+	PutGamePadButtonPress();
 }
 
 /*  double GetVoltage(); //returns the voltage
@@ -74,6 +75,8 @@ void DashboardLogger::PutGamePadButtonPress() {
 	SmartDashboard::PutBoolean("BUTTON_slowDriveTier1Desired", humanControl->GetSlowDriveTier1Desired());
 	SmartDashboard::PutBoolean("BUTTON_slowDriveTier2Desired", humanControl->GetSlowDriveTier2Desired());
 	SmartDashboard::PutBoolean("BUTTON_gearTilterDownDesired", humanControl->GetGearTitlerDownDesired());
+	SmartDashboard::PutBoolean("BUTTON_gearTilterUpDesired", humanControl->GetGearTilterUpDesired());
+	SmartDashboard::PutBoolean("BUTTON_gearTilterRampDesired", humanControl->GetGearTilterRampDesired());
 	SmartDashboard::PutBoolean("BUTTON_gearIntakeDesired", humanControl->GetGearTitlerIntakeDesired());
 	SmartDashboard::PutBoolean("BUTTON_gearOuttakeDesired", humanControl->GetGearTitlerOuttakeDesired());
 

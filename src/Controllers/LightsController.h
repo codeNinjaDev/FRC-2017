@@ -18,15 +18,14 @@ public:
 	LightsController(RemoteControl *myHumanControl);
 	virtual ~LightsController();
 
-	void Reset();
-	void Update(bool enabled);
+/*	void Reset();
+	void Update(bool enabled);  */
 
 	void SetDisabledRoutine();
 	void SetEnabledRoutine();
-	void SetShoutRoutine();
-	void Brake2();
-	void Brake1();
-	void GearOuttake();
+	void GearPeg();
+	void Error();
+	void Ramp();
 	void GearIntake();
 	void Climbing();
 
@@ -42,8 +41,8 @@ private:
 	DigitalOutput *pin4;
 
 	RemoteControl *humanControl;
-	uint32_t m_stateVal;
-	uint32_t nextState;
+/*	uint32_t m_stateVal;
+	uint32_t nextState;  */
 
 	bool HIGH = true;
 	bool LOW = false;

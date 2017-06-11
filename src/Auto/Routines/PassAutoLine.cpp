@@ -14,23 +14,18 @@ PassAutoLine::PassAutoLine(MasterController* controllers) {
 }
 
 void PassAutoLine::Routine() {
-	controllers->GetGearController()->gearTilterPID->Enable();
-	DriveDistanceStraight(controllers, 100.0, 0.4, 4.0, false, false);
-	controllers->GetGearController()->gearTilterPID->Disable();
+    controllers->GetGearController()->gearTilterPID->Enable();
+    DriveDistanceStraight(controllers, 100.0, 0.4, 4.0, false, false);
+    controllers->GetGearController()->gearTilterPID->Disable();
 }
 
 void PassAutoLine::Prestart() {
-	controllers->GetGearController()->gearTilterPID->SetPID(
-	        				gear_p,
-							gear_i,
-							gear_d,
-							gear_f);
-	controllers->GetGearController()->gearTilterPID->SetOutputRange(-1.0, 1.0);
-	controllers->GetGearController()->gearTilterPID->SetSetpoint(GEAR_POT_UP_POSITION);
+    controllers->GetGearController()->gearTilterPID->SetPID(gear_p, gear_i,
+                                                            gear_d);
+    controllers->GetGearController()->gearTilterPID->SetOutputRange(-1.0, 1.0);
+    controllers->GetGearController()->gearTilterPID->SetSetpoint(
+            GEAR_POT_UP_POSITION);
 }
-
-
-
 
 // alliance wall 93.45 in
 

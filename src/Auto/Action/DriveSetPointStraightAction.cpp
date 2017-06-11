@@ -49,13 +49,14 @@ void DriveSetPointStraightAction::Update() {
 	}
 
 	if(ejectGear)
-		robot->SetGearIntakeSpeed(-GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
+		robot->SetGearIntakeSpeed(-GEAR_WHEELS_OUT_MOTOR_SPEED);
 
 }
 
 void DriveSetPointStraightAction::Done() {
 	driveController->leftPID->Disable();
 	driveController->rightPID->Disable();
+	robot->SetGearIntakeSpeed(0.0);
 	driveController->Stop();
 }
 

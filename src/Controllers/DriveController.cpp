@@ -18,23 +18,33 @@ DriveController::DriveController(RobotModel *myRobot,
 	robot->rightDriveEncoder->SetSamplesToAverage(DRIVE_Y_PID_SAMPLES_AVERAGE);
 
 	leftPIDOutput = new WheelsPIDOutput(robot, robot->LeftWheels);
-	leftPID = new PIDController(0.0, 0.0, 0.0, robot->leftDriveEncoder, leftPIDOutput);
+	leftPID = new PIDController(0.0, 0.0, 0.0, robot->leftDriveEncoder,
+			leftPIDOutput);
 	leftPID->SetOutputRange(-1.0, 1.0);
 	leftPID->SetAbsoluteTolerance(0.25);
 	leftPID->Disable();
 
 	rightPIDOutput = new WheelsPIDOutput(robot, robot->RightWheels);
-	rightPID = new PIDController(0.0, 0.0, 0.0, robot->rightDriveEncoder, rightPIDOutput);
+	rightPID = new PIDController(0.0, 0.0, 0.0, robot->rightDriveEncoder,
+			rightPIDOutput);
 	rightPID->SetOutputRange(-1.0, 1.0);
 	rightPID->SetAbsoluteTolerance(0.25);
 	rightPID->Disable();
 
 	visionPIDSource = new VisionPIDSource(vision);
 	driveXPIDOutput = new DriveRotateMotorsPIDOutput(driveTrain);
-	visionPID = new PIDController(0.0, 0.0, 0.0, visionPIDSource, driveXPIDOutput);
+	visionPID = new PIDController(0.0, 0.0, 0.0, visionPIDSource,
+			driveXPIDOutput);
 	visionPID->SetOutputRange(-1.0, 1.0);
 	visionPID->SetAbsoluteTolerance(1);
 	visionPID->Disable();
+
+	avgEncodersPIDSource = new DriveEncodersPIDSource(robot);
+	newPIDstraightOutput = new NewStraightPIDOutput(driveTrain, robot);
+	newPIDstraight = new PIDController(0.0, 0.0, 0.0, avgEncodersPIDSource, newPIDstraightOutput);
+	newPIDstraight->SetOutputRange(-1.0, 1.0);
+	newPIDstraight->SetAbsoluteTolerance(1);
+	newPIDstraight->Disable();
 
 	m_stateVal = kInitialize;
 	nextState = kInitialize;
@@ -65,7 +75,7 @@ void DriveController::Update(double currTimeSec, double deltaTimeSec) {
 		driverRightY = humanControl->GetJoystickValue(RemoteControl::kDriverJoy,
 				RemoteControl::kRY);
 
-		if(leftPID->IsEnabled() || rightPID->IsEnabled()){
+		if (leftPID->IsEnabled() || rightPID->IsEnabled()) {
 			leftPID->Disable();
 			rightPID->Disable();
 		}
@@ -86,22 +96,28 @@ void DriveController::Update(double currTimeSec, double deltaTimeSec) {
 void DriveController::ArcadeDrive(double myY, double myX, bool teleOp) {
 	if (teleOp) {
 
-		if((humanControl->GetSlowDriveTier1Desired() && !humanControl->GetSlowDriveTier2Desired())
-				|| (!humanControl->GetSlowDriveTier1Desired() && humanControl->GetSlowDriveTier2Desired())) {
-			GLOBAL_DRIVE_SPEED_MULTIPLIER = 0.65;
+		if ((humanControl->GetSlowDriveTier1Desired()
+				&& !humanControl->GetSlowDriveTier2Desired())
+				|| (!humanControl->GetSlowDriveTier1Desired()
+						&& humanControl->GetSlowDriveTier2Desired())) {
+			GLOBAL_Y_DRIVE_SPEED_MULTIPLIER = 0.65;
+			GLOBAL_X_DRIVE_SPEED_MULTIPLIER = 0.65;
 			SQUARE_DRIVE_AXIS_INPUT = false;
-		}
-		else if(humanControl->GetSlowDriveTier1Desired() && humanControl->GetSlowDriveTier2Desired()) {
-			GLOBAL_DRIVE_SPEED_MULTIPLIER = 0.35;
+		} else if (humanControl->GetSlowDriveTier1Desired()
+				&& humanControl->GetSlowDriveTier2Desired()) {
+			GLOBAL_Y_DRIVE_SPEED_MULTIPLIER = 0.40;
+			GLOBAL_X_DRIVE_SPEED_MULTIPLIER = 0.435;
 			SQUARE_DRIVE_AXIS_INPUT = false;
-		}
-		else {
-			GLOBAL_DRIVE_SPEED_MULTIPLIER = 1.0;
+		} else {
+			GLOBAL_Y_DRIVE_SPEED_MULTIPLIER = 1.0;
+			GLOBAL_X_DRIVE_SPEED_MULTIPLIER = 1.0;
 			SQUARE_DRIVE_AXIS_INPUT = true;
 		}
 
-		driveTrain->ArcadeDrive(myY * GLOBAL_DRIVE_SPEED_MULTIPLIER * HARDSET_DRIVE_SPEED_MAX,
-				myX * GLOBAL_DRIVE_SPEED_MULTIPLIER * HARDSET_DRIVE_SPEED_MAX, SQUARE_DRIVE_AXIS_INPUT);
+		driveTrain->ArcadeDrive(
+				myY * GLOBAL_Y_DRIVE_SPEED_MULTIPLIER * HARDSET_DRIVE_SPEED_MAX,
+				myX * GLOBAL_X_DRIVE_SPEED_MULTIPLIER * HARDSET_DRIVE_SPEED_MAX,
+				SQUARE_DRIVE_AXIS_INPUT);
 
 	} else {
 		driveTrain->ArcadeDrive(myY, myX, false);
@@ -114,8 +130,8 @@ void DriveController::TankDrive(double myLeft, double myRight) {
 		myRight = -myRight;
 	}
 
-	driveTrain->TankDrive(myLeft * GLOBAL_DRIVE_SPEED_MULTIPLIER,
-			myRight * GLOBAL_DRIVE_SPEED_MULTIPLIER, SQUARE_DRIVE_AXIS_INPUT);
+	driveTrain->TankDrive(myLeft * GLOBAL_Y_DRIVE_SPEED_MULTIPLIER,
+			myRight * GLOBAL_Y_DRIVE_SPEED_MULTIPLIER, SQUARE_DRIVE_AXIS_INPUT);
 }
 
 void DriveController::Reset() {
