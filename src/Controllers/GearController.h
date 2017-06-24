@@ -26,6 +26,7 @@ class GearController {
     void GearRest(); //threshold till past point for ramp
     void GearPIDRamp(); //PID for ramp intake
     void GearDown(); //threshold till past point for down position
+    void GearIntake();
 
     void SoftDisablePID();
     enum GearState {

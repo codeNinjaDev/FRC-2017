@@ -53,6 +53,7 @@ class MainProgram : public frc::IterativeRobot {
     }
  private:
     void RobotInit() {
+        SmartDashboard::PutString("Is New Code", "True");
         RefreshAllIni();
         robot->ResetTimer();
         robot->Reset();

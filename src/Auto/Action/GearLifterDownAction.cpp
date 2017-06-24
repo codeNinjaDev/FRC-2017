@@ -39,7 +39,7 @@ void GearLifterDownAction::Update() {
 		reachedSetpoint = false;
 	}
 
-	robot->gearIntakeMotor->Set(-GEAR_WHEELS_ACTIVE_MOTOR_SPEED);
+	robot->gearIntakeMotor->Set(0.0);
 	if(robot->gearPot->Get() <= 0.32) {
 		robot->SetGearTilterSpeed(0.1);
 	}

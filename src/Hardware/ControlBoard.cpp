@@ -38,6 +38,7 @@ ControlBoard::ControlBoard() {
 				XINPUT_WIN_LEFT_TRIGGER_AXIS);
 		gearTilterRampButton = new ButtonReader(operatorJoy,
 				XINPUT_WIN_LEFT_BUMPER);
+		gearTotalIntakeButton = new ButtonReader(operatorJoy, XINPUT_WIN_RIGHT_BUMPER);
 	}
 
 	//Joystick positions that will set speed of robot movement
@@ -92,6 +93,7 @@ slowDriveTier1Desired    = slowDriveTier1Button->IsDown();
  gearTilterRampDesired    = gearTilterRampButton->IsDown();
  gearTilterOuttakeDesired = gearTilterOuttakeButton->IsDown();
  gearTilterIntakeDesired  = gearTilterIntakeButton->IsDown();
+ gearTotalIntakeDesired = gearTotalIntakeButton->IsDown();
  toggleGearManualDesired  = toggleGearManual->WasJustPressed();
 
 }
@@ -109,6 +111,7 @@ void ControlBoard::ReadAllButtons() {
 	gearTilterOuttakeButton->ReadValue();
 	gearTilterIntakeButton->ReadValue();
 	toggleGearManual->ReadValue();
+	gearTotalIntakeButton->ReadValue();
 }
 
 //Returns the joystick and axis being used
@@ -188,4 +191,7 @@ return gearTilterOuttakeDesired;
 }
 bool ControlBoard::GetManualGearDesired() {
 return toggleGearManualDesired;
+}
+bool ControlBoard::GetGearIntakeDesired() {
+    return gearTotalIntakeDesired;
 }

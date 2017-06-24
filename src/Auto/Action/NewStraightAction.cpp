@@ -25,7 +25,8 @@ NewStraightAction::NewStraightAction(MasterController* controllers,
 	this->timeAfterHit = timeAfterHit;
 	reachedSetpoint = false;
 	target_pass = 0;
-	leftEncoderStartDistance, rightEncoderStartDistance = 0.0;
+	leftEncoderStartDistance = 0.0;
+	rightEncoderStartDistance = 0.0;
 
 	P = new_drive_p;
 	I = new_drive_i;
