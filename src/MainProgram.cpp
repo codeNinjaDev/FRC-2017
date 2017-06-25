@@ -15,170 +15,177 @@
 #include <opencv2/core/core.hpp>
 //#include <pathfinder.h>
 #include "MasterController.h"
-class MainProgram : public frc::IterativeRobot {
+class MainProgram: public frc::IterativeRobot {
 
-    RobotModel *robot;
-    RemoteControl *humanControl;
-    Auto *auton;
+	RobotModel *robot;
+	RemoteControl *humanControl;
+	Auto *auton;
 
-    VisionController *visionController;
-    DriveController *driveController;
-    DashboardLogger *dashboardLogger;
-    ClimberController *climberController;
-    LightsController* lights;
-    GearController *gearController;
-    MasterController *controller;
-    //Creates a time-keeper	`
-    double currTimeSec;
-    double lastTimeSec;
-    double deltaTimeSec;
+	VisionController *visionController;
+	DriveController *driveController;
+	DashboardLogger *dashboardLogger;
+	ClimberController *climberController;
+	LightsController* lights;
+	GearController *gearController;
+	MasterController *controller;
+	//Creates a time-keeper	`
+	double currTimeSec;
+	double lastTimeSec;
+	double deltaTimeSec;
 
- public:
-    MainProgram(void) {
-        robot = new RobotModel();
-        humanControl = new ControlBoard();
-        lights = new LightsController(humanControl);
-        visionController = new VisionController();
-        driveController = new DriveController(robot, humanControl, visionController);
-        dashboardLogger = new DashboardLogger(robot, humanControl);
-        climberController = new ClimberController(robot, humanControl);
-        gearController = new GearController(robot, humanControl);
-        controller = new MasterController(visionController, robot, driveController, gearController, lights);
+public:
+	MainProgram(void) {
+		robot = new RobotModel();
+		humanControl = new ControlBoard();
+		lights = new LightsController(humanControl);
+		visionController = new VisionController();
+		driveController = new DriveController(robot, humanControl,
+				visionController);
+		dashboardLogger = new DashboardLogger(robot, humanControl);
+		climberController = new ClimberController(robot, humanControl);
+		gearController = new GearController(robot, humanControl);
+		controller = new MasterController(visionController, robot,
+				driveController, gearController, lights);
 
-        auton = new Auto(controller);
-        //Initializes timekeeper variables
-        currTimeSec = 0.0;
-        lastTimeSec = 0.0;
-        deltaTimeSec = 0.0;
-    }
- private:
-    void RobotInit() {
-        SmartDashboard::PutString("Is New Code", "True");
-        RefreshAllIni();
-        robot->ResetTimer();
-        robot->Reset();
-        auton->ListOptions();
-        visionController->Disable();
+		auton = new Auto(controller);
+		//Initializes timekeeper variables
+		currTimeSec = 0.0;
+		lastTimeSec = 0.0;
+		deltaTimeSec = 0.0;
+	}
+private:
+	void RobotInit() {
+		SmartDashboard::PutString("Is New Code", "True");
+		RefreshAllIni();
+		robot->ResetTimer();
+		robot->Reset();
+		auton->ListOptions();
+		visionController->Disable();
 
-        //Start camera thread
-        std::thread cameraThread(CameraThread);
-        cameraThread.detach();
+		//Start camera thread
+		std::thread cameraThread(CameraThread);
+		cameraThread.detach();
 
-    }
+	}
 
-    void AutonomousInit() {
-        auton->Stop();
-        RefreshAllIni();
-        robot->ResetTimer();
-        robot->ResetEncoders();
+	void AutonomousInit() {
+		auton->Stop();
+		RefreshAllIni();
+		robot->ResetTimer();
+		robot->ResetEncoders();
 
-        driveController->Reset();
+		driveController->Reset();
 
-        //Resets timer variables
-        currTimeSec = 0.0;
-        lastTimeSec = 0.0;
-        deltaTimeSec = 0.0;
+		//Resets timer variables
+		currTimeSec = 0.0;
+		lastTimeSec = 0.0;
+		deltaTimeSec = 0.0;
 
-        visionController->Enable();
-        auton->Start();
-    }
+		visionController->Enable();
+		auton->Start();
+	}
 
-    void AutonomousPeriodic() {
-        //Autonoumous is running in a thread called by "auton->Start();"
-        dashboardLogger->UpdateData();  //Joystick data does NOT update during autonomous
-        visionController->Update();
-    }
+	void AutonomousPeriodic() {
+		//Autonoumous is running in a thread called by "auton->Start();"
+		dashboardLogger->UpdateData(); //Joystick data does NOT update during autonomous
+		visionController->Update();
+	}
 
-    void TeleopInit() {
-        lights->SetEnabledRoutine();
-        auton->Stop();
-        RefreshAllIni();
-        robot->ResetTimer();
-        robot->ResetEncoders();
+	void TeleopInit() {
+		lights->SetEnabledRoutine();
+		auton->Stop();
+		RefreshAllIni();
+		robot->ResetTimer();
+		robot->ResetEncoders();
 
-        driveController->Reset();
-        climberController->Reset();
-        gearController->Reset();
+		driveController->Reset();
+		climberController->Reset();
+		gearController->Reset();
 
-        //Resets timer variables
-        currTimeSec = 0.0;
-        lastTimeSec = 0.0;
-        deltaTimeSec = 0.0;
+		//Resets timer variables
+		currTimeSec = 0.0;
+		lastTimeSec = 0.0;
+		deltaTimeSec = 0.0;
 
-        visionController->Enable();
+		visionController->Enable();
 
-    }
+	}
 
-    void TeleopPeriodic() {
-        dashboardLogger->UpdateEssentialData();
+	void TeleopPeriodic() {
+		dashboardLogger->UpdateEssentialData();
 
-        //Updates timer
-        lastTimeSec = currTimeSec;
-        currTimeSec = robot->GetTime();
-        deltaTimeSec = currTimeSec - lastTimeSec;
+		//Updates timer
+		lastTimeSec = currTimeSec;
+		currTimeSec = robot->GetTime();
+		deltaTimeSec = currTimeSec - lastTimeSec;
 
+		//Reads controls and updates controllers accordingly
+		//RefreshAllIni();
+		humanControl->ReadControls();
+		driveController->Update(currTimeSec, deltaTimeSec);
+		climberController->Update();
+		visionController->Update();
+		gearController->Update();
 
-        //Reads controls and updates controllers accordingly
-        //RefreshAllIni();
-        humanControl->ReadControls();
-        driveController->Update(currTimeSec, deltaTimeSec);
-        climberController->Update();
-        visionController->Update();
-        gearController->Update();
+		/*if ((robot->gearPot->Get > (GEAR_POT_MAX_DOWN_UP[0])) && (robot->gearPot->Get() > (GEAR_POT_MAX_DOWN_UP[1])){
+		 lights->Error();
+		 }*/if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy,
+				RemoteControl::kRY) > 0.2) {
+			lights->Climbing();
+		} else if (humanControl->GetGearTitlerIntakeDesired()) {
+			lights->GearIntake();
+		} else if (humanControl->GetGearTilterRampDesired()) {
+			lights->Ramp();
+		} else {
+			lights->SetEnabledRoutine();
+		}
+	}
 
-        /*if ((robot->gearPot->Get > (GEAR_POT_MAX_DOWN_UP[0])) && (robot->gearPot->Get() > (GEAR_POT_MAX_DOWN_UP[1])){
-        lights->Error();
-        }*/if (humanControl->GetJoystickValue(RemoteControl::kOperatorJoy, RemoteControl::kRY) > 0.2) {
-        lights->Climbing();
-        } else if (humanControl->GetGearTitlerIntakeDesired()) {
-        lights->GearIntake();
-        } else if (humanControl->GetGearTilterRampDesired()) {
-        lights->Ramp();
-        } else {
-        lights->SetEnabledRoutine();
-        }
-    }
+	void DisabledInit() {
+		auton->Stop();
 
-    void DisabledInit() {
-        auton->Stop();
+		RefreshAllIni();
 
-        RefreshAllIni();
+		robot->ResetEncoders();
+		driveController->Reset();
+		climberController->Reset();
+		visionController->Disable();
+		lights->SetDisabledRoutine();
+	}
 
-        robot->ResetEncoders();
-        driveController->Reset();
-        climberController->Reset();
-        visionController->Disable();
-        lights->SetDisabledRoutine();
-    }
+	void DisabledPeriodic() {
 
-    void DisabledPeriodic() {
+		dashboardLogger->UpdateData();
 
-        dashboardLogger->UpdateData();
+		visionController->Update();
+		humanControl->ReadControls();
+		gearController->Update();
+		RefreshAllIni();
+	}
+	void RefreshAllIni() {
+		robot->RefreshIni();
+	}
 
-        visionController->Update();
-        humanControl->ReadControls();
-        gearController->Update();
-        RefreshAllIni();
-    }
-    void RefreshAllIni() {
-        robot->RefreshIni();
-    }
-
-    static void CameraThread()
-        {
-    		//Wait(1);
-            cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-            camera.SetResolution(352, 288);
-            cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-            cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
-            cv::Mat source;
-            cv::Mat output;
-            while(true) {
-                cvSink.GrabFrame(source);
-                cvtColor(source, output, cv::COLOR_BGR2GRAY);
-                outputStreamStd.PutFrame(output);
-            }
-        }
+	static void CameraThread() {
+		//Wait(1);
+		cs::UsbCamera camera =
+				CameraServer::GetInstance()->StartAutomaticCapture();
+		camera.SetResolution(352, 288);
+		cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+		cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo(
+				"Center", 640, 480);
+		cv::Mat source;
+		cv::Mat output;
+		while (true) {
+			cvSink.GrabFrame(source);
+			int thickness = 2;
+			int lineType = 8;
+			cv::line(source, cv::Point((source.size().width / 2), 0),
+					cv::Point((source.size().width / 2), source.size().height),
+					cv::Scalar(0, 0, 0), thickness, lineType);
+			outputStreamStd.PutFrame(source);
+		}
+	}
 };
 
 START_ROBOT_CLASS(MainProgram);
